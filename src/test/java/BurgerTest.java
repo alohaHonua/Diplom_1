@@ -72,4 +72,21 @@ public class BurgerTest {
        Assert.assertEquals("Expected result does not match the actual", burgerPrice, burger.getPrice(), 0);
     }
 
+    @Test
+    public void getReceiptTest() {
+        burger.setBuns(new Bun("tasty bun", 10F));
+        burger.addIngredient(new Ingredient(SAUCE, "hot sauce", 100F));
+        burger.addIngredient(new Ingredient(FILLING, "sour cream", 200F));
+
+        String lineSeparator = System.lineSeparator();
+        String expectedReceipt = "(==== tasty bun ====)" + lineSeparator +
+                "= sauce hot sauce =" + lineSeparator +
+                "= filling sour cream =" + lineSeparator +
+                "(==== tasty bun ====)" + lineSeparator + lineSeparator +
+                "Price: 320,000000" + lineSeparator;
+
+        String actualReceipt = burger.getReceipt();
+        Assert.assertEquals("Expected result does not match the actual", expectedReceipt, actualReceipt);
+    }
+
 }
