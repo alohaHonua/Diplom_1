@@ -71,7 +71,7 @@ public class BurgerTest {
         burger.setBuns(bun);
         burger.addIngredient(new Ingredient(IngredientType.FILLING, "sausage", 300));
         Mockito.when(bun.getName()).thenReturn("white bun");
-        //assertEquals("(==== white bun ====)\n= filling sausage =\n(==== white bun ====)\n\nPrice: 300,000000\n",burger.getReceipt());
+
         burger.getReceipt().equals("(==== white bun ====)\n= filling sausage =\n(==== white bun ====)\n\nPrice: 300,000000\n");
     }
 
