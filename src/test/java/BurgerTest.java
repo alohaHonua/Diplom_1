@@ -1,9 +1,7 @@
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
@@ -34,27 +32,27 @@ public class BurgerTest {
     }
 
     @Test
-    public void testSetBuns() {
+    public void setBunsTest() {
         burger.setBuns(bun);
         assertEquals("Incorrect bun", bun, burger.bun);
     }
 
     @Test
-    public void testAddIngredient() {
+    public void addIngredientTest() {
         burger.addIngredient(ingredient1);
         List<Ingredient> expectedIngredients = List.of(ingredient1);
         assertEquals("Incorrect ingredient list after adding", expectedIngredients, burger.ingredients);
     }
 
     @Test
-    public void testRemoveIngredient() {
+    public void removeIngredientTest() {
         burger.addIngredient(ingredient1);
         burger.removeIngredient(0);
         assertEquals("Ingredient list should be empty after removal", 0, burger.ingredients.size());
     }
 
     @Test
-    public void testMoveIngredient() {
+    public void moveIngredientTest() {
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
         burger.moveIngredient(0, 1);

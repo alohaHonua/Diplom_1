@@ -34,17 +34,17 @@ public class IngredientTest {
     }
 
     @Test
-    public void testGetPrice() {
+    public void getPriceTest() {
         assertEquals("Incorrect price", price, ingredient.getPrice(), 0.001f);
     }
 
     @Test
-    public void testGetName() {
+    public void getNameTest() {
         assertEquals("Incorrect name", name, ingredient.getName());
     }
 
     @Test
-    public void testGetType() {
+    public void getTypeTest() {
         assertEquals("Incorrect type", type, ingredient.getType());
     }
 }
