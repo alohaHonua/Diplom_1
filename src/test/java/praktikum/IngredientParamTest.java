@@ -39,6 +39,8 @@ public class IngredientParamTest {
 
     @Test
     public void checkGetIngredientType() {
-        Assert.assertEquals(this.ingredientType, ingredient.getType());
+        Assert.assertEquals("Тип ингредиента не совпал",
+                this.ingredientType,
+                ingredient.getType());
     }
 }
