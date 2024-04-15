@@ -26,7 +26,7 @@ public class ParametrizedIngredientToStringTest {
     }
 
     @Test
-    public void IngredientTypeTest(){
+    public void ingredientStringTest(){
         assertEquals(expectedIngredient, IngredientType.valueOf(expectedIngredient).toString());
     }
 }

@@ -29,7 +29,7 @@ public class ParametrizedIngredientEnumTest {
     }
 
     @Test
-    public void IngredientTypeTest(){
+    public void ingredientTypeTest(){
         Ingredient ingredient = new Ingredient(expectedIngredientType,"someIngredient", 100F);
         assertEquals(expectedIngredientType,ingredient.getType());
     }

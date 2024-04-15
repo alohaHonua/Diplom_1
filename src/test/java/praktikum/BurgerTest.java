@@ -11,7 +11,7 @@ import static org.mockito.Mockito.when;
 import static praktikum.IngredientType.SAUCE;
 
 @RunWith(MockitoJUnitRunner.class)
- public class BurgerTest {
+ public class BurgerTest extends BaseParams{
 
     @Mock
     Bun bun;
@@ -21,7 +21,6 @@ import static praktikum.IngredientType.SAUCE;
     Ingredient ingredient2;
     Burger burger = new Burger();
     private final float expectedPrice = 200;
-    private final float DELTA = 0.01F;
 
 
      @Before
@@ -32,18 +31,18 @@ import static praktikum.IngredientType.SAUCE;
      }
 
      @Test
-     public void checkAddIngredientAddedIngredientTest(){
+     public void checkAddIngredient(){
          assertTrue("Объект ингридиента не был добавлен", burger.ingredients.contains(ingredient));
      }
 
      @Test
-     public void checkRemoveIngredientForRemovingIngredientsTest(){
+     public void checkRemoveIngredient(){
          burger.removeIngredient(burger.ingredients.indexOf(ingredient));
          assertFalse("Объект ингридиента не был удалён", burger.ingredients.contains(ingredient));
      }
 
      @Test
-     public void checkMoveIngredientForIngredientsMovingTest(){
+     public void checkMoveIngredient(){
          int index = burger.ingredients.indexOf(ingredient);
          int newIndex =  burger.ingredients.indexOf(ingredient2);
 
@@ -53,14 +52,14 @@ import static praktikum.IngredientType.SAUCE;
      }
 
     @Test
-    public void checkGetPriceForRetuningCorrectPriceFromBunTest(){
+    public void checkGetPriceForCorrectPriceBun(){
         when(bun.getPrice()).thenReturn(expectedPrice);
         assertEquals("Сумма булочек получилась некорректной",
                 expectedPrice * 2, burger.getPrice(), DELTA);
     }
 
     @Test
-    public void checkGetPriceForRetuningCorrectPriceFromIngredientsTest(){
+    public void checkGetPriceForCorrectPriceIngredients(){
         when(ingredient.getPrice()).thenReturn(expectedPrice);
 
         assertEquals("Сумма ингридиентов получилась некорректной",
@@ -68,7 +67,7 @@ import static praktikum.IngredientType.SAUCE;
     }
 
     @Test
-    public void checkGetReceiptForReturningCorrectValue(){
+    public void checkGetReceiptCorrectValue(){
         when(bun.getName()).thenReturn("bulochka");
         when(ingredient.getType()).thenReturn(SAUCE);
         when(ingredient2.getType()).thenReturn(SAUCE);
