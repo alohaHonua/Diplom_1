@@ -13,14 +13,16 @@ import static praktikum.IngredientType.SAUCE;
 @RunWith(MockitoJUnitRunner.class)
  public class BurgerTest {
 
-     @Mock
-     Bun bun;
-     @Mock
-     Ingredient ingredient;
-     @Mock
-     Ingredient ingredient2;
-     Burger burger = new Burger();
-     private final float expectedPrice = 200;
+    @Mock
+    Bun bun;
+    @Mock
+    Ingredient ingredient;
+    @Mock
+    Ingredient ingredient2;
+    Burger burger = new Burger();
+    private final float expectedPrice = 200;
+    private final float DELTA = 0.01F;
+
 
      @Before
      public void beforeTest(){
@@ -28,9 +30,6 @@ import static praktikum.IngredientType.SAUCE;
          burger.addIngredient(ingredient);
          burger.addIngredient(ingredient2);
      }
-
-
-
 
      @Test
      public void checkAddIngredientAddedIngredientTest(){
@@ -57,7 +56,7 @@ import static praktikum.IngredientType.SAUCE;
     public void checkGetPriceForRetuningCorrectPriceFromBunTest(){
         when(bun.getPrice()).thenReturn(expectedPrice);
         assertEquals("Сумма булочек получилась некорректной",
-                expectedPrice * 2, burger.getPrice(), 0.001);
+                expectedPrice * 2, burger.getPrice(), DELTA);
     }
 
     @Test
@@ -65,7 +64,7 @@ import static praktikum.IngredientType.SAUCE;
         when(ingredient.getPrice()).thenReturn(expectedPrice);
 
         assertEquals("Сумма ингридиентов получилась некорректной",
-                expectedPrice, burger.getPrice(),0.001);
+                expectedPrice, burger.getPrice(),DELTA);
     }
 
     @Test

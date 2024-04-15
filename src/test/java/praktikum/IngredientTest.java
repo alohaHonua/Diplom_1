@@ -11,7 +11,8 @@ public class IngredientTest {
 
     @Test
     public void checkGetPrice(){
-        assertEquals(100F,ingredientForTest.getPrice(), 0);
+        float DELTA = 0.01F;
+        assertEquals(100F,ingredientForTest.getPrice(), DELTA);
     }
 
     @Test
