@@ -7,12 +7,12 @@ import org.junit.runners.Parameterized;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class BurgerParamTest extends BaseParams{
+public class BunParamTest extends BaseParams{
     private final String bunName;
     private final float bunPrice;
 
 
-    public BurgerParamTest(String bunName, float bunPrice){
+    public BunParamTest(String bunName, float bunPrice){
         this.bunName = bunName;
         this.bunPrice = bunPrice;
 
