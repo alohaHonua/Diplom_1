@@ -1,0 +1,7 @@
+/target/*
+!/target/site
+/target/site/*
+!/target/site/jacoco/
+/.settings/
+*.classpath
+*.project
