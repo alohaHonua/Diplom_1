@@ -8,9 +8,9 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class BunParameterizedTest {
-    private String nameTest;
-    private String bunName;
-    private Float bunPrice;
+    private final String nameTest;
+    private final String bunName;
+    private final Float bunPrice;
 
     public BunParameterizedTest(String nameTest, String bunName, Float bunPrice) {
         this.nameTest = nameTest;
