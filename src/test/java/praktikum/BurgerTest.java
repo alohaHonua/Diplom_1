@@ -22,7 +22,6 @@ public class BurgerTest {
     @Test
     public void setBunTest() {
         burger.setBuns(bun);
-
         assertEquals(bun.getName(), burger.bun.getName());
     }
     @Test
