@@ -5,8 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BunTests {
-    private final String name = "Sinna bun";
-    private final float price = 100;
+    private final String name = "black bun";
+    private final float price = 100f;
     private Bun newBun;
 
     @Before

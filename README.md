@@ -5,3 +5,6 @@
 mvn clean test
 ```
 
+## Для формирования отчета.
+```
+mvn verify
