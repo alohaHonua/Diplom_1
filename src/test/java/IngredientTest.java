@@ -18,7 +18,6 @@ public class IngredientTest {
         price = 2;
         name = "Cheese";
         realIngredient = new Ingredient(type, name, price);
-
     }
 
     @Test
