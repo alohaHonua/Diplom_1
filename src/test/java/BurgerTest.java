@@ -18,15 +18,32 @@ public class BurgerTest {
     Bun bun;
     @Mock
     Ingredient ingredient;
-    
+    @Mock
+    Burger burger;
+
 
     @Test
-    public void addIngredientTestAndRemoveIngredientTest() {
+    public void setBunTest() {
+        Bun bun = new Bun("black bun", 100);
+        burger.setBuns(bun);
+        Mockito.verify(burger).setBuns(bun);
+    }
+
+    @Test
+    public void addIngredientTest() {
         Burger burger = new Burger();
         Ingredient ingredient = new Ingredient(SAUCE, "hot sauce", 100);
         Assert.assertTrue("Изначально список должен быть пустой", burger.ingredients.isEmpty());
         burger.addIngredient(ingredient);
         Assert.assertEquals(ingredient, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void RemoveIngredientTest() {
+        Burger burger = new Burger();
+        Ingredient ingredient = new Ingredient(SAUCE, "hot sauce", 100);
+        Assert.assertTrue("Изначально список должен быть пустой", burger.ingredients.isEmpty());
+        burger.addIngredient(ingredient);
         burger.removeIngredient(0);
         Assert.assertTrue(burger.ingredients.isEmpty());
     }
