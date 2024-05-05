@@ -29,7 +29,7 @@ public class Praktikum {
         burger.moveIngredient(2, 1);
 
         // Удалим ингредиент
-        burger.removeIngredient(3);
+       burger.removeIngredient(3);
 
         // Распечатаем рецепт бургера
         System.out.println(burger.getReceipt());
