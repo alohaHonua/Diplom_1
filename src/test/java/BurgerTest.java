@@ -93,13 +93,17 @@ public class BurgerTest {
       burger.ingredients.add(mockIngredient1);
       burger.ingredients.add(mockIngredient2);
 
-      String expectedReceipt = "(==== Sesame Bun ====)\n" +
-              "= filling Cheese =\n" +
-              "= sauce Mayonnaise =\n" +
-              "(==== Sesame Bun ====)\n" +
-              "\n" +
-              "Price: 5,500000\n";
+      String expectedReceipt = String.join("\n",
+              "(==== " + mockBun.getName() + " ====)",
+              "= filling " + mockIngredient1.getName() + " =",
+              "= sauce " + mockIngredient2.getName() + " =",
+              "(==== " + mockBun.getName() + " ====)",
+              "",
+              "Price: 5,500000");
 
-      assertEquals(expectedReceipt, burger.getReceipt().replaceAll("\\d+\\.\\d+", "X.XX"));
+      String actualReceipt = burger.getReceipt();
+      actualReceipt = actualReceipt.substring(0, actualReceipt.lastIndexOf("\n"));
+
+      assertEquals(expectedReceipt, actualReceipt);
    }
 }
