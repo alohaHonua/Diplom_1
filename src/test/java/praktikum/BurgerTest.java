@@ -65,7 +65,7 @@ public class BurgerTest {
         Ingredient secondIngredientMock = getMockeFilling();
         burger.addIngredient(firstIngredientMock);
         burger.addIngredient(secondIngredientMock);
-        assertTrue(burger.ingredients.size() == 2);
+        assertEquals(burger.ingredients.size(),2);
     }
 
     @Test
@@ -92,7 +92,6 @@ public class BurgerTest {
 
     @Test
     public void getPriceTest() throws Exception {
-        Bun bunMock = getMockBun();
-        assertTrue(getMockBun().getPrice() == 100.0);
+        assertEquals(getMockBun().getPrice(), 100,0);
     }
 }
