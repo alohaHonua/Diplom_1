@@ -1,10 +1,14 @@
+import org.hamcrest.MatcherAssert;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
+import java.util.Arrays;
+
 import static praktikum.IngredientType.FILLING;
+import static praktikum.IngredientType.SAUCE;
 
 public class IngredientTest {
 
@@ -33,5 +37,11 @@ public class IngredientTest {
     @Test
     public void getTypeIngredient(){
         Assert.assertEquals(type,realIngredient.getType());
+    }
+
+    @Test
+    public void ingredientTypeContainsTypes(){
+        String IngredientArray = Arrays.toString(IngredientType.values());
+        Assert.assertTrue(IngredientArray.contains("SAUCE") & IngredientArray.contains("FILLING"));
     }
 }
