@@ -15,14 +15,17 @@ public class Burger {
     public List<Ingredient> ingredients = new ArrayList<>();
 
     public void setBuns(Bun bun) {
+
         this.bun = bun;
     }
 
     public void addIngredient(Ingredient ingredient) {
+
         ingredients.add(ingredient);
     }
 
     public void removeIngredient(int index) {
+
         ingredients.remove(index);
     }
 
