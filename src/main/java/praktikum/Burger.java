@@ -10,10 +10,13 @@ import java.util.List;
  * Можно распечать чек с информацией о бургере.
  */
 public class Burger {
-
+    //    private Database database; // Инъекция зависимости
     public Bun bun;
     public List<Ingredient> ingredients = new ArrayList<>();
 
+ //   public Burger(Database database) {
+  //     this.database = database;
+  //  }
     public void setBuns(Bun bun) {
         this.bun = bun;
     }
