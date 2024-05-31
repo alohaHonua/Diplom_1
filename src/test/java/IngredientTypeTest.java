@@ -1,5 +1,3 @@
-
-
 import org.junit.Test;
 import praktikum.*;
 
@@ -7,12 +5,12 @@ import static org.junit.Assert.assertEquals;
 
 public class IngredientTypeTest {
     @Test
-    public void selectSauceIngredientFromEnumIsCorrect() {
+    public void ingredientTypeSauceTest() {
         assertEquals(IngredientType.valueOf("SAUCE"), IngredientType.SAUCE);
     }
 
     @Test
-    public void selectFillingIngredientFromEnumIsCorrect() {
+    public void ingredientTypeFillingTest() {
         assertEquals(IngredientType.valueOf("FILLING"), IngredientType.FILLING);
     }
 }

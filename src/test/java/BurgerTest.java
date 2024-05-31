@@ -1,65 +1,89 @@
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.*;
-import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 
-    @RunWith(MockitoJUnitRunner.class)
-    public class BurgerTest {
-        private final Burger burger = new Burger();
-        @Mock
-        Ingredient ingredient;
-        @Mock
-        Ingredient ingredientSecond;
-        @Mock
-        Database database;
-        private final List<Bun> buns = List.of(new Bun("grey bun", 100.50F));
+import static org.junit.Assert.*;
 
-        @Before
-        public void setDefaultBun() {
-            Mockito.when(database.availableBuns()).thenReturn(buns);
-        }
+@RunWith(MockitoJUnitRunner.class)
+public class BurgerTest {
 
-        @Test
-        public void checkSetBuns() {
-            burger.setBuns(database.availableBuns().get(0));
-            String bunName = "grey bun";
-            assertEquals(bunName, burger.bun.getName());
-        }
+    @Mock
+    Bun bun;
+    @Mock
+    Ingredient ingredient;
 
-        @Test
-        public void checkGetPrice() {
-            Mockito.when(ingredient.getPrice()).thenReturn(125.5F);
-            Mockito.when(ingredientSecond.getPrice()).thenReturn(250F);
-            burger.setBuns(database.availableBuns().get(0));
-            burger.addIngredient(ingredient);
-            burger.addIngredient(ingredientSecond);
-            float expectedBurgerPrice = 576.5F;
-            assertEquals("Некорректная цена бургера с двумя добавленными ингредиентами", expectedBurgerPrice, burger.getPrice(), 0);
-        }
+    public static final String RECEIPT =
+            "(==== Краторная булка N-200i ====)"
+                    + System.lineSeparator() +
+                    "= filling Говяжий метеорит (отбивная) ="
+                    + System.lineSeparator() +
+                    "= sauce Соус фирменный Space Sauce ="
+                    + System.lineSeparator() +
+                    "(==== Краторная булка N-200i ====)"
+                    + System.lineSeparator() +
+                    System.lineSeparator() +
+                    "Price: 5590,000000"
+                    + System.lineSeparator();
 
-        @Test
-        public void checkGetReceipt() {
-            Mockito.when(ingredient.getType()).thenReturn(IngredientType.SAUCE);
-            Mockito.when(ingredient.getName()).thenReturn("hot sauce");
-            Mockito.when(ingredient.getPrice()).thenReturn(100F);
-            Mockito.when(ingredientSecond.getType()).thenReturn(IngredientType.FILLING);
-            Mockito.when(ingredientSecond.getName()).thenReturn("sausage");
-            Mockito.when(ingredientSecond.getPrice()).thenReturn(300F);
-            burger.setBuns(database.availableBuns().get(0));
-            burger.addIngredient(ingredient);
-            burger.addIngredient(ingredientSecond);
-            String expected = "(==== grey bun ====)" + "\n"
-                    + "= sauce hot sauce =" + "\n"
-                    + "= filling sausage =" + "\n"
-                    + "(==== grey bun ====)" + "\n\n"
-                    + "Price: 601,000000" + "\n";
-            assertEquals(expected, burger.getReceipt());
-        }
-
+    @Test
+    public void setBunsShouldBeAddInBurgerTest() {
+        Burger burger = new Burger();
+        burger.setBuns(bun);
+        assertNotNull("Ошибка. В бургер должна была добавиться булочка", burger.bun);
     }
+    @Test
+    public void addIngredientShouldBeAddInBurgerTest() {
+        Burger burger = new Burger();
+        burger.addIngredient(ingredient);
+        assertFalse("Ошибка. В список должен был добавиться ингредиент", burger.ingredients.isEmpty());
+    }
+
+    @Test
+    public void removeIngredientShouldBeDeleteFromBurgerTest() {
+        Burger burger = new Burger();
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient);
+        burger.removeIngredient(0);
+        assertEquals(2, burger.ingredients.size());
+    }
+
+    @Test
+    public void moveIngredientShouldBeMoveInTest() {
+        Burger burger = new Burger();
+        burger.addIngredient(new Ingredient(IngredientType.FILLING, "Говяжий метеорит (отбивная)", 3000));
+        burger.addIngredient(new Ingredient(IngredientType.SAUCE, "Соус фирменный Space Sauce", 80));
+        burger.addIngredient(new Ingredient(IngredientType.FILLING, "Сыр с астероидной плесенью", 4122));
+        burger.moveIngredient(0, 1);
+        String expectedResult = "Соус фирменный Space Sauce";
+        String actualResult = burger.ingredients.get(0).name;
+        assertEquals("Ошибка. Ингредиенты #1 и #2 должны были поменяться местами", expectedResult, actualResult);
+    }
+
+    @Test
+    public void getPriceBurgerPriceShouldBeReturnedTest() {
+        Burger burger = new Burger();
+        Mockito.when(bun.getPrice()).thenReturn(1255F);
+        Mockito.when(ingredient.getPrice()).thenReturn(80F);
+        burger.setBuns(bun);
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient);
+        float expectedResult = 2670F;
+        assertEquals("Ошибка. Подсчиталась некорректная цена бургера", burger.getPrice(), expectedResult, 0);
+    }
+
+    @Test
+    public void getReceiptBurgerReceiptShouldBeReturnedTest() {
+        Burger burger = new Burger();
+        burger.addIngredient(new Ingredient(IngredientType.FILLING, "Говяжий метеорит (отбивная)", 3000));
+        burger.addIngredient(new Ingredient(IngredientType.SAUCE, "Соус фирменный Space Sauce", 80));
+        Bun bun = new Bun("Краторная булка N-200i", 1255);
+        burger.setBuns(bun);
+        assertEquals("Ошибка. Чек сформировался некорректно" , RECEIPT, burger.getReceipt());
+    }
+
+}

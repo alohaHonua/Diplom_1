@@ -1,47 +1,52 @@
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.runners.Parameterized;
 import praktikum.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static praktikum.IngredientType.FILLING;
-import static praktikum.IngredientType.SAUCE;
 
-@RunWith(MockitoJUnitRunner.class)
-    public class IngredientTest {
-        private  final Burger burger = new Burger();
-        @Mock
-        Database database;
-        public List<Ingredient> ingredients = new ArrayList<>();
-        @Before
-        public void addIngredients() {
-            ingredients.add(new Ingredient(SAUCE, "hot sauce", 100));
-            ingredients.add(new Ingredient(FILLING, "sausage", 300));
-            Mockito.when(database.availableIngredients()).thenReturn(ingredients);
-        }
+@RunWith(Parameterized.class)
+public class IngredientTest {
 
-        @Test
-        public void checkAddIngredients() {
-            burger.addIngredient(database.availableIngredients().get(0));
-            assertEquals(1, burger.ingredients.size());
-        }
-        @Test
-        public void checkRemoveIngredients() {
-            burger.addIngredient(database.availableIngredients().get(0));
-            burger.removeIngredient(0);
-            assertEquals(0, burger.ingredients.size());
-        }
+    private final IngredientType ingredientType;
+    private final String ingredientName;
+    private final float ingredientPrice;
 
-        @Test
-        public void checkMoveIngredient() {
-            burger.addIngredient(database.availableIngredients().get(1));
-            burger.addIngredient(database.availableIngredients().get(0));
-            burger.moveIngredient(0,1);
-            assertEquals(database.availableIngredients(), burger.ingredients);
-        }
+    private Ingredient ingredient;
+
+    public IngredientTest(IngredientType ingredientType, String ingredientName, float ingredientPrice) {
+        this.ingredientType = ingredientType;
+        this.ingredientName = ingredientName;
+        this.ingredientPrice = ingredientPrice;
+
     }
+
+    @Before
+    public void initializeIngredient() {
+        ingredient = new Ingredient(ingredientType, ingredientName, ingredientPrice);
+    }
+
+    @Parameterized.Parameters(name = "Тестовые данные для теста Ingredient: {0}")
+    public static Object[][] getParameters() {
+        return new Object[][]{
+                {IngredientType.FILLING, "Говяжий метеорит (отбивная)", 3000f},
+                {IngredientType.SAUCE, "Соус фирменный Space Sauce", 80f}
+        };
+    }
+
+    @Test
+    public void getNameTest() {
+        assertEquals("Ошибка. Должно было передаться название ингридиента", ingredientName, ingredient.name);
+    }
+
+    @Test
+    public void getPriceTest() {
+        assertEquals("Ошибка. Должна была передаться цена ингридиента", ingredientPrice, ingredient.getPrice(), 0);
+    }
+
+    @Test
+    public void getTypeTest() {
+        assertEquals("Ошибка! Должен был передаться ингредиент", ingredientType, ingredient.getType());
+    }
+}
