@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Ingredients.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">praktikum</a> &gt; <a href="index.source.html" class="el_package">praktikum.enums</a> &gt; <span class="el_source">Ingredients.java</span></div><h1>Ingredients.java</h1><pre class="source lang-java linenums">package praktikum.enums;
+
+import praktikum.IngredientType;
+
+<span class="fc" id="L5">public enum Ingredients {</span>
+<span class="fc" id="L6">    SAUCE_SPICY(IngredientType.SAUCE, &quot;Coус Spicy-X&quot;, 90.0f),</span>
+<span class="fc" id="L7">    SAUCE_SPACE(IngredientType.SAUCE, &quot;Соус фирменный Space Sauce&quot;, 80.0f),</span>
+<span class="fc" id="L8">    FILLING_BEEF(IngredientType.FILLING, &quot;Говяжий метеорит (отбивная)&quot;, 3000.0f),</span>
+<span class="fc" id="L9">    FILLING_MARS(IngredientType.FILLING, &quot;Биокотлета из марсианской Магнолии&quot;, 424.0f);</span>
+
+    private final IngredientType type;
+    private final String name;
+    private final Float price;
+
+<span class="fc" id="L15">    Ingredients(IngredientType type, String name, Float price) {</span>
+<span class="fc" id="L16">        this.type = type;</span>
+<span class="fc" id="L17">        this.name = name;</span>
+<span class="fc" id="L18">        this.price = price;</span>
+<span class="fc" id="L19">    }</span>
+
+<span class="fc" id="L21">    public IngredientType getType() {return type;}</span>
+<span class="fc" id="L22">    public String getName() {return name;}</span>
+<span class="fc" id="L23">    public Float getPrice() {return price;}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>
