@@ -8,7 +8,6 @@ import praktikum.Bun;
 public class BunTest {
     String name;
     float price;
-
     public BunTest(String name, float price){
         this.name = name;
         this.price = price;
