@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6ec256f-747b-4db3-b5d8-36d2d8d58dba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BunTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BurgerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/IngredientTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/IngredientTypeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/Bun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/Bun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/Burger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/Burger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/IngredientType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/IngredientType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/Praktikum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/Praktikum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BunTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BunTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BurgerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BurgerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/IngredientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/IngredientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/IngredientTypeTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,12 +43,113 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.BunTest.bunGetNameReturnName.executor": "Run",
+    "JUnit.BunTest.bunGetPriceReturnPrice.executor": "Run",
+    "JUnit.BurgerTest.burgerAddIngredientTest.executor": "Run",
+    "JUnit.BurgerTest.burgerGetPriceTest.executor": "Run",
+    "JUnit.BurgerTest.burgerGetReceipt.executor": "Run",
+    "JUnit.BurgerTest.burgerMoveIngredientTest.executor": "Run",
+    "JUnit.BurgerTest.burgerRemoveIngredient.executor": "Run",
+    "JUnit.BurgerTest.burgerSetBuns.executor": "Run",
+    "JUnit.IngredientTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Courses/Yandex_Praktikum_auto_java/HomeWork/qa_java"
   }
 }]]></component>
+  <component name="RunManager" selected="JUnit.BurgerTest.burgerGetReceipt">
+    <configuration name="BurgerTest.burgerAddIngredientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Diplom_1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.praktikum.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.praktikum.tests" />
+      <option name="MAIN_CLASS_NAME" value="ru.praktikum.tests.BurgerTest" />
+      <option name="METHOD_NAME" value="burgerAddIngredientTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BurgerTest.burgerGetPriceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Diplom_1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.praktikum.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.praktikum.tests" />
+      <option name="MAIN_CLASS_NAME" value="ru.praktikum.tests.BurgerTest" />
+      <option name="METHOD_NAME" value="burgerGetPriceTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BurgerTest.burgerGetReceipt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Diplom_1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.praktikum.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.praktikum.tests" />
+      <option name="MAIN_CLASS_NAME" value="ru.praktikum.tests.BurgerTest" />
+      <option name="METHOD_NAME" value="burgerGetReceipt" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BurgerTest.burgerMoveIngredientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Diplom_1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.praktikum.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.praktikum.tests" />
+      <option name="MAIN_CLASS_NAME" value="ru.praktikum.tests.BurgerTest" />
+      <option name="METHOD_NAME" value="burgerMoveIngredientTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BurgerTest.burgerRemoveIngredient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Diplom_1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.praktikum.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.praktikum.tests" />
+      <option name="MAIN_CLASS_NAME" value="ru.praktikum.tests.BurgerTest" />
+      <option name="METHOD_NAME" value="burgerRemoveIngredient" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BurgerTest.burgerGetReceipt" />
+        <item itemvalue="JUnit.BurgerTest.burgerGetPriceTest" />
+        <item itemvalue="JUnit.BurgerTest.burgerMoveIngredientTest" />
+        <item itemvalue="JUnit.BurgerTest.burgerRemoveIngredient" />
+        <item itemvalue="JUnit.BurgerTest.burgerAddIngredientTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -60,5 +167,12 @@
       <updated>1718575297716</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="burger" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
