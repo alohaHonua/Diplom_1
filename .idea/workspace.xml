@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6ec256f-747b-4db3-b5d8-36d2d8d58dba" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/Bun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/Bun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/Burger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/Burger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/Ingredient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/IngredientType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/IngredientType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/praktikum/Praktikum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/praktikum/Praktikum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BunTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BunTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BurgerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BurgerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/IngredientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/IngredientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/IngredientTypeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/praktikum/Bun.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/praktikum/Burger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/praktikum/Database.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/praktikum/Ingredient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/praktikum/IngredientType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/praktikum/Praktikum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ru/praktikum/tests/BunTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ru/praktikum/tests/BurgerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ru/praktikum/tests/IngredientTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,21 +45,39 @@
   "keyToString": {
     "JUnit.BunTest.bunGetNameReturnName.executor": "Run",
     "JUnit.BunTest.bunGetPriceReturnPrice.executor": "Run",
+    "JUnit.BunTest.executor": "Run",
     "JUnit.BurgerTest.burgerAddIngredientTest.executor": "Run",
     "JUnit.BurgerTest.burgerGetPriceTest.executor": "Run",
     "JUnit.BurgerTest.burgerGetReceipt.executor": "Run",
     "JUnit.BurgerTest.burgerMoveIngredientTest.executor": "Run",
     "JUnit.BurgerTest.burgerRemoveIngredient.executor": "Run",
     "JUnit.BurgerTest.burgerSetBuns.executor": "Run",
+    "JUnit.BurgerTest.executor": "Run",
     "JUnit.IngredientTest.executor": "Run",
+    "Maven.praktikum [verify].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Courses/Yandex_Praktikum_auto_java/HomeWork/qa_java"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "GitIgnore"
+    ]
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.BurgerTest.burgerGetReceipt">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Courses\Yandex_Praktikum_auto_java\HomeWork\Diplom_Aleksandr_Vikharev_33\Diplom_1" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn verify" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.BurgerTest.burgerAddIngredientTest">
     <configuration name="BurgerTest.burgerAddIngredientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_1" />
       <extension name="coverage">
