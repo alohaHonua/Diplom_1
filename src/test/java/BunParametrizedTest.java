@@ -6,10 +6,10 @@ import praktikum.Bun;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class BunParametrized {
+public class BunParametrizedTest {
     private String name;
     private float price;
-    public BunParametrized(String name, float price) {
+    public BunParametrizedTest(String name, float price) {
         this.name = name;
         this.price = price;
     }
@@ -22,25 +22,24 @@ public class BunParametrized {
                 {"", 300},
                 {"veryveryveryverylooooooooonggggggggggstriiiiiiing", 200},
                 {null, 100},
-                //   {"bun", null}, // тест падает на пустом поле цены
                 {"$%#^@&$$(%^^)special@symbols", 200},
                 {"white bun", -100},
-                {"white bun", 0},
                 {"white bun", 0.01f},
-                {"white bun", 999999999},
                 {"red 1234", 300},
+                {"Cheap bun", Float.MIN_VALUE},
+                {"Expensive bun", Float.MAX_VALUE},
 
         };
     }
     @Test
-    public void getNameReturnValidName() {
+    public void getName() {
         Bun bun = new Bun(name, price);
-        assertEquals(name, bun.getName());
+        assertEquals("Неверное название булочки",name, bun.getName());
     }
 
     @Test
-    public void getPriceReturnValidPrice() {
+    public void getPrice() {
         Bun bun = new Bun(name, price);
-        assertEquals("Цена возвращается с ошибкой", price, bun.getPrice(), 0.0f);
+        assertEquals("Неверная цена булочки", price, bun.getPrice(), 0.0f);
     }
 }
