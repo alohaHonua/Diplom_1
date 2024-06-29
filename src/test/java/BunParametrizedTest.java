@@ -8,8 +8,8 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class BunParametrizedTest {
 
-    private String name;
-    private float price;
+    private final String name;
+    private final float price;
 
     public BunParametrizedTest(String name, float price) {
         this.name = name;
