@@ -60,6 +60,11 @@
                         </goals>
                     </execution>
                 </executions>
+            <configuration>
+                <excludes>
+                    <exclude>*/Database.class</exclude>
+                </excludes>
+            </configuration>
             </plugin>
         </plugins>
     </build>
