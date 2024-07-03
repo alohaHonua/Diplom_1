@@ -22,6 +22,8 @@ public class BurgerTest {
     Ingredient movealbleIngredient;
 
     Burger burger;
+    private final int FIRST_INGREDIENT_INDEX = 0;
+    private final int SIZE_OF_EMPTY_LIST = 0;
 
     @Before
     public void setup() {
@@ -37,14 +39,14 @@ public class BurgerTest {
     @Test
     public void addIngredientTest() {
         burger.addIngredient(ingredient);
-        Assert.assertEquals(ingredient, burger.ingredients.get(0));
+        Assert.assertEquals(ingredient, burger.ingredients.get(FIRST_INGREDIENT_INDEX));
     }
 
     @Test
     public void removeIngredientTest() {
         burger.ingredients.add(ingredient); //добавить ингредиент
-        burger.removeIngredient(0); //удалить ингредиент
-        Assert.assertEquals(0, burger.ingredients.size());
+        burger.removeIngredient(FIRST_INGREDIENT_INDEX); //удалить ингредиент
+        Assert.assertEquals(SIZE_OF_EMPTY_LIST, burger.ingredients.size());
     }
 
     @Test
@@ -53,8 +55,8 @@ public class BurgerTest {
         burger.ingredients.add(movealbleIngredient);
         burger.ingredients.add(ingredient);
         burger.ingredients.add(ingredient);
-        int originalIngredientIndex = 1;
-        int movedIngredientIndex = 3;
+        int originalIngredientIndex = burger.ingredients.indexOf(movealbleIngredient);
+        int movedIngredientIndex = burger.ingredients.indexOf(movealbleIngredient)+2;
         burger.moveIngredient(originalIngredientIndex, movedIngredientIndex);
         Assert.assertEquals(movealbleIngredient, burger.ingredients.get(movedIngredientIndex));
     }
