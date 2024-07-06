@@ -1,13 +1,13 @@
-import org.junit.Rule;
+
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.internal.matchers.Null;
+
 import praktikum.Bun;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+
 @RunWith(Parameterized.class)
 public class BunPriceTest{
 
