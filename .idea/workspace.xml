@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e6ec256f-747b-4db3-b5d8-36d2d8d58dba" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,32 +32,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.BunTest.bunGetNameReturnName.executor": "Run",
-    "JUnit.BunTest.bunGetPriceReturnPrice.executor": "Run",
-    "JUnit.BunTest.executor": "Run",
-    "JUnit.BurgerTest.burgerAddIngredientTest.executor": "Run",
-    "JUnit.BurgerTest.burgerGetPriceTest.executor": "Run",
-    "JUnit.BurgerTest.burgerGetReceipt.executor": "Run",
-    "JUnit.BurgerTest.burgerMoveIngredientTest.executor": "Run",
-    "JUnit.BurgerTest.burgerRemoveIngredient.executor": "Run",
-    "JUnit.BurgerTest.burgerSetBuns.executor": "Run",
-    "JUnit.BurgerTest.executor": "Run",
-    "JUnit.IngredientTest.executor": "Run",
-    "Maven.praktikum [verify].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Courses/Yandex_Praktikum_auto_java/HomeWork/qa_java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.BunTest.bunGetNameReturnName.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BunTest.bunGetPriceReturnPrice.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BunTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BurgerTest.burgerAddIngredientTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BurgerTest.burgerGetPriceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BurgerTest.burgerGetReceipt.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BurgerTest.burgerMoveIngredientTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BurgerTest.burgerRemoveIngredient.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BurgerTest.burgerSetBuns.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BurgerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IngredientTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.praktikum [verify].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Courses/Yandex_Praktikum_auto_java/HomeWork/qa_java&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "GitIgnore"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;GitIgnore&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Courses\Yandex_Praktikum_auto_java\HomeWork\Diplom_Aleksandr_Vikharev_33\Diplom_1" />
@@ -67,7 +68,7 @@
       <command value="mvn verify" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BurgerTest.burgerAddIngredientTest">
+  <component name="RunManager">
     <configuration name="BurgerTest.burgerAddIngredientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_1" />
       <extension name="coverage">
