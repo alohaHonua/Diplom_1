@@ -1,6 +1,7 @@
+package praktikum;
+
 import org.junit.Assert;
 import org.junit.Test;
-import praktikum.IngredientType;
 
 import static org.junit.Assert.assertEquals;
 
