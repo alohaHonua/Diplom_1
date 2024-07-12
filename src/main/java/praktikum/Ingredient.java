@@ -5,7 +5,7 @@ package praktikum;
  * Ингредиент: начинка или соус.
  * У ингредиента есть тип (начинка или соус), название и цена.
  */
-public class Ingredient {
+public class Ingredient implements IIngredient{
 
     public IngredientType type;
     public String name;

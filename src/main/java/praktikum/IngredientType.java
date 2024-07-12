@@ -5,7 +5,12 @@ package praktikum;
  * SAUCE – соус
  * FILLING – начинка
  */
-public enum IngredientType {
+public enum IngredientType implements IIngredientType {
     SAUCE,
-    FILLING
+    FILLING;
+
+    @Override
+    public IIngredientType getType() {
+        return null;
+    }
 }
