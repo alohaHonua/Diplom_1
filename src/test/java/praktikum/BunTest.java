@@ -2,10 +2,19 @@ package praktikum;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
 import static org.junit.Assert.assertEquals;
 
+
 public class BunTest {
-    Bun bun = new Bun ("black bun", 100);
+    private Bun bun;
+
+    @Before
+    public void createBun(){
+        bun = new Bun ("black bun", 100);
+    }
 
     @Test
     public void getNameTest(){
