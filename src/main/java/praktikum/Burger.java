@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Burger {
 
+
     public Bun bun;
     public List<Ingredient> ingredients = new ArrayList<>();
 
@@ -27,6 +28,7 @@ public class Burger {
     }
 
     public void moveIngredient(int index, int newIndex) {
+
         ingredients.add(newIndex, ingredients.remove(index));
     }
 

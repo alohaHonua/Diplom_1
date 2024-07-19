@@ -1,45 +1,66 @@
 package praktikum;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
 import java.util.List;
 
 import static org.junit.Assert.*;
-@RunWith(MockitoJunitRunner.class)
-public class IngredientTest {
-    private final float EXPECTED_INGREDIENTS_PRICE;
-    private final String EXPECTED_INGREDIENTS_NAME;
-    //кривая переменная
-    // private final String EXPECTED_INGREDIENTS_TYPE;
+import static praktikum.IngredientType.*;
 
-    @Mock
-    Database database;
+@RunWith(Parameterized.class)
+public class IngredientTest {
+    private final IngredientType TYPE;
+    private final String NAME;
+    private final float PRICE;
+
+    public IngredientTest (IngredientType type, String name, float price) {
+        this.TYPE = type;
+        this.NAME = name;
+        this.PRICE = price;
+    }
+
+    @Parameterized.Parameters
+    public static Object[][] getBuns() {
+        return new Object[][] {
+                {IngredientType.SAUCE, "hot sauce", 100 },
+                {IngredientType.SAUCE, "sour cream", 200 },
+                {IngredientType.SAUCE, "chili sauce", 300},
+
+                {IngredientType.FILLING, "cutlet", 100},
+                {IngredientType.FILLING, "dinosaur", 200},
+                {IngredientType.FILLING, "sausage", 300},
+        };
+    }
 
     @Test
     public void checkGetPrice() {
-        EXPECTED_INGREDIENTS_PRICE = 100;
-        List<Ingredient> ingredients = database.availableIngredients();
-        Ingredient ingredient = ingredients.get(0);
-        float ingredientsPrice = ingredient.getPrice();
-        AssertThat("Полученная цена ингридиента не совпадает с ожидаемой", ingredientsPrice, EXPECTED_INGREDIENTS_PRICE);
+        //Создаем ингредиент
+        Ingredient ingredient = new Ingredient(TYPE, NAME, PRICE);
+        //Проверяем, что полученная цена совпадает с ожидаемой
+        assertEquals("Полученная цена ингредиента не совпадает с ожидаемой", PRICE, ingredient.getPrice(),0);
     }
 
     @Test
     public void checkGetName() {
-        EXPECTED_INGREDIENTS_NAME = "hot sauce";
-        List<Ingredient> ingredients = database.availableIngredients();
-        Ingredient ingredient = ingredients.get(0);
-        String ingredientsName = ingredient.getName();
-        AssertThat("Полученное название ингридиента не совпадает с ожидаемым", ingredientsName, EXPECTED_INGREDIENTS_PRICE);
+        //Создаем ингредиент
+        Ingredient ingredient = new Ingredient(TYPE, NAME, PRICE);
+        //Проверяем, что полученное название совпадает с ожидаемым
+        assertEquals("Полученное название ингредиента не совпадает с ожидаемым", NAME, ingredient.getName());
 
     }
 
-    //кривой метод
-//    @Test
-//    public void checkGetType() {
-//        EXPECTED_INGREDIENTS_TYPE = "SAUCE";
-//        List<Ingredient> ingredients = database.availableIngredients();
-//        Ingredient ingredient = ingredients.get(0);
-//        String ingredientsType = ingredients.getType();
-//
-//    }
+
+    @Test
+    public void checkGetType() {
+        //Создаем ингредиент
+        Ingredient ingredient = new Ingredient(TYPE, NAME, PRICE);
+        //Проверяем, что полученный тип ингредиента совпадает с ожидаемым
+        assertEquals("Полученный тип ингредиента не совпадает с ожидаемым", TYPE, ingredient.getType());
+
+    }
 
 }
