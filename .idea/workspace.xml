@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6ec256f-747b-4db3-b5d8-36d2d8d58dba" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BunTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BunTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BurgerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/BurgerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/IngredientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/praktikum/tests/IngredientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/praktikum-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/praktikum-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2024-07-07T15-40-40_077.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ru.praktikum.tests.BunTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ru.praktikum.tests.BunTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ru.praktikum.tests.BurgerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ru.praktikum.tests.BurgerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ru.praktikum.tests.IngredientTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ru.praktikum.tests.IngredientTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ru.praktikum.tests.BurgerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ru.praktikum.tests.BurgerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ru.praktikum.tests.IngredientTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ru.praktikum.tests.IngredientTest.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +36,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -32,32 +48,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.BunTest.bunGetNameReturnName.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BunTest.bunGetPriceReturnPrice.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BunTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BurgerTest.burgerAddIngredientTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BurgerTest.burgerGetPriceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BurgerTest.burgerGetReceipt.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BurgerTest.burgerMoveIngredientTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BurgerTest.burgerRemoveIngredient.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BurgerTest.burgerSetBuns.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BurgerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.IngredientTest.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.praktikum [verify].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Courses/Yandex_Praktikum_auto_java/HomeWork/qa_java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.BunTest.bunGetNameReturnName.executor": "Run",
+    "JUnit.BunTest.bunGetPriceReturnPrice.executor": "Run",
+    "JUnit.BunTest.executor": "Run",
+    "JUnit.BurgerTest.burgerAddIngredientTest.executor": "Run",
+    "JUnit.BurgerTest.burgerGetPriceTest.executor": "Run",
+    "JUnit.BurgerTest.burgerGetReceipt.executor": "Run",
+    "JUnit.BurgerTest.burgerMoveIngredientTest.executor": "Run",
+    "JUnit.BurgerTest.burgerRemoveIngredient.executor": "Run",
+    "JUnit.BurgerTest.burgerSetBuns.executor": "Run",
+    "JUnit.BurgerTest.executor": "Run",
+    "JUnit.IngredientTest.executor": "Run",
+    "Maven.praktikum [clean,test].executor": "Run",
+    "Maven.praktikum [verify].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Courses/Yandex_Praktikum_auto_java/HomeWork/qa_java"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;GitIgnore&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "GitIgnore"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Courses\Yandex_Praktikum_auto_java\HomeWork\Diplom_Aleksandr_Vikharev_33\Diplom_1" />
@@ -151,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BurgerTest.burgerAddIngredientTest" />
         <item itemvalue="JUnit.BurgerTest.burgerGetReceipt" />
         <item itemvalue="JUnit.BurgerTest.burgerGetPriceTest" />
         <item itemvalue="JUnit.BurgerTest.burgerMoveIngredientTest" />
         <item itemvalue="JUnit.BurgerTest.burgerRemoveIngredient" />
-        <item itemvalue="JUnit.BurgerTest.burgerAddIngredientTest" />
       </list>
     </recent_temporary>
   </component>

@@ -5,6 +5,7 @@ import org.junit.Test;
 import ru.praktikum.Bun;
 import static org.junit.Assert.assertEquals;
 
+//Класс содержит тесты методов класса Bun
 public class BunTest {
     private Bun bun;
 

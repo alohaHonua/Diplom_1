@@ -2,21 +2,25 @@ package ru.praktikum.tests;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import ru.praktikum.Bun;
 import ru.praktikum.Burger;
 import ru.praktikum.Ingredient;
 import ru.praktikum.IngredientType;
 import static org.junit.Assert.assertEquals;
 
+//Класс сожердит тесты методов класса Burger
+@RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
-
     private Burger burger;
 
+    @Mock
     private Bun bunGray;
-    private Ingredient sauceChilli;
-    private Ingredient sauceKetchup;
-    private Ingredient fillingCheese;
-    private Ingredient fillingPulledPork;
+
+    @Mock
+    private Ingredient sauceChilli, sauceKetchup, fillingCheese, fillingPulledPork;
 
     @Before
     public void setUp(){

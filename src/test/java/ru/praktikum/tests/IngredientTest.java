@@ -6,6 +6,7 @@ import ru.praktikum.Ingredient;
 import ru.praktikum.IngredientType;
 import static org.junit.Assert.assertEquals;
 
+//Класс содержит тесты методов класса Ingredient
 public class IngredientTest {
     private Ingredient ingredientSauce;
     private Ingredient ingredientFilling;
