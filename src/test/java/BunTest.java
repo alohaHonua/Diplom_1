@@ -3,8 +3,6 @@ import org.junit.Test;
 import praktikum.Bun;
 
 public class BunTest {
-    private String name;
-    private float price;
 
     @Test
     public void checkGetBunName() {
