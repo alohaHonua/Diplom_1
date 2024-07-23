@@ -74,20 +74,12 @@ public class BurgerTest {
 
     @Test
     public void testGetPrice() {
-        when(mockBun.getPrice()).thenReturn(100f);
-        when(mockIngredient1.getPrice()).thenReturn(100f);
-        when(mockIngredient2.getPrice()).thenReturn(150f);
         float expectedPrice = 200f + 100f + 150f;
         assertEquals(expectedPrice, burger.getPrice(), 1);
     }
 
     @Test
     public void testGetReceipt() {
-        when(mockBun.getName()).thenReturn("black bun");
-        when(mockIngredient1.getType()).thenReturn(IngredientType.SAUCE);
-        when(mockIngredient1.getName()).thenReturn("hot sauce");
-        when(mockIngredient2.getType()).thenReturn(IngredientType.FILLING);
-        when(mockIngredient2.getName()).thenReturn("cutlet");
         String expectedReceipt = "(==== black bun ====)\r\n" +
                 "= sauce hot sauce =\r\n" +
                 "= filling cutlet =\r\n" +
