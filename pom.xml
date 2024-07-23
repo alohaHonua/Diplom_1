@@ -13,7 +13,8 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.9.7</aspectj.version>
-        <allure.version>2.21.0</allure.version>
+        <jacoco.version>0.8.8</jacoco.version>
+        <mockito.version>4.8.0</mockito.version>
     </properties>
 
     <dependencies>
@@ -39,63 +40,61 @@
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
         </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit4</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-rest-assured</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
+            <plugins>
+
+                <!-- see pom.xml for rest of build section -->
+
+                <!-- add code coverage and make sure it covers both Junit4 and Junit5 -->
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.8</version>
+                    <!-- defaults to target/jacoco.exec -->
+                    <executions>
+                        <!-- allow Jacoco to run -->
+                        <execution>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <!--
+                            Generate the html report for the test phase
+                            https://www.eclemma.org/jacoco/trunk/doc/report-mojo.html
+                        -->
+                        <execution>
+                            <id>report</id>
+                            <!-- generate coverage report for test phase -->
+                            <!-- target/site/jacoco -->
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+    </build>
+    <reporting>
         <plugins>
+
+            <!-- see pom.xml for rest of reporting section -->
+            <!-- generate the coverage report using Jacoco -->
             <plugin>
-                <!-- настройка плагина maven-surefire-plugin -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-                <configuration>
-                    <testFailureIgnore>false</testFailureIgnore>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjWeaver/${aspectj.version}/aspectjWeaver-${aspectj.version}.jar"
-                    </argLine>
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>io.qameta.allure.junit4.AllureJunit4</value>
-                        </property>
-                    </properties>
-                    <systemProperties>
-                        <property>
-                            <!-- папка, в которую будут генерироваться отчёты Allure -->
-                            <name>allure.results.directory</name>
-                            <value>${project.build.directory}/allure-results</value>
-                        </property>
-                    </systemProperties>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <!-- подключение плагина allure-maven для вызова функций Allure с помощью Maven -->
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
-                <configuration>
-                    <reportVersion>${allure.version}</reportVersion>
-                </configuration>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <!-- select non-aggregate reports -->
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
         </plugins>
-    </build>
+    </reporting>
 
 </project>

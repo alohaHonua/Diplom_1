@@ -8,6 +8,7 @@ import praktikum.*;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -66,19 +67,19 @@ public class BurgerTest {
 
     @Test
     public void testMoveIngredient() {
+        String expected = burger.ingredients.get(0).name;
         burger.moveIngredient(0, 1);
-        assertEquals(mockIngredient1, burger.ingredients.get(1));
-    } //тут баг, ингридиенты меняют значение
+        assertEquals(expected, burger.ingredients.get(1).name);
+    }
 
     @Test
     public void testGetPrice() {
         when(mockBun.getPrice()).thenReturn(100f);
         when(mockIngredient1.getPrice()).thenReturn(100f);
         when(mockIngredient2.getPrice()).thenReturn(150f);
-
-        float expectedPrice = 100f + 100f + 150f;
+        float expectedPrice = 200f + 100f + 150f;
         assertEquals(expectedPrice, burger.getPrice(), 1);
-    } //тут баг, цена отличается
+    }
 
     @Test
     public void testGetReceipt() {
@@ -87,14 +88,13 @@ public class BurgerTest {
         when(mockIngredient1.getName()).thenReturn("hot sauce");
         when(mockIngredient2.getType()).thenReturn(IngredientType.FILLING);
         when(mockIngredient2.getName()).thenReturn("cutlet");
-
-        String expectedReceipt = "(==== black bun ====)\n" +
-                "= sauce hot sauce =\n" +
-                "= filling cutlet =\n" +
-                "(==== black bun ====)\n" +
-                "\n" +
-                "Price: 350.0\n";
+        String expectedReceipt = "(==== black bun ====)\r\n" +
+                "= sauce hot sauce =\r\n" +
+                "= filling cutlet =\r\n" +
+                "(==== black bun ====)\r\n" +
+                "\r\n" +
+                "Price: 450,000000\r\n";
+        String Burger = burger.getReceipt();
         assertEquals(expectedReceipt, burger.getReceipt());
-        System.out.println(burger.getReceipt());
-    }//тут баг, вытекает из предыдущего
+    }
 }

@@ -1,4 +1,4 @@
-import io.qameta.allure.junit4.DisplayName;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +28,6 @@ public class BunParameterisedTest {
     }
 
     @Test
-    @DisplayName ("Check getName and getPrice")
     public void BunAndPriceTest() {
         Bun bun = new Bun(name, price);
         Assert.assertEquals(name, bun.getName());
