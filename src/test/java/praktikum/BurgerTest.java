@@ -1,10 +1,6 @@
 package praktikum;
 
 import static org.junit.Assert.*;
-import static praktikum.IngredientType.FILLING;
-import static praktikum.IngredientType.SAUCE;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

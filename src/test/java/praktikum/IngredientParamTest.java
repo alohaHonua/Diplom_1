@@ -8,9 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import static praktikum.IngredientType.FILLING;
-import static praktikum.IngredientType.SAUCE;
-
 @RunWith(Parameterized.class)
 public class IngredientParamTest extends ConstantData {
     IngredientType type;
