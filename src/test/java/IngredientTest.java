@@ -1,7 +1,6 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Mockito;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
@@ -9,9 +8,9 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class IngredientTest {
-    private IngredientType type;
-    private String name;
-    private float price;
+    private final IngredientType type;
+    private final String name;
+    private final float price;
 
     public IngredientTest(IngredientType type, String name, float price) {
         this.type = type;
@@ -34,21 +33,17 @@ public class IngredientTest {
     @Test
     public void getPriceTest(){
         Ingredient ingredient = new Ingredient(type, name, price);
-        Ingredient ingredients = Mockito.spy(ingredient);
-        Float actualPrice = ingredient.getPrice();
         assertEquals("Упс. Что-то пошло не так.", type, ingredient.getType());
     }
     @Test
     public void getNameTest(){
         Ingredient ingredient = new Ingredient(type,name,price);
-        Ingredient ingredients = Mockito.spy(ingredient);
         String actualName = ingredient.getName();
         assertEquals("Упс. Что-то пошло не так.", name, actualName);
     }
     @Test
     public void getTypeTest(){
         Ingredient ingredient = new Ingredient(type, name,0.001F);
-        Ingredient ingredients = Mockito.spy(ingredient);
         assertEquals("Упс. Что-то пошло не так.", type, ingredient.getType());
     }
 }

@@ -59,10 +59,12 @@ public class BurgerTest {
     @Test
     public void moveIngredient(){
         Burger burger = new Burger();
-        burger.addIngredient(new Ingredient(type, name, price));
-        burger.addIngredient(new Ingredient(type, name, price));
+        burger.addIngredient(new Ingredient(IngredientType.FILLING, "dinosaur", 100));
+        burger.addIngredient(new Ingredient(IngredientType.SAUCE, "sour cream", 200));
         burger.moveIngredient(0, 1);
-        assertNotNull("Упс. Что-то пошло не так.", burger.ingredients.getFirst());
+        String expectedResult = "sour cream";
+        String actualResult = burger.ingredients.get(0).name;
+        assertEquals("Упс. Что-то пошло не так.", expectedResult, actualResult);
     }
 
     @Test
