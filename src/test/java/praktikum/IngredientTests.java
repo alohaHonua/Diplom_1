@@ -11,6 +11,7 @@ public class IngredientTests {
     private IngredientType expectedIngredientType = IngredientType.SAUCE;
     private String expectedName = "sauceName";
     private float expectedPrice = 50f;
+
     @Before
     public void prepareData() {
         this.ingredient = new Ingredient(
@@ -19,16 +20,18 @@ public class IngredientTests {
                 expectedPrice
         );
     }
+
     @Test
     public void getPriceIsSuccess() {
         MatcherAssert.assertThat(
-            "Возвращается некорретная стоимость ингредиента",
-            ingredient.getPrice(),
-            equalTo(expectedPrice)
+                "Возвращается некорретная стоимость ингредиента",
+                ingredient.getPrice(),
+                equalTo(expectedPrice)
 
         );
 
     }
+
     @Test
     public void getNameIsSuccess() {
         MatcherAssert.assertThat(
@@ -37,6 +40,7 @@ public class IngredientTests {
                 equalTo(expectedName)
         );
     }
+
     @Test
     public void getTypeIsSuccess() {
         MatcherAssert.assertThat(
