@@ -6,7 +6,7 @@ import praktikum.IngredientType;
 
 import static org.junit.Assert.assertEquals;
 
-public class IngredientTest {
+public class IngredientTests {
 
     @Test
     public void testGetName() {
