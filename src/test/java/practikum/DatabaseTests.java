@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class DatabaseTest {
+public class DatabaseTests {
 
     private Database database;
 
