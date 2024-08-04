@@ -22,13 +22,20 @@ public class Burger {
         ingredients.add(ingredient);
     }
 
-    public void removeIngredient(int index) {
-        ingredients.remove(index);
+    public Ingredient removeIngredient(int index) {
+        Ingredient removed = ingredients.remove(index);
+        return removed;
     }
 
+
     public void moveIngredient(int index, int newIndex) {
-        ingredients.add(newIndex, ingredients.remove(index));
+        if (newIndex <= ingredients.size()) { // Проверяем, что newIndex не превышает размер списка
+            ingredients.add(newIndex, ingredients.remove(index));
+        } else {
+            throw new IllegalArgumentException("Новый индекс выходит за пределы");
+        }
     }
+
 
     public float getPrice() {
         float price = bun.getPrice() * 2;
@@ -52,6 +59,9 @@ public class Burger {
         receipt.append(String.format("%nPrice: %f%n", getPrice()));
 
         return receipt.toString();
+    }
+    public List<Ingredient> getIngredients() {
+        return ingredients;
     }
 
 }

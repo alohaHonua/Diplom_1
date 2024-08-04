@@ -7,6 +7,8 @@ package praktikum;
  */
 public class Ingredient {
 
+    public static Object IngredientType;
+    public static Object Type;
     public IngredientType type;
     public String name;
     public float price;
