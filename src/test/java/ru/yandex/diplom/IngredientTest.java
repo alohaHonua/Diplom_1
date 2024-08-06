@@ -3,13 +3,11 @@ package ru.yandex.diplom;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class IngredientTest {
@@ -22,7 +20,7 @@ public class IngredientTest {
     }
 
     @Test
-    public void shouldReturnTrueGetName(){
+    public void shouldReturnTrueGetName() {
         String actualName = ingredient.getName();
         assertEquals("Карликодор", actualName);
     }
