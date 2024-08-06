@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestBunClass" time="0.002" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestBurger" time="0.985" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -62,14 +62,25 @@
     <property name="java.class.version" value="55.0"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="testGetPrice[0]" classname="TestBunClass" time="0.001">
-    <system-out><![CDATA[Ожидаемый результат 100.0
-Фактический результат 100.0
+  <testcase name="testGetPrice" classname="TestBurger" time="0.917">
+    <system-out><![CDATA[Что же сейчас лежит в setBun? praktikum.Bun@8bc0696
+Ожидаемый результат 500.0
+Сложение цены булочки из метода bunsGetDataBase.get(0) и ингредиентов из метода burger.getPrice() 500.0
 ]]></system-out>
   </testcase>
-  <testcase name="testGetName[0]" classname="TestBunClass" time="0.0">
-    <system-out><![CDATA[Ожидаемый результат black bun
-Фактический результат black bun
+  <testcase name="testRemoveIngredient" classname="TestBurger" time="0.019">
+    <system-out><![CDATA[Что сейчас в переменной getIndexList? praktikum.Ingredient@4d4b019e
 ]]></system-out>
   </testcase>
+  <testcase name="testMoveIngredient" classname="TestBurger" time="0.002">
+    <system-out><![CDATA[Что сейчас в переменной getIndexList? praktikum.Ingredient@5403431a
+Что сейчас в переменной getNextIndexList? praktikum.Ingredient@ab327c
+]]></system-out>
+  </testcase>
+  <testcase name="testSetBuns" classname="TestBurger" time="0.002"/>
+  <testcase name="testAddIngredient" classname="TestBurger" time="0.002">
+    <system-out><![CDATA[Что сейчас в переменной getIndexList? praktikum.Ingredient@68f776ee
+]]></system-out>
+  </testcase>
+  <testcase name="getReceipt" classname="TestBurger" time="0.001"/>
 </testsuite>

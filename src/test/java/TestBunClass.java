@@ -3,6 +3,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import praktikum.Bun;
+import praktikum.Database;
+
+import java.util.List;
 
 @RunWith(Parameterized.class)
 public class TestBunClass {
@@ -17,11 +20,15 @@ public class TestBunClass {
 
     @Parameterized.Parameters
     public static Object[][] getNameAndGetPrice(){
+        Database database = new Database();
+        List<Bun> bunDataBase = database.availableBuns();
+        int index = 0;
+        String name = String.valueOf(bunDataBase.get(index).name);
+        float price = Float.parseFloat(String.valueOf(bunDataBase.get(index).price));
         return new Object[][]{
-                {"Супер бургер", 10.0F}
+                {name, price}
         };
     }
-
 
     @Test
     public void testGetName(){

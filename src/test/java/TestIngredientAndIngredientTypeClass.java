@@ -2,19 +2,17 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
 @RunWith(Parameterized.class)
-public class TestIngredientClass {
+public class TestIngredientAndIngredientTypeClass {
 
     public IngredientType type;
     public String name;
     public float price;
 
-    public TestIngredientClass(IngredientType type, String name, float price){
+    public TestIngredientAndIngredientTypeClass(IngredientType type, String name, float price){
         this.type = type;
         this.name = name;
         this.price = price;
