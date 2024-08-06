@@ -1,0 +1,36 @@
+package ru.yandex.diplom;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+import praktikum.Ingredient;
+import praktikum.IngredientType;
+
+import static org.junit.Assert.*;
+
+@RunWith(MockitoJUnitRunner.class)
+public class IngredientTest {
+
+    private Ingredient ingredient;
+
+    @Before
+    public void setUp() {
+        ingredient = new Ingredient(IngredientType.FILLING, "Карликодор", 19.9f);
+    }
+
+    @Test
+    public void shouldReturnTrueGetName(){
+        String actualName = ingredient.getName();
+        assertEquals("Карликодор", actualName);
+    }
+
+    @Test
+    public void shouldReturnTrueGetPrice() {
+        float actualPrice = ingredient.getPrice();
+        assertEquals(19.9f, actualPrice, 0.0);
+    }
+
+}

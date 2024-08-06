@@ -53,6 +53,8 @@
                         <configuration>
                             <includes>
                                 <include>BunTest.java</include>
+                                <include>IngredientTest.java</include>
+                                <include>BurgerTest.java</include>
                             </includes>
                         </configuration>
                     </execution>
