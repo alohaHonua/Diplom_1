@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestBurgerMock" time="1.433" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestBurgerMock" time="1.465" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/viktorygorlachuk/Desktop/Diplom/QA-java-diplom-1/target/surefire/surefirebooter-20240807192640553_3.jar /Users/viktorygorlachuk/Desktop/Diplom/QA-java-diplom-1/target/surefire 2024-08-07T19-26-40_376-jvmRun1 surefire-20240807192640553_1tmp surefire_0-20240807192640553_2tmp"/>
+    <property name="sun.java.command" value="/Users/viktorygorlachuk/Desktop/Diplom/QA-java-diplom-1/target/surefire/surefirebooter-20240808080152547_3.jar /Users/viktorygorlachuk/Desktop/Diplom/QA-java-diplom-1/target/surefire 2024-08-08T08-01-52_411-jvmRun1 surefire-20240808080152547_1tmp surefire_0-20240808080152547_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/viktorygorlachuk/Desktop/Diplom/QA-java-diplom-1/target/test-classes:/Users/viktorygorlachuk/Desktop/Diplom/QA-java-diplom-1/target/classes:/Users/viktorygorlachuk/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/viktorygorlachuk/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/viktorygorlachuk/.m2/repository/org/mockito/mockito-core/3.12.4/mockito-core-3.12.4.jar:/Users/viktorygorlachuk/.m2/repository/net/bytebuddy/byte-buddy-agent/1.11.13/byte-buddy-agent-1.11.13.jar:/Users/viktorygorlachuk/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:/Users/viktorygorlachuk/.m2/repository/net/bytebuddy/byte-buddy/1.14.18/byte-buddy-1.14.18.jar:"/>
@@ -33,7 +33,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/Users/viktorygorlachuk/Desktop/Diplom/QA-java-diplom-1/target/surefire/surefirebooter-20240807192640553_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/viktorygorlachuk/Desktop/Diplom/QA-java-diplom-1/target/surefire/surefirebooter-20240808080152547_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="11.0.23+9-LTS"/>
@@ -62,17 +62,17 @@
     <property name="java.class.version" value="55.0"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="testGetPrice" classname="TestBurgerMock" time="1.392"/>
-  <testcase name="testMoveIngredient" classname="TestBurgerMock" time="0.013">
-    <system-out><![CDATA[Что сейчас в переменной getIndexList? praktikum.Ingredient@72f3f14c
-Что сейчас в переменной getNextIndexList? praktikum.Ingredient@4cb4c4cc
+  <testcase name="testGetPrice" classname="TestBurgerMock" time="1.331"/>
+  <testcase name="testMoveIngredient" classname="TestBurgerMock" time="0.01">
+    <system-out><![CDATA[Что сейчас в переменной getIndexList? praktikum.Ingredient@2c2a903f
+Что сейчас в переменной getNextIndexList? praktikum.Ingredient@7d537616
 ]]></system-out>
   </testcase>
-  <testcase name="testGetBun" classname="TestBurgerMock" time="0.002"/>
-  <testcase name="testGetReceipt" classname="TestBurgerMock" time="0.007"/>
-  <testcase name="testAddIngredient" classname="TestBurgerMock" time="0.001"/>
-  <testcase name="testRemoveIngredients" classname="TestBurgerMock" time="0.003">
-    <system-out><![CDATA[Что сейчас в переменной getIndexList? praktikum.Ingredient@1ba35152
+  <testcase name="testGetBun" classname="TestBurgerMock" time="0.0"/>
+  <testcase name="testGetReceipt" classname="TestBurgerMock" time="0.006"/>
+  <testcase name="testAddIngredient" classname="TestBurgerMock" time="0.002"/>
+  <testcase name="testRemoveIngredients" classname="TestBurgerMock" time="0.004">
+    <system-out><![CDATA[Что сейчас в переменной getIndexList? praktikum.Ingredient@1c171746
 ]]></system-out>
   </testcase>
 </testsuite>

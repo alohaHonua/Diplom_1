@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -54,8 +55,9 @@ public class TestBurgerMock {
         burger.setBuns(bun);
         Mockito.when(bun.getPrice()).thenReturn(200.F);
         //Mockito.when(ingredients.getPrice()).thenReturn(600.0F);
-        burger.getPrice();
+        Float result = burger.getPrice();
         Mockito.verify(burger, Mockito.times(1)).getPrice();
+        Assert.assertNotNull(result);
     }
 
     @Test
@@ -64,8 +66,9 @@ public class TestBurgerMock {
         Mockito.when(bun.getName()).thenReturn("булка");
 //        Mockito.when(ingredients.getName()).thenReturn("салатовый лист");
 //        Mockito.when(ingredients.getType()).thenReturn(IngredientType.valueOf("SAUCE"));
-        burger.getReceipt();
+        String result = burger.getReceipt();
         Mockito.verify(burger, Mockito.times(1)).getReceipt();
+        Assert.assertNotNull(result);
     }
 
 
