@@ -16,45 +16,50 @@ public class DatabaseTest {
 
     @Before
     public void setUp() {
-        // Создаем экземпляр базы данных перед каждым тестом
+        // РЎРѕР·РґР°РµРј СЌРєР·РµРјРїР»СЏСЂ Р±Р°Р·С‹ РґР°РЅРЅС‹С… РїРµСЂРµРґ РєР°Р¶РґС‹Рј С‚РµСЃС‚РѕРј
         database = new Database();
     }
 
     @Test
     public void testAvailableBunsSize() {
-        // Проверяем, что в базе данных есть 3 булочки
+        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С… РµСЃС‚СЊ 3 Р±СѓР»РѕС‡РєРё
+        int expectedBunCount = 3;
         List<Bun> buns = database.availableBuns();
-        assertEquals(3, buns.size());
+        assertEquals(expectedBunCount, buns.size());
     }
 
     @Test
     public void testAvailableIngredientsSize() {
-        // Проверяем, что в базе данных есть 6 ингредиентов
+        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С… РµСЃС‚СЊ 6 РёРЅРіСЂРµРґРёРµРЅС‚РѕРІ
+        int expectedIngredientCount = 6;
         List<Ingredient> ingredients = database.availableIngredients();
-        assertEquals(6, ingredients.size());
+        assertEquals(expectedIngredientCount, ingredients.size());
     }
 
     @Test
     public void testFirstBunName() {
-        // Проверяем, что первая булочка в списке имеет имя "black bun"
+        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РїРµСЂРІР°СЏ Р±СѓР»РѕС‡РєР° РІ СЃРїРёСЃРєРµ РёРјРµРµС‚ РёРјСЏ "black bun"
+        String expectedFirstBunName = "black bun";
         List<Bun> buns = database.availableBuns();
-        assertEquals("black bun", buns.get(0).getName());
+        assertEquals(expectedFirstBunName, buns.get(0).getName());
     }
 
     @Test
     public void testSecondIngredientType() {
-        // Проверяем, что второй ингредиент в списке имеет тип SAUCE
+        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РІС‚РѕСЂРѕР№ РёРЅРіСЂРµРґРёРµРЅС‚ РІ СЃРїРёСЃРєРµ РёРјРµРµС‚ С‚РёРї SAUCE
+        IngredientType expectedSecondIngredientType = IngredientType.SAUCE;
         List<Ingredient> ingredients = database.availableIngredients();
-        assertEquals(IngredientType.SAUCE, ingredients.get(1).getType());
+        assertEquals(expectedSecondIngredientType, ingredients.get(1).getType());
     }
 
     @Test
     public void testIngredientPrice() {
-        // Проверяем, что у ингредиента с именем "cutlet" цена равна 100
+        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ Сѓ РёРЅРіСЂРµРґРёРµРЅС‚Р° СЃ РёРјРµРЅРµРј "cutlet" С†РµРЅР° СЂР°РІРЅР° 100
+        float expectedCutletPrice = 100.0f;
         List<Ingredient> ingredients = database.availableIngredients();
         for (Ingredient ingredient : ingredients) {
             if (ingredient.getName().equals("cutlet")) {
-                assertEquals(100, ingredient.getPrice(), 0.0);
+                assertEquals(expectedCutletPrice, ingredient.getPrice(), 0.0);
                 break;
             }
         }
@@ -62,27 +67,30 @@ public class DatabaseTest {
 
     @Test
     public void testAvailableBunsContainWhiteBun() {
-        // Проверяем, что среди доступных булочек есть булочка с именем "white bun"
+        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ СЃСЂРµРґРё РґРѕСЃС‚СѓРїРЅС‹С… Р±СѓР»РѕС‡РµРє РµСЃС‚СЊ Р±СѓР»РѕС‡РєР° СЃ РёРјРµРЅРµРј "white bun"
+        String expectedBunName = "white bun";
         List<Bun> buns = database.availableBuns();
-        boolean containsWhiteBun = buns.stream().anyMatch(bun -> "white bun".equals(bun.getName()));
+        boolean containsWhiteBun = buns.stream().anyMatch(bun -> expectedBunName.equals(bun.getName()));
         assertTrue(containsWhiteBun);
     }
 
     @Test
     public void testAvailableIngredientsContainSourCream() {
-        // Проверяем, что среди доступных ингредиентов есть ингредиент с именем "sour cream"
+        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ СЃСЂРµРґРё РґРѕСЃС‚СѓРїРЅС‹С… РёРЅРіСЂРµРґРёРµРЅС‚РѕРІ РµСЃС‚СЊ РёРЅРіСЂРµРґРёРµРЅС‚ СЃ РёРјРµРЅРµРј "sour cream"
+        String expectedIngredientName = "sour cream";
         List<Ingredient> ingredients = database.availableIngredients();
-        boolean containsSourCream = ingredients.stream().anyMatch(ingredient -> "sour cream".equals(ingredient.getName()));
+        boolean containsSourCream = ingredients.stream().anyMatch(ingredient -> expectedIngredientName.equals(ingredient.getName()));
         assertTrue(containsSourCream);
     }
 
     @Test
     public void testBunPrice() {
-        // Проверяем, что цена булочки с именем "red bun" равна 300
+        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ С†РµРЅР° Р±СѓР»РѕС‡РєРё СЃ РёРјРµРЅРµРј "red bun" СЂР°РІРЅР° 300
+        float expectedRedBunPrice = 300.0f;
         List<Bun> buns = database.availableBuns();
         for (Bun bun : buns) {
             if (bun.getName().equals("red bun")) {
-                assertEquals(300, bun.getPrice(), 0.0);
+                assertEquals(expectedRedBunPrice, bun.getPrice(), 0.0);
                 break;
             }
         }

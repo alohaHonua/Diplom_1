@@ -1,5 +1,3 @@
-//package praktikum;
-
 import org.junit.Test;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
@@ -10,19 +8,25 @@ public class IngredientTest {
 
     @Test
     public void testGetName() {
-        Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "chili sauce", 300);
-        assertEquals("chili sauce", ingredient.getName());
+        // Тест на проверку корректного получения имени ингредиента
+        String expectedName = "chili sauce";
+        Ingredient ingredient = new Ingredient(IngredientType.SAUCE, expectedName, 300);
+        assertEquals(expectedName, ingredient.getName());
     }
 
     @Test
     public void testGetPrice() {
-        Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "chili sauce", 300);
-        assertEquals(300, ingredient.getPrice(), 0.0);
+        // Тест на проверку корректного получения цены ингредиента
+        float expectedPrice = 300.0f;
+        Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "chili sauce", expectedPrice);
+        assertEquals(expectedPrice, ingredient.getPrice(), 0.0);
     }
 
     @Test
     public void testGetType() {
-        Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "chili sauce", 300);
-        assertEquals(IngredientType.SAUCE, ingredient.getType());
+        // Тест на проверку корректного получения типа ингредиента
+        IngredientType expectedType = IngredientType.SAUCE;
+        Ingredient ingredient = new Ingredient(expectedType, "chili sauce", 300);
+        assertEquals(expectedType, ingredient.getType());
     }
 }

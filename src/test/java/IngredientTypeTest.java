@@ -9,19 +9,22 @@ public class IngredientTypeTest {
     @Test
     public void testSauceType() {
         // ѕровер€ем, что тип SAUCE имеет правильное значение
-        assertEquals(IngredientType.SAUCE, IngredientType.valueOf("SAUCE"));
+        IngredientType expectedType = IngredientType.SAUCE;
+        assertEquals(expectedType, IngredientType.valueOf("SAUCE"));
     }
 
     @Test
     public void testFillingType() {
         // ѕровер€ем, что тип FILLING имеет правильное значение
-        assertEquals(IngredientType.FILLING, IngredientType.valueOf("FILLING"));
+        IngredientType expectedType = IngredientType.FILLING;
+        assertEquals(expectedType, IngredientType.valueOf("FILLING"));
     }
 
     @Test
     public void testNumberOfTypes() {
         // ѕровер€ем, что у перечислени€ IngredientType всего 2 значени€
-        assertEquals(2, IngredientType.values().length);
+        int expectedNumberOfTypes = 2;
+        assertEquals(expectedNumberOfTypes, IngredientType.values().length);
     }
 
     @Test

@@ -19,12 +19,13 @@ public class BurgerTest {
 
     @Before
     public void setUp() {
+        // Настройка перед каждым тестом
         burger = new Burger();
         bun = mock(Bun.class);
         ingredient1 = mock(Ingredient.class);
         ingredient2 = mock(Ingredient.class);
 
-        // ����������� ����
+        // Настраиваем моки
         when(bun.getName()).thenReturn("white bun");
         when(bun.getPrice()).thenReturn(100f);
         when(ingredient1.getName()).thenReturn("cutlet");
@@ -37,18 +38,21 @@ public class BurgerTest {
 
     @Test
     public void testSetBuns() {
+        // Тест на установку булочки в бургер
         burger.setBuns(bun);
         assertEquals("white bun", burger.bun.getName());
     }
 
     @Test
     public void testAddIngredient() {
+        // Тест на добавление ингредиента в бургер
         burger.addIngredient(ingredient1);
         assertEquals(1, burger.ingredients.size());
     }
 
     @Test
     public void testRemoveIngredient() {
+        // Тест на удаление ингредиента из бургера
         burger.addIngredient(ingredient1);
         burger.removeIngredient(0);
         assertEquals(0, burger.ingredients.size());
@@ -56,6 +60,7 @@ public class BurgerTest {
 
     @Test
     public void testMoveIngredient() {
+        // Тест на перемещение ингредиентов внутри бургера
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
         burger.moveIngredient(0, 1);
@@ -64,14 +69,17 @@ public class BurgerTest {
 
     @Test
     public void testGetPrice() {
+        // Тест на корректное получение цены бургера
+        float expectedPrice = 270.0f;
         burger.setBuns(bun);
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
-        assertEquals(270, burger.getPrice(), 0.0);
+        assertEquals(expectedPrice, burger.getPrice(), 0.0);
     }
 
     @Test
     public void testGetReceipt() {
+        // Тест на корректное получение чека
         burger.setBuns(bun);
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
@@ -81,7 +89,6 @@ public class BurgerTest {
                 "(==== white bun ====)\n" +
                 "\nPrice: 270.000000\n";
         String actualReceipt = burger.getReceipt();
-        System.out.println("Actual receipt:\n" + actualReceipt);
         assertEquals(expectedReceipt, actualReceipt);
     }
 }
