@@ -1,0 +1,49 @@
+# IntelliJ IDEA specific files
+.idea/
+*.iml
+*.iws
+
+# IntelliJ IDEA build output directory
+out/
+
+# Maven target directory
+target/
+
+# Logs
+*.log
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Byte-compiled / packaged class files
+*.class
+*.jar
+*.war
+*.ear
+
+# Generated files
+*.generated.*
+
+# Temporary files
+*.tmp
+*.temp
+
+# Eclipse specific files
+.project
+.classpath
+.settings/
+
+# NetBeans specific files
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# IntelliJ IDEA shelf
+/shelf/
+
+# IntelliJ IDEA workspace
+/.idea/workspace.xml
