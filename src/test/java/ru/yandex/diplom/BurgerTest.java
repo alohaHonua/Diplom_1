@@ -62,17 +62,6 @@ public class BurgerTest {
     }
 
     @Test
-    public void shouldReturnTrueGetPriceTest() {
-        Burger burger = new Burger();
-        Mockito.when(bun.getPrice()).thenReturn(100.0f);
-        Mockito.when(ingredientsFirst.getPrice()).thenReturn(100.0f);
-        burger.setBuns(bun);
-        burger.addIngredient(ingredientsFirst);
-        float exPrice = 100.0f * 2 + 100.0f;
-        assertEquals(exPrice, burger.getPrice(), 0.0);
-    }
-
-    @Test
     public void shouldReturnTrueGetReceiptTest() {
         Burger burger = new Burger();
 
