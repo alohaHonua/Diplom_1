@@ -28,7 +28,9 @@ public class BunTest {
     @Test
     public void shouldReturnTrueGetPrice() {
         float actualPrice = bun.getPrice();
-        assertEquals(289.0f, actualPrice, 0.0);
+        float expectedPrice = 289.0f;
+        float delta = 0.0f;
+        assertEquals(expectedPrice, actualPrice, delta);
     }
 
 }
