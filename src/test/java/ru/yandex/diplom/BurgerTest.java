@@ -17,10 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class BurgerTest {
 
     @Mock
-    Ingredient ingredientsFirst;
-
-    @Mock
-    Ingredient ingredientsSecond;
+    Ingredient ingredients;
 
     @Mock
     Bun bun;
@@ -35,17 +32,17 @@ public class BurgerTest {
     @Test
     public void shouldReturnTrueAddIngredientTest() {
         Burger burger = new Burger();
-        burger.addIngredient(ingredientsFirst);
-        Assert.assertEquals(ingredientsFirst, burger.ingredients.get(0));
+        burger.addIngredient(ingredients);
+        Assert.assertEquals(ingredients, burger.ingredients.get(0));
     }
 
     @Test
     public void shouldReturnTrueRemoveIngredientTest() {
         Burger burger = new Burger();
-        burger.addIngredient(ingredientsFirst);
-        burger.addIngredient(ingredientsSecond);
+        burger.addIngredient(ingredients);
+        burger.addIngredient(ingredients);
         burger.removeIngredient(0);
-        assertEquals(ingredientsSecond, burger.ingredients.get(0));
+        assertEquals(ingredients, burger.ingredients.get(0));
         int exIngredientsSize = 1;
         assertEquals(exIngredientsSize, burger.ingredients.size());
     }
@@ -53,10 +50,10 @@ public class BurgerTest {
     @Test
     public void shouldReturnTrueMoveIngredientTest() {
         Burger burger = new Burger();
-        burger.addIngredient(ingredientsFirst);
-        burger.addIngredient(ingredientsSecond);
+        burger.addIngredient(ingredients);
+        burger.addIngredient(ingredients);
         burger.moveIngredient(0, 1);
-        assertEquals(ingredientsSecond, burger.ingredients.get(0));
+        assertEquals(ingredients, burger.ingredients.get(0));
         int exIngredientsSize = 2;
         assertEquals(exIngredientsSize, burger.ingredients.size());
     }
@@ -68,17 +65,17 @@ public class BurgerTest {
         Mockito.when(bun.getName()).thenReturn("baget");
         Mockito.when(bun.getPrice()).thenReturn(100.0f);
 
-        Mockito.when(ingredientsFirst.getName()).thenReturn("sour cream");
-        Mockito.when(ingredientsFirst.getType()).thenReturn(IngredientType.SAUCE);
-        Mockito.when(ingredientsFirst.getPrice()).thenReturn(100.0f);
+        Mockito.when(ingredients.getName()).thenReturn("sour cream");
+        Mockito.when(ingredients.getType()).thenReturn(IngredientType.SAUCE);
+        Mockito.when(ingredients.getPrice()).thenReturn(100.0f);
 
-        Mockito.when(ingredientsSecond.getName()).thenReturn("dinosaur");
-        Mockito.when(ingredientsSecond.getType()).thenReturn(IngredientType.FILLING);
-        Mockito.when(ingredientsSecond.getPrice()).thenReturn(100.0f);
+        Mockito.when(ingredients.getName()).thenReturn("dinosaur");
+        Mockito.when(ingredients.getType()).thenReturn(IngredientType.FILLING);
+        Mockito.when(ingredients.getPrice()).thenReturn(100.0f);
 
         burger.setBuns(bun);
-        burger.addIngredient(ingredientsFirst);
-        burger.addIngredient(ingredientsSecond);
+        burger.addIngredient(ingredients);
+        burger.addIngredient(ingredients);
         StringBuilder exReceipt = new StringBuilder(String.format("(==== %s ====)%n", bun.getName()));
 
         for (Ingredient ingredient : burger.ingredients) {

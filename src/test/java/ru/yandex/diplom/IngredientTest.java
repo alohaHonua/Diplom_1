@@ -27,8 +27,10 @@ public class IngredientTest {
 
     @Test
     public void shouldReturnTrueGetPrice() {
+        float expectedPrice = 19.9f;
+        float delta = 0.0f;
         float actualPrice = ingredient.getPrice();
-        assertEquals(19.9f, actualPrice, 0.0);
+        assertEquals(expectedPrice, actualPrice, delta);
     }
 
 }
