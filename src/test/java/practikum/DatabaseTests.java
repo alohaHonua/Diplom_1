@@ -1,7 +1,11 @@
-package praktikum;
+package practikum;
 
 import org.junit.Before;
 import org.junit.Test;
+import praktikum.Bun;
+import praktikum.Database;
+import praktikum.Ingredient;
+import praktikum.IngredientType;
 
 import java.util.List;
 
