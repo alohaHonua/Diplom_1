@@ -5,7 +5,6 @@ import org.junit.runners.Parameterized;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
-import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -32,8 +31,8 @@ public class IngredientTestWithParams {
     @Parameterized.Parameters()
     public static Object[][] getIngredientData() {
         return new Object[][] {
-                {type.SAUCE, "hot sauce", (float) 100},
-                {type.FILLING, "dinosaur", (float) 200},
+                {IngredientType.SAUCE, "hot sauce", (float) 100},
+                {IngredientType.FILLING, "dinosaur", (float) 200},
         };
     }
 
