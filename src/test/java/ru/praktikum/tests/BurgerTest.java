@@ -9,7 +9,8 @@ import ru.praktikum.Bun;
 import ru.praktikum.Burger;
 import ru.praktikum.Ingredient;
 import ru.praktikum.IngredientType;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 //Класс сожердит тесты методов класса Burger
 @RunWith(MockitoJUnitRunner.class)
@@ -25,11 +26,6 @@ public class BurgerTest {
     @Before
     public void setUp(){
         burger = new Burger();
-        bunGray = new Bun("Gray bun", 4.5F);
-        sauceChilli = new Ingredient(IngredientType.SAUCE, "Chilli", 5.6F);
-        sauceKetchup = new Ingredient(IngredientType.SAUCE, "Ketchup", 5.0F);
-        fillingCheese = new Ingredient(IngredientType.FILLING, "Cheese", 4.7F);
-        fillingPulledPork = new Ingredient(IngredientType.FILLING, "Pulled Pork", 10.5F);
     }
 
     @Test
@@ -37,15 +33,16 @@ public class BurgerTest {
         burger.setBuns(bunGray);
         Bun expected = bunGray;
         Bun actual = burger.bun;
+
         assertEquals("Булочки не совпадают", expected, actual);
     }
 
     @Test
     public void burgerAddIngredientTest(){
         burger.addIngredient(sauceChilli);
-        int expected = 1;
-        int actual = burger.ingredients.size();
-        assertEquals("В списке нет элементов!", expected, actual);
+        boolean actual = burger.ingredients.contains(sauceChilli);
+
+        assertTrue("В списке нет элементов!", actual);
     }
 
     @Test
@@ -53,12 +50,10 @@ public class BurgerTest {
         burger.addIngredient(sauceChilli);
         burger.addIngredient(sauceKetchup);
         burger.addIngredient(fillingCheese);
-
         burger.removeIngredient(1);
+        boolean actual = burger.ingredients.contains(sauceKetchup);
 
-        int expected = 2;
-        int actual = burger.ingredients.size();
-        assertEquals("В списке должно быть два элемента!", expected, actual);
+        assertFalse("В списке должно быть два элемента!", actual);
     }
 
     @Test
@@ -76,6 +71,11 @@ public class BurgerTest {
 
     @Test
     public void burgerGetPriceTest(){
+        when(bunGray.getPrice()).thenReturn(4.5f);
+        when(sauceKetchup.getPrice()).thenReturn(5.0f);
+        when(fillingCheese.getPrice()).thenReturn(4.7f);
+        when(fillingPulledPork.getPrice()).thenReturn(10.5f);
+
         burger.setBuns(bunGray);
         burger.addIngredient(sauceKetchup);
         burger.addIngredient(fillingCheese);
@@ -88,6 +88,21 @@ public class BurgerTest {
 
     @Test
     public void burgerGetReceipt(){
+        when(bunGray.getPrice()).thenReturn(4.5f);
+        when(bunGray.getName()).thenReturn("Gray bun");
+
+        when(sauceChilli.getPrice()).thenReturn(5.6f);
+        when(sauceChilli.getType()).thenReturn(IngredientType.SAUCE);
+        when(sauceChilli.getName()).thenReturn("Chilli");
+
+        when(fillingCheese.getPrice()).thenReturn(4.7f);
+        when(fillingCheese.getType()).thenReturn(IngredientType.FILLING);
+        when(fillingCheese.getName()).thenReturn("Cheese");
+
+        when(fillingPulledPork.getPrice()).thenReturn(10.5f);
+        when(fillingPulledPork.getType()).thenReturn(IngredientType.FILLING);
+        when(fillingPulledPork.getName()).thenReturn("Pulled Pork");
+
         burger.setBuns(bunGray);
         burger.addIngredient(sauceChilli);
         burger.addIngredient(fillingCheese);
