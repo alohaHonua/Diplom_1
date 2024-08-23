@@ -1,7 +1,7 @@
 package praktikum;
 
 import org.junit.Test;
-import org.junit.jupiter.api.DisplayName;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -39,6 +39,6 @@ public class BunParameterizedTest {
     @DisplayName("Проверка получения цены булочки")
     public void getPrice() {
         Bun bun = new Bun(nameBurger, priceBurger);
-        assertEquals(priceBurger, bun.getPrice(), 0.001F);
+            assertEquals(priceBurger, bun.getPrice(), 0.001F);
     }
 }
