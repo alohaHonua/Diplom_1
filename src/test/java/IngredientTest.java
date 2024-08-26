@@ -35,7 +35,7 @@ public class IngredientTest {
         };
     }
     @Test
-    public void CreateBunTest(){
+    public void createBunTest(){
         Ingredient actualIngredient = new Ingredient(type, name, price);
         assertEquals(expectIngredient.getType(), actualIngredient.getType());
         assertEquals(expectIngredient.getName(), actualIngredient.getName());
