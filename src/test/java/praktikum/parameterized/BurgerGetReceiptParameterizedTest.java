@@ -82,6 +82,7 @@ public class BurgerGetReceiptParameterizedTest {
         burger.setBuns(bun);
         Mockito.when(bun.getName()).thenReturn(bunName);
         Mockito.when(bun.getPrice()).thenReturn(bunPrice);
+        //Частный случай, если список ингредиентов пуст
         if (ingredientPrice != 0 ) {
             burger.addIngredient(ingredient);
             Mockito.when(ingredient.getName()).thenReturn(ingredientName);
