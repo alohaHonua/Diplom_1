@@ -10,7 +10,6 @@ public class BaseObjectBurger {
     Database database = new Database();
 
     public void getIndexListFromAddRemoveIngredient(Burger burger, int index){
-        //Database database = new Database();
         List<Ingredient> getDataBase = database.availableIngredients();
         //впихнули в список данных переменной getDataBase то, что впихнулось в метод availableIngredients()
         //то есть список доступных ингридентов
@@ -23,7 +22,6 @@ public class BaseObjectBurger {
     }
 
     public List<Integer> getIndexListFromMoveIngredient(Burger burger, int index, int addIndexNext, int newIndex){
-        //Database database = new Database();
         List<Ingredient> getDataBase = database.availableIngredients();
         Ingredient getIndexList = getDataBase.get(index);//добавляем в переменную ингредиент по индексу список из БД
         Ingredient getNextIndexList = getDataBase.get(addIndexNext);//добавляем в переменную ингредиент по индексу список из БД

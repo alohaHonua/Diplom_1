@@ -6,13 +6,13 @@ import praktikum.Ingredient;
 import praktikum.IngredientType;
 
 @RunWith(Parameterized.class)
-public class TestIngredientAndIngredientTypeClass {
+public class TestIngredientClass {
 
     public IngredientType type;
     public String name;
     public float price;
 
-    public TestIngredientAndIngredientTypeClass(IngredientType type, String name, float price){
+    public TestIngredientClass(IngredientType type, String name, float price){
         this.type = type;
         this.name = name;
         this.price = price;
