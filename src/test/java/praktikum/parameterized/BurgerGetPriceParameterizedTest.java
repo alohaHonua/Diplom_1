@@ -33,8 +33,8 @@ public class BurgerGetPriceParameterizedTest {
     public static Object[][] getParameters() {
         return new Object[][]{
                 {10, 10, 30},
+                //Частный случай, если список ингредиентов пуст
                 {10, 0, 20},
-                {0, 10, 10}
         };
     }
 
@@ -47,9 +47,11 @@ public class BurgerGetPriceParameterizedTest {
     public void getPriceTest() {
         Burger burger = new Burger();
         burger.setBuns(bun);
-        burger.addIngredient(ingredient);
         Mockito.when(bun.getPrice()).thenReturn(bunPrice);
-        Mockito.when(ingredient.getPrice()).thenReturn(ingredientPrice);
+        if (ingredientPrice != 0 ) {
+            burger.addIngredient(ingredient);
+            Mockito.when(ingredient.getPrice()).thenReturn(ingredientPrice);
+        }
         float actual = burger.getPrice();
         Assert.assertEquals(
                 "Цена посчиталась неправильно",

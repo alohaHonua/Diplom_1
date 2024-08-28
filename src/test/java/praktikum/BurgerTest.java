@@ -1,10 +1,11 @@
 package praktikum;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
@@ -20,12 +21,8 @@ public class BurgerTest {
     @Mock
     private Ingredient secondIngredient;
 
+    @Spy
     private Burger burger;
-
-    @Before
-    public void initBurger() {
-        burger = new Burger();
-    }
 
     @Test
     public void setBunTest() {
@@ -71,5 +68,12 @@ public class BurgerTest {
                 "Ингредиент не был перемещен",
                 expected,
                 burger.ingredients);
+    }
+
+    @Test
+    public void getReceiptSpyTest() {
+        burger.setBuns(bun);
+        burger.getReceipt();
+        Mockito.verify(burger, Mockito.times(1)).getPrice();
     }
 }
