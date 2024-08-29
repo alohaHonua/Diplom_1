@@ -1,12 +1,15 @@
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Database;
 import praktikum.Ingredient;
 
 import java.util.List;
 
+@RunWith(MockitoJUnitRunner.class)
 public class DataBaseTest {
 
 
