@@ -80,18 +80,18 @@ public class BurgerTest {
         expected.add(0, ingredientSecond);
         burger.ingredients.add(0, ingredientFirst);
         burger.ingredients.add(1, ingredientSecond);
-        burger.removeIngredient(1);
+        burger.removeIngredient(0);
         Assert.assertEquals(expected, burger.ingredients);
     }
     @Test
     public void moveIngredient(){
         Burger burger = new Burger();
         List<Ingredient> expected = new ArrayList<>();
-        expected.add(0, ingredientSecond);
-        expected.add(1, ingredientFirst);
+        expected.add(0, ingredientFirst);
+        expected.add(1, ingredientSecond);
         burger.ingredients.add(0, ingredientFirst);
         burger.ingredients.add(1,ingredientSecond);
-        burger.moveIngredient(1, 0);
+        burger.moveIngredient(0, 1);
         Assert.assertEquals(expected, burger.ingredients);
     }
 
