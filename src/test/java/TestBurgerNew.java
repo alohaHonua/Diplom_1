@@ -9,7 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BurgerNewTest {
+public class TestBurgerNew {
 
     @Mock
     Bun bun;
