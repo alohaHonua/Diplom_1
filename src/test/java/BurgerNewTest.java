@@ -8,13 +8,8 @@ import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
 @RunWith(MockitoJUnitRunner.class)
-public class BugerNewTest {
+public class BurgerNewTest {
 
     @Mock
     Bun bun;
@@ -24,29 +19,30 @@ public class BugerNewTest {
     Ingredient ingredient2;
     @Spy
     Burger burger;
-    @Spy
-    List<Ingredient> ingredients = new ArrayList<>();
+
 
     @Before
     public void setIngredients(){
+        //добавили в методы класса Ingredient данные
         Mockito.when(ingredient.getType()).thenReturn(IngredientType.FILLING);
         Mockito.when(ingredient.getName()).thenReturn("cutlet");
         Mockito.when(ingredient.getPrice()).thenReturn(100F);
-        Mockito.when(ingredient2.getType()).thenReturn(IngredientType.FILLING);
-        Mockito.when(ingredient2.getName()).thenReturn("dinosaur");
-        Mockito.when(ingredient2.getPrice()).thenReturn(200F);
 
+        //добавили в метод класса Бургер данные о булках
         Mockito.when(bun.getName()).thenReturn("супербулка");
         Mockito.when(bun.getPrice()).thenReturn(300F);
     }
 
     @Test
+    public void setBunsTest(){
+        burger.setBuns(bun);
+        Assert.assertEquals(bun, burger.bun);
+        //поместили в класс бургер булки и проверили, что там есть булки
+    }
+
+    @Test
     public void addIngredientTest(){
-        //добавили в методы класса Ingredient данные
-        System.out.println(ingredient.getName());
-        System.out.println(ingredient.getPrice());
-        System.out.println(ingredient.getType());
-        //надобавляли ингредиентов
+        //надобавляли ингредиентов в сам метод
         burger.addIngredient(ingredient);
         //вызвали метод с добавленными ингредиентами из класса бургер
         Assert.assertEquals(ingredient, burger.ingredients.get(0));
@@ -83,27 +79,31 @@ public class BugerNewTest {
         burger.setBuns(bun);
         //поместили булочки с ценами
         burger.addIngredient(ingredient);
-        burger.addIngredient(ingredient2);
         //поместили ингредиенты с ценами
         float actual = burger.getPrice();
         System.out.println("ОР " + actual);
-        float expected = bun.getPrice() * 2 + ingredient.getPrice() + ingredient2.getPrice();
+        float expected = bun.getPrice() * 2 + ingredient.getPrice();
+        //перемножили цену двух булок с ценами на игредиенты
         System.out.println("ФР " + expected);
         Assert.assertEquals(expected, actual, 0.0);
     }
 
     @Test
     public void testGetReceipt(){
-        //доделать
         burger.setBuns(bun);
-        Mockito.when(ingredient.getName()).thenReturn("hot sauce");
-        Mockito.when(ingredient2.getName()).thenReturn("dinosaur");
+        //положили булки
+        burger.addIngredient(ingredient);
+        //положили ингредиенты
         String actual = burger.getReceipt();
         System.out.println("ФР\n" + actual);
         String expected =
                 String.format("(==== %s ====)%n", bun.getName()) +
-                        String.format(ingredient.getName()) +
-                        String.format("(==== %s ====)%n", bun.getName());
-        System.out.println("ОР " + expected);
+                String.format("= %s %s =%n",
+                        ingredient.getType().toString().toLowerCase(), ingredient.getName()) +
+                String.format("(==== %s ====)%n", bun.getName()) +
+                String.format(String.format("%nPrice: %f%n", burger.getPrice()));
+        System.out.println("ОР \n" + expected);
+        Assert.assertEquals(expected, actual);
+        //сравнили результаты
     }
 }
