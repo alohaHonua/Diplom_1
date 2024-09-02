@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Класс с методами по работе с базой данных.
  */
-public class Database {
+public class  Database {
 
     private final List<Bun> buns = new ArrayList<>();
     private final List<Ingredient> ingredients = new ArrayList<>();
