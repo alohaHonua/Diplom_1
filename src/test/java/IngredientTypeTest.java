@@ -2,7 +2,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import praktikum.IngredientType;
 
-public class ingredientTypeTest {
+public class IngredientTypeTest {
 
 
     @Test
@@ -28,18 +28,18 @@ public class ingredientTypeTest {
     @Test(expected = IllegalArgumentException.class)
     public void illegalIngredientTest() throws IllegalArgumentException {
 
-        String expectedString = "ILLEGAL";
+        String illigalString = "ILLEGAL";
 
-        IngredientType ingredientType = IngredientType.valueOf(expectedString);
+        IngredientType.valueOf(illigalString);
 
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void emptyIngredientTest() throws IllegalArgumentException {
 
-        String expectedString = "";
+        String illigalString = "";
 
-        IngredientType ingredientType = IngredientType.valueOf(expectedString);
+        IngredientType.valueOf(illigalString);
 
     }
 
