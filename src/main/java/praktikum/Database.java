@@ -8,19 +8,10 @@ import java.util.List;
  */
 public class Database {
 
-    private final List<Bun> buns;
-    private final List<Ingredient> ingredients;
-
-    public Database(List<Bun> buns, List<Ingredient> ingredients) {
-        this.buns = buns;
-        this.ingredients = ingredients;
-    }
+    private final List<Bun> buns = new ArrayList<>();
+    private final List<Ingredient> ingredients = new ArrayList<>();
 
     public Database() {
-        this.buns = new ArrayList<Bun>();
-
-        this.ingredients = new ArrayList<Ingredient>();
-
         buns.add(new Bun("black bun", 100));
         buns.add(new Bun("white bun", 200));
         buns.add(new Bun("red bun", 300));
