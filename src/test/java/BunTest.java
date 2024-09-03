@@ -7,7 +7,7 @@ public class BunTest {
 
     private final String name = "name";
 
-    private float price = 50.00f;
+    private final float price = 50.00f;
 
     Bun bun;
 
