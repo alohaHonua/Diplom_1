@@ -35,5 +35,6 @@ public class TestIngredientGetType {
         IngredientType actualType = ingredient.getType();
 
         assertEquals(type, actualType);
+
     }
 }

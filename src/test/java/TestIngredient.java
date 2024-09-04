@@ -31,5 +31,6 @@ public class TestIngredient {
         String actualName = ingredient.getName();
 
         assertEquals(expectedName, actualName);
+
     }
 }

@@ -28,5 +28,6 @@ public class TestBun {
         float actualPrice = bun.getPrice();
 
         assertEquals(expectedPrice, actualPrice, DELTA);
+
     }
 }
