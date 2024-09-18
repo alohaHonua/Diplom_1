@@ -43,7 +43,7 @@ public class IngredientTest {
     @Test
     public void typeTest() {
         assertEquals("Поле type сохранилось некорректно",
-                ingredientType, ingredient.type);
+                ingredientType, ingredient.getType());
     }
 
     @Test

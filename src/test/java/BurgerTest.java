@@ -10,7 +10,6 @@ import praktikum.Burger;
 import praktikum.Ingredient;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 import static praktikum.IngredientType.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -32,8 +31,6 @@ public class BurgerTest {
 
     @Test
     public void setBunsTest() {
-        when(bun.getName()).thenReturn("bun");
-        when(bun.getPrice()).thenReturn(10f);
         burger.setBuns(bun);
         System.out.println(burger.bun);
         System.out.println(burger.bun);
