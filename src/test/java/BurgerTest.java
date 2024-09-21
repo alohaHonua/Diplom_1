@@ -76,4 +76,14 @@ public class BurgerTest {
                 "Price: "+ String.format("%f", ((bunPrice * 2) + ingredientPrice)) +"%n");
         Assert.assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    public void getPriceTest() {
+        burger.setBuns(bun);
+        burger.addIngredient(ingredient1);
+        burger.addIngredient(ingredient2);
+        float actualResult = burger.getPrice();
+        float expectedResult = bun.getPrice() * 2 + ingredient1.getPrice() + ingredient2.getPrice();
+        Assert.assertEquals(expectedResult, actualResult, 0);
+    }
 }
