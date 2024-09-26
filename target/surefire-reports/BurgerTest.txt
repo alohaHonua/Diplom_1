@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: BurgerTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.532 s <<< FAILURE! -- in BurgerTest
-BurgerTest.testGetReceipt -- Time elapsed: 0.032 s <<< FAILURE!
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.851 s <<< FAILURE! -- in BurgerTest
+BurgerTest.testGetReceipt -- Time elapsed: 0.084 s <<< FAILURE!
 org.junit.ComparisonFailure: 
 expected:<...me ====)
 = filling [lettuce =
