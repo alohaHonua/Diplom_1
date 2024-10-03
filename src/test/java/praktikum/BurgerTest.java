@@ -13,11 +13,21 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BurgerTest {
 
+    Burger burger = new Burger();
+    @Mock
+    Bun bun;
+    @Mock
+    Ingredient ingredient;
+    @Mock
+    Ingredient ingredient1;
+    @Before
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     public void setBunsTest() {
         Burger burger = new Burger();
-        Bun bun = new Bun(Constants.BUN_NAME, Constants.BUN_PRICE);
 
         burger.setBuns(bun);
         assertThat(burger.bun, is(notNullValue()));
@@ -26,11 +36,6 @@ public class BurgerTest {
     @Test
     public void addIngredientTest() {
         Burger burger = new Burger();
-        Ingredient ingredient = new Ingredient(
-                IngredientType.SAUCE,
-                Constants.INGREDIENT_1_NAME,
-                Constants.INGREDIENT_1_PRICE
-        );
 
         burger.addIngredient(ingredient);
         assertThat(burger.ingredients.size(), is(Constants.ONE_INGREDIENT));
@@ -39,11 +44,6 @@ public class BurgerTest {
     @Test
     public void removeIngredientTest() {
         Burger burger = new Burger();
-        Ingredient ingredient = new Ingredient(
-                IngredientType.SAUCE,
-                Constants.INGREDIENT_1_NAME,
-                Constants.INGREDIENT_1_PRICE
-        );
 
         int pinIngredientsSize = burger.ingredients.size();
         burger.addIngredient(ingredient);
@@ -54,50 +54,33 @@ public class BurgerTest {
     @Test
     public void moveIngredientTest() {
         Burger burger = new Burger();
-        Ingredient ingredient_1 = new Ingredient(
-                IngredientType.SAUCE,
-                Constants.INGREDIENT_1_NAME,
-                Constants.INGREDIENT_1_PRICE
-        );
 
-        Ingredient ingredient_2 = new Ingredient(
-                IngredientType.FILLING,
-                Constants.INGREDIENT_2_NAME,
-                Constants.INGREDIENT_2_PRICE
-        );
-
-        burger.addIngredient(ingredient_1);
-        burger.addIngredient(ingredient_2);
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient1);
         burger.moveIngredient(burger.ingredients.size()-1, Constants.NEW_INDEX);
-        assertThat(burger.ingredients.indexOf(ingredient_2) , is(Constants.NEW_INDEX));
+        assertThat(burger.ingredients.indexOf(ingredient1) , is(Constants.NEW_INDEX));
     }
 
     @Test
     public void getPriceTest() {
+
+        Mockito.when(bun.getPrice()).thenReturn(Constants.BUN_PRICE);
+        Mockito.when(ingredient.getPrice()).thenReturn(Constants.INGREDIENT_1_PRICE);
+
         Burger burger = new Burger();
-        Bun bun = new Bun(Constants.BUN_NAME, Constants.BUN_PRICE);
+
         burger.setBuns(bun);
-        Ingredient ingredient = new Ingredient(
-                IngredientType.SAUCE,
-                Constants.INGREDIENT_1_NAME,
-                Constants.INGREDIENT_1_PRICE
-        );
+
         burger.addIngredient(ingredient);
-        float expPrice = bun.price * 2 + ingredient.getPrice();
+
+        float expPrice = Constants.BUN_PRICE * 2 + Constants.INGREDIENT_1_PRICE;
         assertThat(burger.getPrice(), is(expPrice));
 
+        Mockito.verify(bun).getPrice();
+        Mockito.verify(ingredient).getPrice();
+
     }
 
-
-    @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
-    }
-    Burger burger = new Burger();
-    @Mock
-    Bun bun;
-    @Mock
-    Ingredient ingredient;
     @Test
     public void getReceipt() {
 
