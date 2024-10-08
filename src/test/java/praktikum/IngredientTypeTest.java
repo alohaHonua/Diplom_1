@@ -6,17 +6,17 @@ import static org.junit.Assert.*;
 public class IngredientTypeTest {
 
     @Test
-    public void ShouldBeTypeSause() {
+    public void shouldBeTypeSause() {
         assertEquals(IngredientType.valueOf("SAUCE"),IngredientType.SAUCE);
     }
 
     @Test
-    public void ShouldBeTypeFilling() {
+    public void shouldBeTypeFilling() {
         assertEquals(IngredientType.valueOf("FILLING"),IngredientType.FILLING);
     }
 
     @Test
-    public void ShouldBeLenghtIngredientType() {
+    public void shouldBeLenghtIngredientType() {
         int actualResult= IngredientType.values().length;
         assertEquals(2,actualResult);
     }

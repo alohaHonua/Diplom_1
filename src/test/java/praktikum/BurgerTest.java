@@ -65,15 +65,28 @@ public class BurgerTest {
 
     @Test
     public void getReceipt() {
-        bun = new Bun("Крабсбургер",300F);
+        String nameBun = "Крабсбургер";
+        String nameSauce = "mayonnaise";
+        String nameFilling = "salad";
+        bun = new Bun(nameBun, 300F);
         burger.setBuns(bun);
-        burger.addIngredient(new Ingredient(IngredientType.SAUCE, "mayonnaise", 100));
-        burger.addIngredient(new Ingredient(IngredientType.FILLING, "salad", 50));
-        String expectedResult = "(==== Крабсбургер ====)\n"
-                + "= sauce mayonnaise =\n"
-                + "= filling salad =\n"
-                + "(==== Крабсбургер ====)\n"
-                + "\nPrice: 750,000000\n";
+        burger.addIngredient(new Ingredient(IngredientType.SAUCE, nameSauce, 100));
+        burger.addIngredient(new Ingredient(IngredientType.FILLING, nameFilling, 50));
+        String expectedResult = String.join(
+                "\n",
+                String.format("(==== %s ====)", nameBun),
+                String.format("= sauce %s =", nameSauce),
+                String.format("= filling %s =", nameFilling),
+                String.format("(==== %s ====)", nameBun),
+                "\nPrice: 750,000000\n"
+                );
+
+//                String.format()
+//                "(==== Крабсбургер ====)\n"
+//                + "= sauce mayonnaise =\n"
+//                + "= filling salad =\n"
+//                + "(==== Крабсбургер ====)\n"
+//                + "\nPrice: 750,000000\n";
         String actualResult = burger.getReceipt();
         expectedResult = expectedResult.replaceAll("\n", "").replaceAll("\r", "");
         actualResult = actualResult.replaceAll("\n", "").replaceAll("\r", "");
