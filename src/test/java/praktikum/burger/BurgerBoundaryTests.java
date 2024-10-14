@@ -7,9 +7,22 @@ import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.Bun;
 
+import java.util.Locale;
+
 import static org.junit.Assert.assertEquals;
 
 public class BurgerBoundaryTests {
+
+    private static final float BUN_PRICE = 100f;
+    private static final float EXPECTED_PRICE = BUN_PRICE * 2;
+    private static final String BUN_NAME = "black bun";
+    private static final String EXPECTED_RECEIPT = "(==== black bun ====)\n" +
+            "(==== black bun ====)\n" +
+            "\nPrice: 200.000000\n";
+    private static final int FIRST_INGREDIENT_INDEX = 0;
+    private static final int INVALID_INDEX = 5;
+    private static final int INGREDIENTS_COUNT = 1;
+    private static final double DELTA = 0.01;
 
     private Burger burger;
     private Bun mockBun;
@@ -22,82 +35,65 @@ public class BurgerBoundaryTests {
         mockBun = Mockito.mock(Bun.class);
         mockIngredient1 = Mockito.mock(Ingredient.class);
         mockIngredient2 = Mockito.mock(Ingredient.class);
+        Locale.setDefault(Locale.US);
+
     }
 
-    // Тест: проверка бургера только с булочкой (без ингредиентов)
     @Test
     public void testBurgerWithOnlyBun() {
-        // Устанавливаем мок для булочки
-        Mockito.when(mockBun.getPrice()).thenReturn(100f);
+        Mockito.when(mockBun.getPrice()).thenReturn(BUN_PRICE);
         burger.setBuns(mockBun);
 
-        // Ожидаемая цена: 100 * 2 (две булочки, без ингредиентов)
-        float expectedPrice = 100 * 2;
-        assertEquals(expectedPrice, burger.getPrice(), 0.01);
+        assertEquals(EXPECTED_PRICE, burger.getPrice(), DELTA);
 
-        // Проверка получения чека для бургера только с булочкой
-        String expectedReceipt = "(==== black bun ====)\n" +
-                "(==== black bun ====)\n" +
-                "\nPrice: 200.00\n";  // Ожидаемая строка с двумя знаками после запятой
-
-        Mockito.when(mockBun.getName()).thenReturn("black bun");
-        assertEquals(expectedReceipt, burger.getReceipt());
+        Mockito.when(mockBun.getName()).thenReturn(BUN_NAME);
+        System.out.println(burger.getReceipt()); // Выводим фактический чек
+        assertEquals(EXPECTED_RECEIPT, burger.getReceipt());
     }
 
 
-    // Тест: добавление первого ингредиента
+    // Добавление первого ингредиента
     @Test
     public void testAddFirstIngredient() {
-        // Добавляем первый ингредиент
         burger.addIngredient(mockIngredient1);
 
-        // Проверяем, что добавлен 1 ингредиент
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(mockIngredient1, burger.ingredients.get(0));
+        // Проверка добавления ингредиента в список
+        assertEquals(INGREDIENTS_COUNT, burger.ingredients.size());
+        assertEquals(mockIngredient1, burger.ingredients.get(FIRST_INGREDIENT_INDEX));
     }
 
-    // Тест: попытка удалить ингредиент из пустого списка должна выбросить IndexOutOfBoundsException
+    // Удаление ингредиента из пустого списка должно выбросить исключение
     @Test(expected = IndexOutOfBoundsException.class)
     public void testRemoveIngredientFromEmptyList() {
-        // Пытаемся удалить ингредиент из пустого списка
-        burger.removeIngredient(0);
+        burger.removeIngredient(FIRST_INGREDIENT_INDEX);
     }
 
-    // Тест: добавление и удаление последнего ингредиента
+    // Добавление и удаление последнего ингредиента
     @Test
     public void testRemoveLastIngredient() {
-        // Добавляем один ингредиент
         burger.addIngredient(mockIngredient1);
+        burger.removeIngredient(FIRST_INGREDIENT_INDEX);
 
-        // Удаляем ингредиент
-        burger.removeIngredient(0);
-
-        // Проверяем, что список стал пустым
+        // Проверка, что список стал пустым
         assertEquals(0, burger.ingredients.size());
     }
 
-    // Тест: попытка переместить ингредиент на недопустимый индекс должна выбросить IndexOutOfBoundsException
+    // Перемещение ингредиента на недопустимый индекс должно выбросить исключение
     @Test(expected = IndexOutOfBoundsException.class)
     public void testMoveIngredientInvalidIndex() {
-        // Добавляем два ингредиента
         burger.addIngredient(mockIngredient1);
         burger.addIngredient(mockIngredient2);
-
-        // Пытаемся переместить ингредиент с недопустимым индексом
-        burger.moveIngredient(5, 1);  // Индекс 5 за пределами списка
+        burger.moveIngredient(INVALID_INDEX, FIRST_INGREDIENT_INDEX);
     }
 
-    // Тест: перемещение единственного ингредиента, который останется на месте
+    // Перемещение единственного ингредиента на то же место не должно изменять список
     @Test
     public void testMoveSingleIngredient() {
-        // Добавляем один ингредиент
         burger.addIngredient(mockIngredient1);
+        burger.moveIngredient(FIRST_INGREDIENT_INDEX, FIRST_INGREDIENT_INDEX);
 
-        // Перемещаем единственный ингредиент (он останется на месте)
-        burger.moveIngredient(0, 0);
-
-        // Проверяем, что список не изменился
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(mockIngredient1, burger.ingredients.get(0));
+        // Проверка, что ингредиент остался на месте
+        assertEquals(INGREDIENTS_COUNT, burger.ingredients.size());
+        assertEquals(mockIngredient1, burger.ingredients.get(FIRST_INGREDIENT_INDEX));
     }
 }

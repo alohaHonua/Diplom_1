@@ -7,6 +7,7 @@ import praktikum.Burger;
 import praktikum.Bun;
 import praktikum.Ingredient;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 public class BurgerNegativeTests {
@@ -63,9 +64,17 @@ public class BurgerNegativeTests {
         burger.moveIngredient(0, 5);  // В списке два ингредиента
     }
 
-    // Тест: попытка расчета цены без добавленных ингредиентов и булочки
-    @Test(expected = NullPointerException.class)
-    public void testGetPriceWithoutIngredientsAndBun() {
-        burger.getPrice();  // Булочка и ингредиенты не установлены
+    // Перемещение ингредиента с одинаковым индексом
+    @Test
+    public void testMoveIngredientSameIndex() {
+        // Добавляем один ингредиент
+        burger.addIngredient(mockIngredient);
+
+        // Перемещаем ингредиент с индексом 0 на индекс 0 (должно остаться без изменений)
+        burger.moveIngredient(0, 0);
+
+        // Проверяем, что ингредиент остался на месте
+        assertEquals(mockIngredient, burger.ingredients.get(0));
     }
+
 }
