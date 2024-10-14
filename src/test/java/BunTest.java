@@ -5,8 +5,8 @@ import praktikum.Bun;
 
 public class BunTest {
 
-    private static final String BUN_NAME = "Cat";
-    private static final float BUN_PRICE = 1.5f;
+    private static final String BUN_NAME = "black bun";
+    private static final float BUN_PRICE = 1.9f;
     private static final float DELTA = 0000.1f;
 
     private Bun bun;
