@@ -4,9 +4,6 @@ import org.junit.runners.Parameterized;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
-import java.util.Arrays;
-import java.util.Collection;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -24,11 +21,11 @@ public class IngredientTest {
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {
+    public static Object[][] data() {
+        return new Object[][] {
                 { IngredientType.SAUCE, "Ketchup", 50.0f },
                 { IngredientType.FILLING, "Cheese", 30.0f }
-        });
+        };
     }
 
     @Test
