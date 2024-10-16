@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import praktikum.Burger;
 import praktikum.Ingredient;
+import praktikum.TestConstants;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,13 +25,15 @@ public class BurgerRemoveIngredientTest {
         burger.addIngredient(mockIngredient2);
     }
 
+    // Проверка удаления ингредиента и корректного обновления списка ингредиентов
     @Test
     public void testRemoveIngredient() {
         // Удаляем первый ингредиент
-        burger.removeIngredient(0);
+        burger.removeIngredient(TestConstants.FIRST_INDEX);
 
-        // Проверяем, что остался только один ингредиент
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(mockIngredient2, burger.ingredients.get(0));
+        // Проверяем, что остался только один ингредиент - размер списка ингредиентов уменьшился на один после удаления.
+        assertEquals(TestConstants.EXPECTED_INGREDIENTS_COUNT_AFTER_REMOVAL, burger.ingredients.size());
+        // Проверяем, что оставшийся ингредиент находится на первом месте, то есть удаление сработало правильно, и список ингредиентов был корректно обновлен.
+        assertEquals(mockIngredient2, burger.ingredients.get(TestConstants.FIRST_INDEX));
     }
 }

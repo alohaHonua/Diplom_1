@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import praktikum.Burger;
 import praktikum.Ingredient;
+import praktikum.TestConstants;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,14 +25,14 @@ public class BurgerMoveIngredientTest {
         burger.addIngredient(mockIngredient1);
         burger.addIngredient(mockIngredient2);
     }
-
+    // Перемещение ингредиента должно корректно изменять порядок ингредиентов в списке
     @Test
     public void testMoveIngredient() {
         // Перемещаем второй ингредиент на первую позицию
-        burger.moveIngredient(1, 0);
+        burger.moveIngredient(TestConstants.SECOND_INDEX, TestConstants.FIRST_INDEX);
 
         // Проверяем, что ингредиенты поменялись местами
-        assertEquals(mockIngredient2, burger.ingredients.get(0));
-        assertEquals(mockIngredient1, burger.ingredients.get(1));
+        assertEquals(mockIngredient2, burger.ingredients.get(TestConstants.FIRST_INDEX));
+        assertEquals(mockIngredient1, burger.ingredients.get(TestConstants.SECOND_INDEX));
     }
 }

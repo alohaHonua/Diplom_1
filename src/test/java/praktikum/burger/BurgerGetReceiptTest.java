@@ -6,7 +6,9 @@ import org.mockito.Mockito;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
-import praktikum.IngredientType;
+import praktikum.TestConstants;
+
+import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,29 +25,23 @@ public class BurgerGetReceiptTest {
         mockIngredient = Mockito.mock(Ingredient.class);
 
         // Настраиваем моки
-        Mockito.when(mockBun.getName()).thenReturn("black bun");
-        Mockito.when(mockBun.getPrice()).thenReturn(100f);
-        Mockito.when(mockIngredient.getName()).thenReturn("cutlet");
-        Mockito.when(mockIngredient.getType()).thenReturn(IngredientType.FILLING);
-        Mockito.when(mockIngredient.getPrice()).thenReturn(200f);
+        Mockito.when(mockBun.getName()).thenReturn(TestConstants.BLACK_BUN_NAME);
+        Mockito.when(mockBun.getPrice()).thenReturn(TestConstants.BLACK_BUN_PRICE);
+        Mockito.when(mockIngredient.getName()).thenReturn(TestConstants.INGREDIENT2_NAME);
+        Mockito.when(mockIngredient.getType()).thenReturn(TestConstants.INGREDIENT2_TYPE);
+        Mockito.when(mockIngredient.getPrice()).thenReturn(TestConstants.INGREDIENT2_PRICE);
 
         // Собираем бургер
         burger.setBuns(mockBun);
         burger.addIngredient(mockIngredient);
-    }
 
+        // Устанавливаем локаль для корректного отображения формата цены
+        Locale.setDefault(Locale.US);
+    }
+    // Проверка правильности чека для бургера с ингредиентом
     @Test
-    public void testGetReceipt() {
-        String expectedReceipt = "(==== black bun ====)\n" +
-                "= filling cutlet =\n" +
-                "(==== black bun ====)\n" +
-                "\nPrice: 400.00\n";  // Ожидаемая строка с двумя знаками после запятой
-
-        // Получаем реальный результат
-        String actualReceipt = burger.getReceipt();
-        System.out.println("Actual receipt:\n" + actualReceipt);
-
-        // Проверяем корректность рецепта
-        assertEquals(expectedReceipt, actualReceipt);
+    public void testGetReceiptWithIngredient() {
+        assertEquals(TestConstants.EXPECTED_RECEIPT_WITH_INGREDIENT, burger.getReceipt());
     }
+
 }

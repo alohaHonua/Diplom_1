@@ -2,19 +2,25 @@ package praktikum.ingredient;
 
 import org.junit.Test;
 import praktikum.Ingredient;
-import praktikum.IngredientType;
+import praktikum.TestConstants;
+
+import static org.junit.Assert.assertThrows;
 
 public class IngredientNegativeTest {
 
-    // Тест: создание ингредиента с отрицательной ценой должно выбрасывать исключение
-    @Test(expected = IllegalArgumentException.class)
+    // Создание ингредиента с отрицательной ценой должно выбросить IllegalArgumentException
+    @Test
     public void testCreateIngredientWithNegativePrice() {
-        new Ingredient(IngredientType.FILLING, "Invalid Ingredient", -10);
+        assertThrows(IllegalArgumentException.class, () ->
+                new Ingredient(TestConstants.INGREDIENT2_TYPE, TestConstants.INGREDIENT2_NAME, TestConstants.INVALID_PRICE)
+        );
     }
 
-    // Тест: создание ингредиента с пустым именем должно выбрасывать исключение
-    @Test(expected = IllegalArgumentException.class)
+    // Создание ингредиента с пустым именем должно выбросить IllegalArgumentException
+    @Test
     public void testCreateIngredientWithEmptyName() {
-        new Ingredient(IngredientType.SAUCE, "", 50);
+        assertThrows(IllegalArgumentException.class, () ->
+                new Ingredient(TestConstants.INGREDIENT1_TYPE, TestConstants.EMPTY_INGREDIENT_NAME, TestConstants.INGREDIENT1_PRICE)
+        );
     }
 }

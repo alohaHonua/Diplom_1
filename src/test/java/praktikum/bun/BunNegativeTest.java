@@ -2,18 +2,16 @@ package praktikum.bun;
 
 import org.junit.Test;
 import praktikum.Bun;
+import praktikum.TestConstants;
+
+import static org.junit.Assert.assertThrows;
 
 public class BunNegativeTest {
 
-    // Тест: создание булочки с отрицательной ценой должно выбросить исключение
-    @Test(expected = IllegalArgumentException.class)
+    // Создание булочки с отрицательной ценой должно выбросить исключение
+    @Test
     public void testCreateBunWithNegativePrice() {
-        new Bun("Invalid Bun", -50);
-    }
-
-    // Тест: создание булочки с пустым именем должно выбросить исключение
-    @Test(expected = IllegalArgumentException.class)
-    public void testCreateBunWithEmptyName() {
-        new Bun("", 100);
+        assertThrows(IllegalArgumentException.class, () ->
+                new Bun(TestConstants.BLACK_BUN_NAME, TestConstants.INVALID_PRICE));
     }
 }

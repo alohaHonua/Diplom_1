@@ -1,31 +1,64 @@
 package praktikum.ingredient;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
+import praktikum.TestConstants;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(Parameterized.class)
 public class IngredientTest {
 
-    // Тест: проверка получения имени ингредиента
+    private final IngredientType type;
+    private final String name;
+    private final float price;
+    private final float expectedPrice;
+
+    private Ingredient ingredient;
+
+    public IngredientTest(IngredientType type, String name, float price, float expectedPrice) {
+        this.type = type;
+        this.name = name;
+        this.price = price;
+        this.expectedPrice = expectedPrice;
+    }
+
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][]{
+                {TestConstants.INGREDIENT1_TYPE, TestConstants.INGREDIENT1_NAME, TestConstants.INGREDIENT1_PRICE, TestConstants.INGREDIENT1_PRICE},
+                {TestConstants.INGREDIENT2_TYPE, TestConstants.INGREDIENT2_NAME, TestConstants.INGREDIENT2_PRICE, TestConstants.INGREDIENT2_PRICE},
+                {TestConstants.INGREDIENT3_TYPE, TestConstants.INGREDIENT3_NAME, TestConstants.INGREDIENT3_PRICE, TestConstants.INGREDIENT3_PRICE}
+        });
+    }
+
+    @Before
+    public void setUp() {
+        ingredient = new Ingredient(type, name, price);
+    }
+
+    // Проверка имени ингредиента
     @Test
     public void testGetIngredientName() {
-        Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "Ketchup", 100);
-        assertEquals("Ketchup", ingredient.getName());
+        assertEquals(name, ingredient.getName());
     }
 
-    // Тест: проверка получения типа ингредиента
+    // Проверка типа ингредиента
     @Test
     public void testGetIngredientType() {
-        Ingredient ingredient = new Ingredient(IngredientType.FILLING, "Chicken", 150);
-        assertEquals(IngredientType.FILLING, ingredient.getType());
+        assertEquals(type, ingredient.getType());
     }
 
-    // Тест: проверка получения цены ингредиента
+    // Проверка цены ингредиента
     @Test
     public void testGetIngredientPrice() {
-        Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "Mayo", 50);
-        assertEquals(50, ingredient.getPrice(), 0.01);
+        assertEquals(expectedPrice, ingredient.getPrice(), TestConstants.DELTA);
     }
 }
