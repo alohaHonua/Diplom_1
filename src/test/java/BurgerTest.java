@@ -1,4 +1,5 @@
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -7,13 +8,15 @@ import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
-
+import praktikum.IngredientType;
 import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 
 public class BurgerTest {
+
+    private Burger burger;
 
     @Mock
     Bun bun;
@@ -22,11 +25,15 @@ public class BurgerTest {
     @Mock
     List<Ingredient> ingredients;
 
+    @Before
+    public void setUp() {
+        burger = new Burger();
+    }
+
     @Test
     public void setBunTest() {
         Mockito.when(bun.getName()).thenReturn(Credentials.BUN_NAME);
         Mockito.when(bun.getPrice()).thenReturn(Credentials.BUN_PRICE);
-        Burger burger = new Burger();
         burger.setBuns(bun);
         Assert.assertEquals(Credentials.BUN_NAME, bun.getName());
         Assert.assertEquals(Credentials.BUN_PRICE, bun.getPrice(), Credentials.DELTA);
@@ -35,44 +42,58 @@ public class BurgerTest {
 
     @Test
     public void addIngredientTest() {
-        Burger burger = new Burger();
         burger.ingredients = ingredients;
         burger.addIngredient(ingredient);
-        Mockito.verify(ingredients, Mockito.times(1)).add(ingredient);
+        Mockito.verify(ingredients, Mockito.times(Credentials.MIN_ITERATIONS)).add(ingredient);
     }
 
     @Test
     public void removeIngredientTest() {
-        Burger burger = new Burger();
         burger.ingredients = ingredients;
         burger.removeIngredient(Credentials.INDEX);
-        Mockito.verify(ingredients, Mockito.times(1)).remove(Credentials.INDEX);
+        Mockito.verify(ingredients, Mockito.times(Credentials.MIN_ITERATIONS)).remove(Credentials.INDEX);
     }
 
     @Test
     public void moveIngredientTest() {
-        Burger burger = new Burger();
         burger.ingredients = ingredients;
         burger.moveIngredient(Credentials.INDEX, Credentials.NEW_INDEX);
-        Mockito.verify(ingredients, Mockito.times(1))
+        Mockito.verify(ingredients, Mockito.times(Credentials.MIN_ITERATIONS))
                 .add(Credentials.NEW_INDEX, ingredients.remove(Credentials.INDEX));
     }
 
     @Test
     public void getPriceTest() {
-        Burger burger = new Burger();
         burger.setBuns(bun);
         Mockito.when(bun.getPrice()).thenReturn(Credentials.BUN_PRICE);
         List<Ingredient> ingredients = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < Credentials.MAX_ITERATIONS; i++) {
             ingredients.add(ingredient);
         }
         burger.ingredients = ingredients;
         Mockito.when(ingredient.getPrice()).thenReturn(Credentials.INGREDIENT_PRICE);
         burger.getPrice();
-        Mockito.verify(ingredient, Mockito.times(5)).getPrice();
+        Mockito.verify(ingredient, Mockito.times(Credentials.MAX_ITERATIONS)).getPrice();
         Assert.assertEquals(Credentials.TOTAL_PRICE, burger.getPrice(), Credentials.DELTA);
 
+    }
+
+
+    @Test
+    public void getReceiptTest() {
+        burger.setBuns(bun);
+        Mockito.when(ingredient.getType()).thenReturn(IngredientType.SAUCE);
+        Mockito.when(ingredient.getName()).thenReturn(Credentials.INGREDIENT_NAME);
+        Mockito.when(bun.getName()).thenReturn(Credentials.BUN_NAME);
+        Mockito.when(bun.getPrice()).thenReturn(Credentials.BUN_PRICE);
+        for (int i = 0; i < Credentials.MAX_ITERATIONS; i++) {
+            burger.addIngredient(ingredient);
+        }
+        burger.getReceipt();
+        Mockito.verify(ingredient, Mockito.times(Credentials.MAX_ITERATIONS)).getType();
+        Mockito.verify(ingredient, Mockito.times(Credentials.MAX_ITERATIONS)).getName();
+        Mockito.verify(bun, Mockito.times(2)).getName();
+        Mockito.verify(bun, Mockito.times(Credentials.MIN_ITERATIONS)).getPrice();
     }
 
 }
