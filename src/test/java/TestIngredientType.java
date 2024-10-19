@@ -1,7 +1,6 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 import praktikum.IngredientType;
-
 public class TestIngredientType {
 
     @Test

@@ -1,12 +1,6 @@
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import praktikum.Database;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
-
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 
 
