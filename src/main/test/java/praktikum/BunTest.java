@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-// Создаем класс BunTest, который будет содержать тесты для класса Bun
+// Создаю класс BunTest который будет содержать тесты для класса Bun
 public class BunTest {
     private Bun bun;
 
