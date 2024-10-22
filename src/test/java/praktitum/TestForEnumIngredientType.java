@@ -42,6 +42,7 @@ public class TestForEnumIngredientType {
 
     @Test
     public void testIngredientTypeName() {
-        assertEquals(expectedIngredientTypeName, ingredientType.name());
+//        assertEquals(expectedIngredientTypeName, ingredientType.name());
+        assertEquals(IngredientType.valueOf(expectedIngredientTypeName), ingredientType);
     }
 }
