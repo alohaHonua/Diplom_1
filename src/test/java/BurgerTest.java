@@ -9,7 +9,6 @@ import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
-import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -66,11 +65,10 @@ public class BurgerTest {
     public void getPriceTest() {
         burger.setBuns(bun);
         Mockito.when(bun.getPrice()).thenReturn(Credentials.BUN_PRICE);
-        List<Ingredient> ingredients = new ArrayList<>();
+        // Наполняем ингредиентами список ingredients
         for (int i = 0; i < Credentials.MAX_ITERATIONS; i++) {
-            ingredients.add(ingredient);
+            burger.addIngredient(ingredient);
         }
-        burger.ingredients = ingredients;
         Mockito.when(ingredient.getPrice()).thenReturn(Credentials.INGREDIENT_PRICE);
         burger.getPrice();
         Mockito.verify(ingredient, Mockito.times(Credentials.MAX_ITERATIONS)).getPrice();
@@ -86,6 +84,7 @@ public class BurgerTest {
         Mockito.when(ingredient.getName()).thenReturn(Credentials.INGREDIENT_NAME);
         Mockito.when(bun.getName()).thenReturn(Credentials.BUN_NAME);
         Mockito.when(bun.getPrice()).thenReturn(Credentials.BUN_PRICE);
+        // Наполняем ингредиентами список ingredients
         for (int i = 0; i < Credentials.MAX_ITERATIONS; i++) {
             burger.addIngredient(ingredient);
         }
