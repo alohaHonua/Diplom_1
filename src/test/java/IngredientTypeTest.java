@@ -8,21 +8,23 @@ import praktikum.IngredientType;
 public class IngredientTypeTest {
 
     private final IngredientType type;
+    private final IngredientType expected;
 
-    public IngredientTypeTest(IngredientType type) {
+    public IngredientTypeTest(IngredientType type, IngredientType expected) {
         this.type = type;
+        this.expected = expected;
     }
 
     @Parameterized.Parameters
     public static Object[][] ingredientTypeValues() {
         return new Object[][] {
-                {IngredientType.SAUCE},
-                {IngredientType.FILLING},
+                {IngredientType.SAUCE, IngredientType.valueOf("SAUCE")},
+                {IngredientType.FILLING, IngredientType.valueOf("FILLING")},
         };
     }
 
     @Test
     public void ingredientTypeTest() {
-        Assert.assertNotNull(type);
+        Assert.assertEquals(expected, type);
     }
 }

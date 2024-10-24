@@ -94,6 +94,9 @@ public class BurgerTest {
         Mockito.verify(ingredient, Mockito.times(Credentials.MAX_ITERATIONS)).getName();
         Mockito.verify(bun, Mockito.times(2)).getName();
         Mockito.verify(bun, Mockito.times(Credentials.MIN_ITERATIONS)).getPrice();
+        String expected = String.format("(==== black bun ====)%n= sauce hot sauce =%n= sauce hot sauce =%n= sauce hot sauce =" +
+                "%n= sauce hot sauce =%n= sauce hot sauce =%n(==== black bun ====)%n%nPrice: 200,000000%n");
+        Assert.assertEquals(expected, burger.getReceipt());
     }
 
 }
