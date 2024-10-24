@@ -27,12 +27,15 @@ public class BurgerTest {
     @Before
     public void setUp() {
         burger = new Burger();
+        Mockito.when(bun.getName()).thenReturn(Credentials.BUN_NAME);
+        Mockito.when(bun.getPrice()).thenReturn(Credentials.BUN_PRICE);
+        Mockito.when(ingredient.getPrice()).thenReturn(Credentials.INGREDIENT_PRICE);
+        Mockito.when(ingredient.getType()).thenReturn(IngredientType.SAUCE);
+        Mockito.when(ingredient.getName()).thenReturn(Credentials.INGREDIENT_NAME);
     }
 
     @Test
     public void setBunTest() {
-        Mockito.when(bun.getName()).thenReturn(Credentials.BUN_NAME);
-        Mockito.when(bun.getPrice()).thenReturn(Credentials.BUN_PRICE);
         burger.setBuns(bun);
         Assert.assertEquals(Credentials.BUN_NAME, bun.getName());
         Assert.assertEquals(Credentials.BUN_PRICE, bun.getPrice(), Credentials.DELTA);
@@ -64,12 +67,10 @@ public class BurgerTest {
     @Test
     public void getPriceTest() {
         burger.setBuns(bun);
-        Mockito.when(bun.getPrice()).thenReturn(Credentials.BUN_PRICE);
         // Наполняем ингредиентами список ingredients
         for (int i = 0; i < Credentials.MAX_ITERATIONS; i++) {
             burger.addIngredient(ingredient);
         }
-        Mockito.when(ingredient.getPrice()).thenReturn(Credentials.INGREDIENT_PRICE);
         burger.getPrice();
         Mockito.verify(ingredient, Mockito.times(Credentials.MAX_ITERATIONS)).getPrice();
         Assert.assertEquals(Credentials.TOTAL_PRICE, burger.getPrice(), Credentials.DELTA);
@@ -80,10 +81,6 @@ public class BurgerTest {
     @Test
     public void getReceiptTest() {
         burger.setBuns(bun);
-        Mockito.when(ingredient.getType()).thenReturn(IngredientType.SAUCE);
-        Mockito.when(ingredient.getName()).thenReturn(Credentials.INGREDIENT_NAME);
-        Mockito.when(bun.getName()).thenReturn(Credentials.BUN_NAME);
-        Mockito.when(bun.getPrice()).thenReturn(Credentials.BUN_PRICE);
         // Наполняем ингредиентами список ingredients
         for (int i = 0; i < Credentials.MAX_ITERATIONS; i++) {
             burger.addIngredient(ingredient);
@@ -94,8 +91,9 @@ public class BurgerTest {
         Mockito.verify(bun, Mockito.times(2)).getName();
         Mockito.verify(bun, Mockito.times(Credentials.MIN_ITERATIONS)).getPrice();
         String expected = String.format("(==== black bun ====)%n= sauce hot sauce =%n= sauce hot sauce =%n= sauce hot sauce =" +
-                "%n= sauce hot sauce =%n= sauce hot sauce =%n(==== black bun ====)%n%nPrice: 200,000000%n");
+                "%n= sauce hot sauce =%n= sauce hot sauce =%n(==== black bun ====)%n%nPrice: 250,000000%n");
         Assert.assertEquals(expected, burger.getReceipt());
+        System.out.println(burger.getReceipt());
     }
 
 }
