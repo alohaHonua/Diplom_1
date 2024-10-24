@@ -93,7 +93,6 @@ public class BurgerTest {
         String expected = String.format("(==== black bun ====)%n= sauce hot sauce =%n= sauce hot sauce =%n= sauce hot sauce =" +
                 "%n= sauce hot sauce =%n= sauce hot sauce =%n(==== black bun ====)%n%nPrice: 250,000000%n");
         Assert.assertEquals(expected, burger.getReceipt());
-        System.out.println(burger.getReceipt());
     }
 
 }
