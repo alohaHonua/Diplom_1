@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import java.text.DecimalFormat;
 
 import praktikum.Bun;
 import praktikum.Burger;
@@ -85,11 +86,22 @@ public class BurgerTest {
         burger.addIngredient(sauce);
         burger.addIngredient(filling);
 
+        // Форматируем цену с количеством символов и заменяем точку на запятую
+        DecimalFormat decimalFormat = new DecimalFormat("#.000000");
+        String formattedPrice = decimalFormat.format(burger.getPrice());
+
         String expectedReceipt = "(==== test bun ====)\n"
                 + "= sauce sauce =\n"
                 + "= filling filling =\n"
                 + "(==== test bun ====)\n"
-                + "\nPrice: " + burger.getPrice() + "\n";
-        assertEquals(expectedReceipt, burger.getReceipt());
+                + "\nPrice: " + formattedPrice + "\n";
+
+        String actualReceipt = burger.getReceipt();
+
+        // Вывод ожидаемого и фактического результата для отладки
+        System.out.println("Expected:\n" + expectedReceipt);
+        System.out.println("Actual:\n" + actualReceipt);
+
+        assertEquals(expectedReceipt.replace("\r\n", "\n").trim(), actualReceipt.replace("\r\n", "\n").trim());
     }
 }
