@@ -102,7 +102,5 @@ public class TestForBurgerWithMock {
         burger.addIngredient(mockForIngredient1);
         burger.addIngredient(mockForIngredient2);
         assertEquals(expectedReceipt, burger.getReceipt());
-//        System.out.println(expectedReceipt);
-//        System.out.println(burger.getReceipt());
     }
 }
