@@ -7,20 +7,6 @@ import praktikum.IngredientType;
 
 import static org.junit.Assert.assertEquals;
 
-//public class TestForEnumIngredientType {
-
-//    @Test
-//    public void testSauce() {
-//        assertEquals("SAUCE", IngredientType.SAUCE.name());
-//    }
-
-//    @Test
-//    public void testFilling() {
-//        assertEquals("FILLING", IngredientType.FILLING.name());
-//    }
-//}
-
-
 @RunWith(Parameterized.class)
 public class TestForEnumIngredientType {
 
@@ -42,7 +28,6 @@ public class TestForEnumIngredientType {
 
     @Test
     public void testIngredientTypeName() {
-//        assertEquals(expectedIngredientTypeName, ingredientType.name());
         assertEquals(IngredientType.valueOf(expectedIngredientTypeName), ingredientType);
     }
 }
