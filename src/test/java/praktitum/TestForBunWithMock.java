@@ -19,25 +19,10 @@ public class TestForBunWithMock {
         mockForBun.getName();
         Mockito.verify(mockForBun, Mockito.times(1)).getName();
     }
-//    Избыточный тест, проверенно в TestForBunWithParameterized()
-//    @Test
-//    public void testGetNameMethodWithStub(){
-//        Mockito.when(mockForBun.getName()).thenReturn("black bun");
-//        assertEquals("black bun", mockForBun.getName());
-//    }
 
     @Test
     public void testGetPriceMethodWithMock(){
         mockForBun.getPrice();
         Mockito.verify(mockForBun, Mockito.times(1)).getPrice();
     }
-
-//    Избыточный тест, проверенно в TestForBunWithParameterized()
-//    @Test
-//    public void testGetPriceMethodWithStub(){
-//        Mockito.when(mockForBun.getPrice()).thenReturn(100);
-//        assertEquals(100, mockForBun.getPrice(), 0);
-//    }
-
-
 }
