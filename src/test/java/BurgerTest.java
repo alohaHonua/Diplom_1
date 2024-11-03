@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 @RunWith(Parameterized.class)
 public class BurgerTest {
@@ -28,41 +29,33 @@ public class BurgerTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.SAUCE, "Spicy-X", 90)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.SAUCE, "Фирменный Space Sauce", 80)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.SAUCE, "Традиционный галактический", 15)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.SAUCE, "С шипами Антарианского плоскоходца", 88)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.FILLING, "Мясо бессмертных моллюсков Protostomia", 1337)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.FILLING, "Говяжий метеорит (отбивная)", 3000)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.FILLING, "Биокотлета из марсианской Магнолии", 424)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.FILLING, "Филе Люминесцентного тетраодонтимформа", 988)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.FILLING, "Хрустящие минеральные кольца", 300)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.FILLING, "Плоды Фалленианского дерева", 874)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.FILLING, "Кристаллы марсианских альфа-сахаридов", 762)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.FILLING, "Мини-салат Экзо-Плантаго", 4400)},
-                {new Bun("Флюоресцентная булка R2-D3", 988), new Ingredient(IngredientType.FILLING, "Сыр с астероидной плесенью", 4142)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.SAUCE, "Spicy-X", 90)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.SAUCE, "Фирменный Space Sauce", 80)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.SAUCE, "Традиционный галактический", 15)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.SAUCE, "С шипами Антарианского плоскоходца", 88)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.FILLING, "Мясо бессмертных моллюсков Protostomia", 1337)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.FILLING, "Говяжий метеорит (отбивная)", 3000)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.FILLING, "Биокотлета из марсианской Магнолии", 424)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.FILLING, "Филе Люминесцентного тетраодонтимформа", 988)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.FILLING, "Хрустящие минеральные кольца", 300)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.FILLING, "Плоды Фалленианского дерева", 874)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.FILLING, "Кристаллы марсианских альфа-сахаридов", 762)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.FILLING, "Мини-салат Экзо-Плантаго", 4400)},
-                {new Bun("Краторная булка N-200i", 1255), new Ingredient(IngredientType.FILLING, "Сыр с астероидной плесенью", 4142)}
+                {mockBun("Флюоресцентная булка R2-D3", 988), mockIngredient(IngredientType.SAUCE, "Spicy-X", 90)},
+                {mockBun("Флюоресцентная булка R2-D3", 988), mockIngredient(IngredientType.FILLING, "Мясо бессмертных моллюсков Protostomia", 1337)},
+                {mockBun("Флюоресцентная булка R2-D3", 988), mockIngredient(IngredientType.SAUCE, "Традиционный галактический", 15)},
+                {mockBun("Флюоресцентная булка R2-D3", 988), mockIngredient(IngredientType.SAUCE, "С шипами Антарианского плоскоходца", 88)},
         });
+    }
+
+    private static Ingredient mockIngredient(IngredientType type, String name, float price) {
+        Ingredient mockIngredient = mock(Ingredient.class);
+        when(mockIngredient.getType()).thenReturn(type);
+        when(mockIngredient.getName()).thenReturn(name);
+        when(mockIngredient.getPrice()).thenReturn(price);
+        return mockIngredient;
+    }
+
+    private static Bun mockBun(String name, float price) {
+        Bun mockBun = mock(Bun.class);
+        when(mockBun.getName()).thenReturn(name);
+        when(mockBun.getPrice()).thenReturn(price);
+        return mockBun;
     }
 
     @Before
     public void setUp() {
         burger = new Burger(); // Создаем бургер
-        burger.setBuns(bun); //добавляем булочку
+        burger.setBuns(bun); // Добавляем булочку
     }
-
 
     @Test // Проверяем, что ингредиент добавляется в бургер
     public void testAddIngredient() {
@@ -87,7 +80,7 @@ public class BurgerTest {
     @Test // Проверяем, что ингредиент перемещается в бургер
     public void testMoveIngredient() {
         burger.addIngredient(ingredient); // Добавляем ингредиент
-        Ingredient secondIngredient = new Ingredient(IngredientType.FILLING, "Говяжий метеорит (отбивная)", 3000);
+        Ingredient secondIngredient = mockIngredient(IngredientType.FILLING, "Говяжий метеорит (отбивная)", 3000);
         burger.addIngredient(secondIngredient); // Добавляем второй ингредиент
 
         burger.moveIngredient(0, 1); // Перемещаем первый ингредиент на вторую позицию
