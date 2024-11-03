@@ -41,17 +41,22 @@ public class Burger {
     }
 
     public String getReceipt() {
-        StringBuilder receipt = new StringBuilder(String.format("(==== %s ====)%n", bun.getName()));
+        StringBuilder receipt = new StringBuilder(String.format("(==== %s ====)\n", bun.getName()));
 
         for (Ingredient ingredient : ingredients) {
-            receipt.append(String.format("= %s %s =%n", ingredient.getType().toString().toLowerCase(),
-                    ingredient.getName()));
+            // Проверка типа ингредиента и вывод на русском
+            String typeInRussian;
+            if (ingredient.getType() == IngredientType.SAUCE) {
+                typeInRussian = "Соус:"; // Для соусов
+            } else {
+                typeInRussian = "Начинка:"; // Для начинок
+            }
+            receipt.append(String.format("= %s %s =\n", typeInRussian, ingredient.getName()));
         }
 
-        receipt.append(String.format("(==== %s ====)%n", bun.getName()));
-        receipt.append(String.format("%nPrice: %f%n", getPrice()));
+        receipt.append(String.format("(==== %s ====)\n", bun.getName()));
+        receipt.append(String.format("\nЦена: %.2f", getPrice()));
 
         return receipt.toString();
     }
-
 }
