@@ -81,4 +81,3 @@ public class BurgerTests {
         assertEquals(expectedReceipt, burger.getReceipt());
     }
 }
-
