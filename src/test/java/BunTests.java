@@ -1,8 +1,7 @@
+import org.junit.Assert;
 import org.junit.Test;
 import praktikum.Bun;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 public class BunTests {
 
@@ -14,9 +13,9 @@ public class BunTests {
 
         Bun bun = new Bun(name, price);
 
-        assertNotNull(bun);
-        assertEquals(name, bun.getName());
-        assertEquals(price, bun.getPrice(), 0.0001f);
+        Assert.assertNotNull(bun);
+        Assert.assertEquals(name, bun.getName());
+        Assert.assertEquals(price, bun.getPrice(), 0.0001f);
     }
 
     @Test
@@ -25,7 +24,7 @@ public class BunTests {
 
         String actualName = bun.getName();
 
-        assertEquals(name, actualName);
+        Assert.assertEquals(name, actualName);
     }
 
     @Test
@@ -35,7 +34,6 @@ public class BunTests {
 
         float actualPrice = bun.getPrice();
 
-        assertEquals(0.01, actualPrice, 0.1);
+        Assert.assertEquals(0.01, actualPrice, 0.1);
     }
 }
-
