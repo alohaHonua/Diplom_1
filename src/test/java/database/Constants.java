@@ -21,4 +21,7 @@ public class Constants {
     public static final float DINOSAUR_PRICE = 200;
     public static final String SAUSAGE_NAME = "sausage";
     public static final float SAUSAGE_PRICE = 300;
+
+    public static final String TEST_BUN_NAME = "TestName";
+    public static final String TEST_INGREDIENT_NAME = "TestIngredient";
 }

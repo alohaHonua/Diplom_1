@@ -67,4 +67,15 @@ public class TestBaseMethods {
             assertEquals("Got wrong error class!", IndexOutOfBoundsException.class, e.getClass());
         }
     }
+    @Test
+    public void testMethodWithoutBunInitialization(){
+        Burger burger = new Burger();
+        try {
+            var name = burger.bun.getName();
+            fail("Shouldn't get name without bun initialization but got: " + name);
+        } catch (Exception e){
+            assertEquals("Exception class is not correct", NullPointerException.class, e.getClass());
+        }
+
+    }
 }
