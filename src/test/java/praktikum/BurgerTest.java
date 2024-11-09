@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
+    private static final int DELTA = 0;
 
     @Mock
     Bun testBun;
@@ -59,7 +60,7 @@ public class BurgerTest {
         Mockito.when(testIngredient.getPrice()).thenReturn(ingredientPrice);
         burger.setBuns(testBun);
         burger.addIngredient(testIngredient);
-        assertEquals(bunPrice * 2 + ingredientPrice, burger.getPrice(), 0);
+        assertEquals(bunPrice * 2 + ingredientPrice, burger.getPrice(), DELTA);
     }
 
     @Test

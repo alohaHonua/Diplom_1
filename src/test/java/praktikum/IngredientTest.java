@@ -15,6 +15,7 @@ public class IngredientTest {
     private IngredientType type;
     private String name;
     private float price;
+    private static final int DELTA = 0;
 
     public IngredientTest(IngredientType type, String name, float price) {
         this.type = type;
@@ -45,6 +46,6 @@ public class IngredientTest {
     @Test
     public void getPriceIngredientTest() {
         Ingredient ingredient = new Ingredient(type, name, price);
-        assertEquals(price, ingredient.getPrice(), 0);
+        assertEquals(price, ingredient.getPrice(), DELTA);
     }
 }
