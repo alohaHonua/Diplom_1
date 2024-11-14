@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="BurgerTest" time="0.447" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="BurgerTest" time="0.323" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="/Users/ohtakemydrama/Library/Java/JavaVirtualMachines/openjdk-22.0.2/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/ohtakemydrama/Projects/QA-java-diplom-1/target/surefire/surefirebooter-20241114183426114_3.jar /Users/ohtakemydrama/Projects/QA-java-diplom-1/target/surefire 2024-11-14T18-34-26_077-jvmRun1 surefire-20241114183426114_1tmp surefire_0-20241114183426114_2tmp"/>
+    <property name="sun.java.command" value="/Users/ohtakemydrama/Projects/QA-java-diplom-1/target/surefire/surefirebooter-20241114190630734_3.jar /Users/ohtakemydrama/Projects/QA-java-diplom-1/target/surefire 2024-11-14T19-06-30_692-jvmRun1 surefire-20241114190630734_1tmp surefire_0-20241114190630734_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/ohtakemydrama/Projects/QA-java-diplom-1/target/test-classes:/Users/ohtakemydrama/Projects/QA-java-diplom-1/target/classes:/Users/ohtakemydrama/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/ohtakemydrama/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/ohtakemydrama/.m2/repository/org/mockito/mockito-core/4.3.1/mockito-core-4.3.1.jar:/Users/ohtakemydrama/.m2/repository/net/bytebuddy/byte-buddy/1.12.7/byte-buddy-1.12.7.jar:/Users/ohtakemydrama/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.7/byte-buddy-agent-1.12.7.jar:/Users/ohtakemydrama/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -28,7 +28,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/ohtakemydrama/Projects/QA-java-diplom-1/target/surefire/surefirebooter-20241114183426114_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/ohtakemydrama/Projects/QA-java-diplom-1/target/surefire/surefirebooter-20241114190630734_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.2+9-70"/>
     <property name="user.name" value="ohtakemydrama"/>
@@ -54,7 +54,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="moveIngredientMoved" classname="BurgerTest" time="0.439">
+  <testcase name="moveIngredientMoved" classname="BurgerTest" time="0.314">
     <system-err><![CDATA[java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/util/resources/cldr/provider/CLDRLocaleDataMetaInfo with JaCoCo 0.8.8.202204050719/5dcf34a.
 	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
 	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:242)
@@ -376,6 +376,6 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
   </testcase>
   <testcase name="addIngredientAdded" classname="BurgerTest" time="0.001"/>
   <testcase name="getCorrectReceiptReceived" classname="BurgerTest" time="0.003"/>
-  <testcase name="getReturnedPriceOfTheBurger" classname="BurgerTest" time="0.001"/>
-  <testcase name="removeIngredientRemoved" classname="BurgerTest" time="0.001"/>
+  <testcase name="getReturnedPriceOfTheBurger" classname="BurgerTest" time="0.002"/>
+  <testcase name="removeIngredientRemoved" classname="BurgerTest" time="0.0"/>
 </testsuite>
