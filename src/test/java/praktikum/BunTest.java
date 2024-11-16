@@ -89,7 +89,7 @@ public class BunTest {
         assertEquals(1000000, bun.getPrice(), 0);
     }
 
-    // Тест с числовыми краевыми значениями для цены
+    // Тест с числовыми максимумом и минимумом значениями для цены
     @Test
     public void testGetPriceWithEdgeValues() {
         bun = new Bun("max float price", Float.MAX_VALUE);

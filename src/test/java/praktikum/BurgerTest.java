@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mockito;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -83,7 +83,7 @@ public class BurgerTest {
         assertEquals(ingredient, burger.ingredients.get(1));
     }
 
-    @Test
+    @Test //БАГ
     public void testGetPrice() {
         burger.setBuns(bun);
         burger.addIngredient(ingredient);
@@ -92,7 +92,7 @@ public class BurgerTest {
         assertEquals(300, burger.getPrice(), 0);
     }
 
-    @Test
+    @Test //БАГ
     public void testGetReceipt() {
         burger.setBuns(bun);
 
@@ -124,7 +124,7 @@ public class BurgerTest {
         assertEquals(expectedReceipt, actualReceipt);
     }
 
-    @Test
+    @Test //БАГ
     public void testAddMultipleIngredients() {
         burger.setBuns(bun);
         burger.addIngredient(ingredient);
@@ -134,7 +134,7 @@ public class BurgerTest {
         assertEquals(500, burger.getPrice(), 0);
     }
 
-    @Test
+    @Test  //БАГ
     public void testGetPriceWithMultipleIngredients() {
         burger.setBuns(bun);
         burger.addIngredient(ingredient);
