@@ -1,0 +1,58 @@
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import praktikum.Ingredient;
+import praktikum.IngredientType;
+
+@RunWith(Parameterized.class)
+public class IngredientParameterizedTests {
+
+    private final String name;    // Имя ингредиента
+    private final float price;    // Цена ингредиента
+    private final IngredientType type;  // Тип ингредиента (начинка или соус)
+
+    // Конструктор для параметризированного теста
+    public IngredientParameterizedTests(String name, float price, IngredientType type) {
+        this.name = name;
+        this.price = price;
+        this.type = type;
+    }
+
+    // Параметризированные данные
+    @Parameterized.Parameters(name = "Ингредиент: {0}, Цена: {1}, Тип: {2}")
+    public static Object[][] getData() {
+        return new Object[][] {
+                // Начинки
+                { "Мясо бессмертных моллюсков Protostomia", 1337.0f, IngredientType.FILLING },
+                { "Говяжий метеорит (отбивная)", 3000.0f, IngredientType.FILLING },
+                { "Биокотлета из марсианской Магнолии", 424.0f, IngredientType.FILLING },
+                { "Филе Люминесцентного тетраодонтимформа", 988.0f, IngredientType.FILLING },
+                { "Хрустящие минеральные кольца", 300.0f, IngredientType.FILLING },
+                { "Плоды Фалленианского дерева", 874.0f, IngredientType.FILLING },
+                { "Кристаллы марсианских альфа-сахаридов", 762.0f, IngredientType.FILLING },
+                { "Мини-салат Экзо-Плантаго", 4400.0f, IngredientType.FILLING },
+                { "Сыр с астероидной плесенью", 4142.0f, IngredientType.FILLING },
+
+                // Соусы
+                { "Соус Spicy-X", 90.0f, IngredientType.SAUCE },
+                { "Соус фирменный Space Sauce", 80.0f, IngredientType.SAUCE },
+                { "Соус традиционный галактический", 15.0f, IngredientType.SAUCE },
+                { "Соус с шипами Антарианского плоскоходца", 88.0f, IngredientType.SAUCE }
+        };
+    }
+
+    // Тест для проверки правильности создания ингредиента
+    @Test
+    public void testIngredient() {
+        // Создаем объект ингредиента с параметрами
+        Ingredient ingredient = new Ingredient(type, name, price);
+
+        // Проверяем правильность всех значений
+        Assert.assertNotNull("Ингредиент не должен быть null", ingredient);
+        Assert.assertEquals("Имя ингредиента не совпадает", name, ingredient.getName());
+        Assert.assertEquals("Цена ингредиента не совпадает", price, ingredient.getPrice(), 0.001f);
+        Assert.assertEquals("Тип ингредиента не совпадает", type, ingredient.getType());
+    }
+}
+
