@@ -27,12 +27,12 @@ public class BunTest {
                 {"black bun", 100, false},
                 {"white bun", 200, false},
                 {"red bun", 300, false},
-                {null, 100, true}, // Поменял на true
-                {"", 200, true},  // Поменял на true
+                {null, 100, true},
+                {"", 200, true},
                 {"black bun", 0f, false},
                 {"ValidName", Float.NaN, true}, // Добавил проверку NaN
-                {"ValidName", Float.POSITIVE_INFINITY, true}, // Добавил проверку бесконечности
-                {"ValidName", Float.NEGATIVE_INFINITY, true}, // Добавил проверку бесконечности
+                {"ValidName", Float.POSITIVE_INFINITY, true},
+                {"ValidName", Float.NEGATIVE_INFINITY, true},
 
         } );
     }
@@ -54,7 +54,7 @@ public class BunTest {
                     throw new IllegalArgumentException("Price cannot be NaN or Infinity");
                 }
                 // Выброс исключения, если ожидалось, что оно будет
-                new Bun(name, price); // Важно: Вызов конструктора, если исключение не ожидали.
+                new Bun(name, price);
                 fail("Expected IllegalArgumentException was not thrown"); // Тест должен провалиться
             }
         }
