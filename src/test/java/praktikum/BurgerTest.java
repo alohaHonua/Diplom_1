@@ -95,11 +95,11 @@ public class BurgerTest {
         Mockito.when(ingredientX.getPrice()).thenReturn(100F);
         Mockito.when(ingredientX.getType()).thenReturn(IngredientType.FILLING);
 
-        String expectedReceipt =
-                "(==== sweet bun ====)\n" +
-                "= filling Meat =\n" +
-                "(==== sweet bun ====)\n" +
-                "\nPrice: 200,000000\n";
+        String expectedReceipt = String.format("(==== %s ====)%n", bun.getName()) +
+                String.format("= %s %s =%n", ingredientX.getType().name().toLowerCase(), ingredientX.getName()) +
+                String.format("(==== %s ====)%n", bun.getName()) +
+                String.format("%nPrice: %.6f%n", (bun.getPrice() * 2) + ingredientX.getPrice());
+
 
         Burger burger = new Burger();
         burger.setBuns(bun);
