@@ -2,7 +2,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import praktikum.Bun;
@@ -31,7 +30,7 @@ public class BurgerTest {
     private Burger burger;
 
     @Before
-    public void setupTest() {
+    public void setuUp() {
         closeable = MockitoAnnotations.openMocks(this);
         when(bun.getName()).thenReturn("Флюоресцентная булка");
         when(bun.getPrice()).thenReturn(988.0f);
@@ -44,20 +43,20 @@ public class BurgerTest {
     }
 
     @Test
-    public void addIngredientAdded() {
+    public void addIngredientTest() {
         burger.addIngredient(ingredient);
         assertNotNull(burger.ingredients.get(0));
     }
 
     @Test
-    public void removeIngredientRemoved() {
+    public void removeIngredientTest() {
         burger.ingredients.add(ingredient);
         burger.removeIngredient(0);
         assertTrue(burger.ingredients.isEmpty());
     }
 
     @Test
-    public void moveIngredientMoved() {
+    public void moveIngredientTest() {
         burger.ingredients.addAll(List.of(ingredient, oneMoreIngredient));
         burger.moveIngredient(0, 1);
         Ingredient actual = burger.ingredients.get(1);
@@ -65,14 +64,14 @@ public class BurgerTest {
     }
 
     @Test
-    public void getReturnedPriceOfTheBurger() {
+    public void getPriceBurgerTest() {
         burger.setBuns(bun);
         burger.ingredients.addAll(List.of(ingredient, oneMoreIngredient));
         assertEquals(2146.0, burger.getPrice(), 0.01);
     }
 
     @Test
-    public void getCorrectReceiptReceived() {
+    public void getReceiptTest() {
         burger.setBuns(bun);
         burger.ingredients.addAll(List.of(ingredient, oneMoreIngredient));
         String expected = "(==== Флюоресцентная булка ====)\n" +
@@ -84,7 +83,7 @@ public class BurgerTest {
     }
 
     @After
-    public void teardownTest() throws Exception {
+    public void tearDown() throws Exception {
         closeable.close();
     }
 }
