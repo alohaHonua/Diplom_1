@@ -30,7 +30,7 @@ public class BurgerTest {
     private Burger burger;
 
     @Before
-    public void setuUp() {
+    public void setUp() {
         closeable = MockitoAnnotations.openMocks(this);
         when(bun.getName()).thenReturn("Флюоресцентная булка");
         when(bun.getPrice()).thenReturn(988.0f);
