@@ -1,12 +1,8 @@
 package praktikum;
 
-import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -42,14 +38,14 @@ public class BurgerTest {
         System.out.println(burger.getReceipt());
     }
     @Test
-    @DisplayName("Тест установки булки")
+    //("Тест установки булки")
     public void testSetBuns() {
         burger.setBuns(bunMock);
         assertEquals(bunMock, burger.bun);
     }
 
     @Test
-    @DisplayName("Тест добавления ингредиента")
+    //("Тест добавления ингредиента")
     public void testAddIngredient() {
         burger.setBuns(bunMock);
         burger.addIngredient(ingredientMock1);
@@ -58,7 +54,7 @@ public class BurgerTest {
     }
 
     @Test
-    @DisplayName("Тест удаления ингредиента")
+    //("Тест удаления ингредиента")
     public void testRemoveIngredient() {
         burger.setBuns(bunMock);
         burger.addIngredient(ingredientMock1);
@@ -69,7 +65,7 @@ public class BurgerTest {
     }
 
     @Test
-    @DisplayName("Тест перемещения ингредиента")
+    //("Тест перемещения ингредиента")
     public void testMoveIngredient() {
         burger.setBuns(bunMock);
         burger.addIngredient(ingredientMock1);
@@ -80,7 +76,7 @@ public class BurgerTest {
     }
 
     @Test
-    @DisplayName("Тест расчета цены")
+    //("Тест расчета цены")
     public void testGetPrice() {
         burger.setBuns(bunMock);
         burger.addIngredient(ingredientMock1);
@@ -90,7 +86,7 @@ public class BurgerTest {
     }
 
     @Test
-    @DisplayName("Тест получения чека")
+    //("Тест получения чека")
     public void testGetReceipt() {
         burger.setBuns(bunMock);
         burger.addIngredient(ingredientMock1);
