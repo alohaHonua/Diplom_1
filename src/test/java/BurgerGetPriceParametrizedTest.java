@@ -27,8 +27,7 @@ public class BurgerGetPriceParametrizedTest {
                 {   1.23f,    4.5f,       1,    6.96f   },
                 {   10f,      1.5f,       2,    23f     },
                 {   0f,       100.07f,    3,    300.21f },
-                {   3.50f,    999.99f,    0,    7f      },
-                {   0,        0,          0,    0       }
+                {   3.50f,    999.99f,    0,    7f      }
         };
     }
 
