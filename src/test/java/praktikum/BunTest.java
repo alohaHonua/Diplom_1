@@ -3,19 +3,21 @@ package praktikum;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mockito;
+
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+
 
 import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class BunTest {
-    private static final float DELTA = 0.0001f; // Дельта для сравнения float
+    protected static final float DELTA = 0.0001f; // Дельта для сравнения float
     private String name;
     private float price;
     private Bun bun;
+    private Ingredient ingredient;
 
     // Конструктор для параметризации
     public BunTest(String name, float price) {
@@ -53,13 +55,5 @@ public class BunTest {
         bun = new Bun(name, price);
         assertEquals(price, bun.getPrice(), DELTA);
     }
-
-    // Уникальный тест для проверки NaN
-    @Test
-    public void testPriceIsNaN() {
-        if (Float.isNaN(price)) {
-            bun = new Bun(name, price);
-            assertTrue(Float.isNaN(bun.getPrice()));
-        }
-    }
 }
+

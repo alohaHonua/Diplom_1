@@ -3,13 +3,11 @@ package praktikum;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumSet;
-
-import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 public class IngredientTypeTest {
@@ -50,15 +48,6 @@ public class IngredientTypeTest {
         assertEquals(ingredientTypeName, ingredientType.toString());
     }
 
-    // Проверка всех значений перечисления
-    @Test
-    public void testEnumValues() {
-        IngredientType[] types = IngredientType.values();
-        assertEquals(2, types.length); // Должно быть два значения
-        assertTrue(EnumSet.allOf(IngredientType.class).contains(IngredientType.SAUCE));
-        assertTrue(EnumSet.allOf(IngredientType.class).contains(IngredientType.FILLING));
-    }
-
     // Проверка, что выбрасывается исключение для несуществующего значения
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidEnumValue() {
@@ -79,5 +68,18 @@ public class IngredientTypeTest {
         assertEquals(0, IngredientType.SAUCE.ordinal());
         assertEquals(1, IngredientType.FILLING.ordinal());
     }
-}
 
+    // НЕ ПАРАМЕТРИЗИРОВАННЫЙ ТЕСТ, ОСТАЕТСЯ В КЛАССЕ
+    @Test
+    public void testEnumValues() {
+        // Получаем все значения перечисления
+        IngredientType[] types = IngredientType.values();
+
+        // Проверяем, что в перечислении два значения
+        assertEquals(2, types.length); // Должно быть два значения
+
+        // Проверяем, что перечисление содержит нужные элементы
+        assertTrue(EnumSet.allOf(IngredientType.class).contains(IngredientType.SAUCE));
+        assertTrue(EnumSet.allOf(IngredientType.class).contains(IngredientType.FILLING));
+    }
+}
