@@ -1,4 +1,4 @@
-package praktikum;
+package com.example;
 
 /**
  * Модель ингредиента.
