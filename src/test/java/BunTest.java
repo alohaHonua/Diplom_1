@@ -3,7 +3,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class BunTest {
-
+private static final int delta = 0;
     @Test
     public void testGetName() {
         // Arrange
@@ -25,7 +25,7 @@ public class BunTest {
         float price = bun.getPrice();
 
         // Assert
-        Assert.assertEquals(100, price, 0);
+        Assert.assertEquals(100, price, delta);
     }
 
     @Test
@@ -39,6 +39,6 @@ public class BunTest {
 
         // Assert
         Assert.assertEquals(expectedName, bun.getName());
-        Assert.assertEquals(expectedPrice, bun.getPrice(), 0);
+        Assert.assertEquals(expectedPrice, bun.getPrice(), delta);
     }
 }
