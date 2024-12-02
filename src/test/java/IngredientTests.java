@@ -1,28 +1,33 @@
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
+import service.TestConstants;
 
 public class IngredientTests {
-    private final IngredientType TYPE = IngredientType.SAUCE;
-    private final String NAME = "Соус Spicy-X";
-    private final float PRICE = 90.09f;
+    private static final IngredientType TYPE = IngredientType.SAUCE;
+    private static final String NAME = "Соус Spicy-X";
+    private static final float PRICE = 90.09f;
+    private Ingredient ingredient;
+
+    @Before
+    public void initIngredient() {
+        ingredient = new Ingredient(TYPE, NAME, PRICE);
+    }
 
     @Test
     public void getNameReturnsIngredientName() {
-        Ingredient ingredient = new Ingredient(TYPE, NAME, PRICE);
         Assert.assertEquals(NAME, ingredient.getName());
     }
 
     @Test
     public void getPriceReturnsIngredientPrice() {
-        Ingredient ingredient = new Ingredient(TYPE, NAME, PRICE);
-        Assert.assertEquals(PRICE, ingredient.getPrice(), 0.001f);
+        Assert.assertEquals(PRICE, ingredient.getPrice(), TestConstants.DELTA);
     }
 
     @Test
     public void getTypeReturnsIngredientType() {
-        Ingredient ingredient = new Ingredient(TYPE, NAME, PRICE);
         Assert.assertEquals(TYPE, ingredient.getType());
     }
 }

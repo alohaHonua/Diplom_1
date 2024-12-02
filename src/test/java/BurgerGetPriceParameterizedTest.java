@@ -6,19 +6,20 @@ import org.mockito.Mockito;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
+import service.TestConstants;
 
 @RunWith(Parameterized.class)
-public class BurgerGetPriceParametrizedTest {
-    private final float BUN_PRICE;
-    private final float INGREDIENT_PRICE;
-    private final int INGREDIENTS_NUM;
-    private final float EXPECTED_RESULT;
+public class BurgerGetPriceParameterizedTest {
+    private final float bunPrice;
+    private final float ingredientPrice;
+    private final int ingredientsNum;
+    private final float expectedResult;
 
-    public BurgerGetPriceParametrizedTest(float BUN_PRICE, float INGREDIENT_PRICE, int INGREDIENTS_NUM, float EXPECTED_RESULT) {
-        this.BUN_PRICE = BUN_PRICE;
-        this.INGREDIENT_PRICE = INGREDIENT_PRICE;
-        this.INGREDIENTS_NUM = INGREDIENTS_NUM;
-        this.EXPECTED_RESULT = EXPECTED_RESULT;
+    public BurgerGetPriceParameterizedTest(float bunPrice, float ingredientPrice, int ingredientsNum, float expectedResult) {
+        this.bunPrice = bunPrice;
+        this.ingredientPrice = ingredientPrice;
+        this.ingredientsNum = ingredientsNum;
+        this.expectedResult = expectedResult;
     }
 
     @Parameterized.Parameters
@@ -35,13 +36,13 @@ public class BurgerGetPriceParametrizedTest {
     public void getPriceCheckPriceCalculation() {
         Bun bun = Mockito.mock(Bun.class);
         Ingredient ingredient = Mockito.mock(Ingredient.class);
-        Mockito.when(bun.getPrice()).thenReturn(BUN_PRICE);
-        Mockito.when(ingredient.getPrice()).thenReturn(INGREDIENT_PRICE);
+        Mockito.when(bun.getPrice()).thenReturn(bunPrice);
+        Mockito.when(ingredient.getPrice()).thenReturn(ingredientPrice);
         Burger burger = new Burger();
         burger.setBuns(bun);
-        for (int i = 0; i < INGREDIENTS_NUM; i++) {
+        for (int i = 0; i < ingredientsNum; i++) {
             burger.addIngredient(ingredient);
         }
-        Assert.assertEquals(EXPECTED_RESULT, burger.getPrice(), 0.001f);
+        Assert.assertEquals(expectedResult, burger.getPrice(), TestConstants.DELTA);
     }
 }

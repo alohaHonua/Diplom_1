@@ -10,21 +10,21 @@ import praktikum.Ingredient;
 import praktikum.IngredientType;
 
 @RunWith(Parameterized.class)
-public class BurgerGetReceiptParametrizedTest {
-    private final IngredientType INGREDIENT_TYPE;
-    private final String INGREDIENT_NAME;
-    private final int INGREDIENTS_NUM;
-    private final String BUN_NAME;
-    private final float BURGER_PRICE;
-    private final String EXPECTED_RESULT;
+public class BurgerGetReceiptParameterizedTest {
+    private final IngredientType ingredientType;
+    private final String ingredientName;
+    private final int ingredientsNum;
+    private final String bunName;
+    private final float burgerPrice;
+    private final String expectedResult;
 
-    public BurgerGetReceiptParametrizedTest(IngredientType INGREDIENT_TYPE, String INGREDIENT_NAME, int INGREDIENTS_NUM, String BUN_NAME, float BURGER_PRICE, String EXPECTED_RESULT) {
-        this.INGREDIENT_TYPE = INGREDIENT_TYPE;
-        this.INGREDIENT_NAME = INGREDIENT_NAME;
-        this.INGREDIENTS_NUM = INGREDIENTS_NUM;
-        this.BUN_NAME = BUN_NAME;
-        this.BURGER_PRICE = BURGER_PRICE;
-        this.EXPECTED_RESULT = EXPECTED_RESULT;
+    public BurgerGetReceiptParameterizedTest(IngredientType ingredientType, String ingredientName, int ingredientsNum, String bunName, float burgerPrice, String expectedResult) {
+        this.ingredientType = ingredientType;
+        this.ingredientName = ingredientName;
+        this.ingredientsNum = ingredientsNum;
+        this.bunName = bunName;
+        this.burgerPrice = burgerPrice;
+        this.expectedResult = expectedResult;
     }
 
     @Parameterized.Parameters
@@ -73,16 +73,16 @@ public class BurgerGetReceiptParametrizedTest {
     public void getReceiptCheckReceiptText() {
         Ingredient ingredient = Mockito.mock(Ingredient.class);
         Bun bun = Mockito.mock(Bun.class);
-        Mockito.when(ingredient.getType()).thenReturn(INGREDIENT_TYPE);
-        Mockito.when(ingredient.getName()).thenReturn(INGREDIENT_NAME);
-        Mockito.when(bun.getName()).thenReturn(BUN_NAME);
+        Mockito.when(ingredient.getType()).thenReturn(ingredientType);
+        Mockito.when(ingredient.getName()).thenReturn(ingredientName);
+        Mockito.when(bun.getName()).thenReturn(bunName);
         Burger burger = new Burger();
         Burger burgerSpy = Mockito.spy(burger);
-        Mockito.doReturn(BURGER_PRICE).when(burgerSpy).getPrice();
+        Mockito.doReturn(burgerPrice).when(burgerSpy).getPrice();
         burgerSpy.setBuns(bun);
-        for (int i = 0; i < INGREDIENTS_NUM; i++) {
+        for (int i = 0; i < ingredientsNum; i++) {
             burgerSpy.addIngredient(ingredient);
         }
-        Assert.assertThat(burgerSpy.getReceipt(), CoreMatchers.startsWith(EXPECTED_RESULT));
+        Assert.assertThat(burgerSpy.getReceipt(), CoreMatchers.startsWith(expectedResult));
     }
 }
