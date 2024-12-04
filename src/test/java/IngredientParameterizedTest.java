@@ -3,9 +3,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
-
-import static praktikum.IngredientType.*;
-
 import static org.junit.Assert.assertEquals;
 
 
@@ -25,9 +22,9 @@ import static org.junit.Assert.assertEquals;
         @Parameterized.Parameters
         public static Object[][] data() {
             return new Object[][]{
-                    {IngredientType.SAUCE, "Ketchup", 50f},
-                    {IngredientType.FILLING, "Bacon", 70f},
-                    {IngredientType.SAUCE, "Mustard", 30f}
+                    {IngredientType.SAUCE, "chili sauce", 300},
+                    {IngredientType.FILLING, "dinosaur", 200},
+                    {IngredientType.SAUCE, "sour cream", 200}
             };
         }
 
