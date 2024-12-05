@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: praktikum.BurgerTest
+-------------------------------------------------------------------------------
+Tests run: 28, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.282 s <<< FAILURE! - in praktikum.BurgerTest
+getReceiptIsSuccess[0](praktikum.BurgerTest)  Time elapsed: 0.008 s  <<< FAILURE!
+java.lang.AssertionError: 
+Неверный рецепт
+Expected: "(==== sweet bun ====)\n= filling hot sauce =\n(==== sweet bun ====)\nPrice: 450,0\n"
+     but: was "(==== sweet bun ====)\n= filling hot sauce =\n(==== sweet bun ====)\n\nPrice: 450,000000\n"
+	at praktikum.BurgerTest.getReceiptIsSuccess(BurgerTest.java:150)
+
+getReceiptIsSuccess[1](praktikum.BurgerTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: 
+Неверный рецепт
+Expected: "(==== sweet bun ====)\n= filling hot sauce =\n(==== sweet bun ====)\nPrice: 450,0\n"
+     but: was "(==== sweet bun ====)\n= filling hot sauce =\n(==== sweet bun ====)\n\nPrice: 450,000000\n"
+	at praktikum.BurgerTest.getReceiptIsSuccess(BurgerTest.java:150)
+
+getReceiptIsSuccess[2](praktikum.BurgerTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: 
+Неверный рецепт
+Expected: "(==== sweet bun ====)\n= filling hot sauce =\n(==== sweet bun ====)\nPrice: 450,0\n"
+     but: was "(==== sweet bun ====)\n= filling hot sauce =\n(==== sweet bun ====)\n\nPrice: 450,000000\n"
+	at praktikum.BurgerTest.getReceiptIsSuccess(BurgerTest.java:150)
+
+getReceiptIsSuccess[3](praktikum.BurgerTest)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: 
+Неверный рецепт
+Expected: "(==== sweet bun ====)\n= filling hot sauce =\n(==== sweet bun ====)\nPrice: 450,0\n"
+     but: was "(==== sweet bun ====)\n= filling hot sauce =\n(==== sweet bun ====)\n\nPrice: 450,000000\n"
+	at praktikum.BurgerTest.getReceiptIsSuccess(BurgerTest.java:150)
+
