@@ -12,8 +12,11 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class BurgerTest {
     @Mock
     Bun bun;
+    @Mock
     Ingredient ingredient;
+    @Mock
     Ingredient anotherIngredient;
+    @Mock
     Burger burger;
 
     @Before
@@ -65,7 +68,12 @@ public class BurgerTest {
         Mockito.when(anotherIngredient.getName()).thenReturn("Мясо бессмертных моллюсков Protostomia");
         Mockito.when(anotherIngredient.getPrice()).thenReturn(1337.0f);
         Mockito.when(anotherIngredient.getType()).thenReturn(IngredientType.FILLING);
-        String expected = "(==== Флюоресцентная булка R2-D3 ====)\n= Соус Spicy-X =\n= filling Мясо бессмертных моллюсков Protostomia =\n(==== Флюоресцентная булка R2-D3 ====)\n\nPrice: 3403.0\n";
+        String expected = String.format(
+                "(==== Флюоресцентная булка R2-D3 ====)%n" +
+                        "= sauce Соус Spicy-X =%n" +
+                        "= filling Мясо бессмертных моллюсков Protostomia =%n" +
+                        "(==== Флюоресцентная булка R2-D3 ====)%n%n" +
+                        "Price: 3403,000000%n");
         Assert.assertEquals(expected, burger.getReceipt());
     }
 }
