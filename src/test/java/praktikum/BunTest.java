@@ -10,7 +10,7 @@ public class BunTest {
 
   @Before
   public void setUp() throws Exception {
-    bun = new Bun("brownie", 200.0f);
+    bun = new Bun("brownie", 700.0f);
   }
 
   @Test
@@ -23,7 +23,7 @@ public class BunTest {
 
   @Test
   public void getPrice() {
-    float expected = 200.0f;
+    float expected = 700.0f;
     float actual = bun.getPrice();
 
     assertEquals("Incorrect bun price", expected, actual, 0);
