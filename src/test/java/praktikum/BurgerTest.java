@@ -28,6 +28,8 @@ public class BurgerTest {
     burger = new Burger();
   }
 
+  //Мок (от англ. mock — «передразнивать») — это «дублёр» реальной сущности в коде. Он помогает
+  //протестировать модуль, не вызывая реальный код.
   @Test
   public void setBuns() {
     burger.setBuns(bun);
@@ -64,6 +66,7 @@ public class BurgerTest {
     assertEquals("Incorrect ingredient's movement in the list.Retry, please", filling, actual);
   }
 
+  //применение стабов - объекты с заданным состоянием
   @Test
   public void getReceipt() {
     Mockito.when(bun.getName()).thenReturn("brownie");
