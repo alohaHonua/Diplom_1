@@ -17,6 +17,7 @@ public class IngredientTest {
     private final String nameIngr;
     private final float priceIngr;
 
+    // Конструктор - создаёт объект с набором тестовых данных
     public IngredientTest(IngredientType type, String nameIngr, float priceIngr) {
         this.type = type;
         this.nameIngr = nameIngr;
@@ -25,6 +26,7 @@ public class IngredientTest {
 
     }
 
+    // Генерируем два набора тестовых данных с помощью параметризации
     @Parameterized.Parameters(name = "IngredientType: {0}, Name: {1}, Price: {2}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
@@ -33,6 +35,7 @@ public class IngredientTest {
         });
     }
 
+
     private static float generateRandomPrice() {
         float price = (float) (Math.random() * 300);
         return Math.round(price * 100) / 100.0f; // Округление до сотых
@@ -40,19 +43,22 @@ public class IngredientTest {
 
     @Test
     public void testIngredientGetName() {
+        // Проверка что метод возвращает правильное название
         Ingredient ingredient = new Ingredient(type, nameIngr, priceIngr);
-        assertEquals("Ingredient name should match", nameIngr, ingredient.getName());
+        assertEquals(nameIngr, ingredient.getName());
     }
 
     @Test
     public void testIngredientGetPrice() {
+        // Проверка что метод возвращает правильную цену
         Ingredient ingredient = new Ingredient(type, nameIngr, priceIngr);
-        assertEquals("Ingredient price should match", priceIngr, ingredient.getPrice(), 0.01f);
+        assertEquals(priceIngr, ingredient.getPrice(), 0.01f);
     }
 
     @Test
     public void testIngredientGetType() {
+        // Проверка что метод возвращает правильный тип из Enum
         Ingredient ingredient = new Ingredient(type, nameIngr, priceIngr);
-        assertEquals("Ingredient type should match", type, ingredient.getType());
+        assertEquals(type, ingredient.getType());
     }
 }

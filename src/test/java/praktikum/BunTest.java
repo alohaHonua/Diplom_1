@@ -3,11 +3,7 @@ import org.junit.Before;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import java.util.List;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
 public class BunTest {
     private String nameBun;
@@ -17,6 +13,7 @@ public class BunTest {
 
     @Before
     public void setUp() {
+        // Создаём булочку со случайными названием и ценой
         nameBun = "TestNameBun_" + RandomStringUtils.randomAlphabetic(4);
         priceBun = (float) (Math.random() * 1000);
         priceBun = Math.round(priceBun * 100) / 100.0f; // Округление до сотых
@@ -25,16 +22,16 @@ public class BunTest {
 
     @Test
     public void testBunGetName() {
-        // Проверка что метод возвращает строку "Мяу"
+        // Проверка что метод возвращает правильное название
         assertEquals(nameBun, bun.getName());
-        System.out.println(nameBun);
+        System.out.println(nameBun); // Логируем название
     }
 
     @Test
     public void testBunGetPrice() {
-        // Проверка что метод возвращает строку "Мяу"
+        // Проверка что метод возвращает правильную цену
         assertEquals(priceBun, bun.getPrice(), 0.01f);
-        System.out.println(priceBun);
+        System.out.println(priceBun); // Логируем цену
     }
 
 
