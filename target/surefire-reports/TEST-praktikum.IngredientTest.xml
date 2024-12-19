@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="praktikum.IngredientTest" time="4.447" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="praktikum.IngredientTest" time="0.418" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.25+9-post-Ubuntu-1ubuntu122.04"/>
@@ -60,7 +60,7 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="praktikum.IngredientTest" name="getName" time="4.447"/>
+  <testcase classname="praktikum.IngredientTest" name="getName" time="0.418"/>
   <testcase classname="praktikum.IngredientTest" name="getType" time="0"/>
   <testcase classname="praktikum.IngredientTest" name="getPrice" time="0"/>
 </testsuite>

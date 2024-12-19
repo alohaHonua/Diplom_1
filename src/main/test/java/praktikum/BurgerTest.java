@@ -9,19 +9,23 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
+    Burger burger = new Burger();
+    String expected = null;
+
     @Mock
     Bun bunMock;
     @Mock
     Ingredient ingredientMock;
     @Mock
     Ingredient sauceMock;
-    Burger burger = new Burger();
+    //Burger burger = new Burger();
 
     @Test
     public void setBunsTest() {
         burger.setBuns(bunMock);
         burger.bun.getName();
         Mockito.verify(bunMock).getName();
+        Assert.assertEquals(expected,burger.bun.getName());
     }
 
     @Test
@@ -29,6 +33,7 @@ public class BurgerTest {
         burger.addIngredient(ingredientMock);
         burger.ingredients.get(0).getName();
         Mockito.verify(ingredientMock).getName();
+        Assert.assertEquals(expected, burger.ingredients.get(0).getName());
     }
 
     @Test
@@ -38,6 +43,7 @@ public class BurgerTest {
         burger.removeIngredient(0);
         burger.ingredients.get(0).getName();
         Mockito.verify(sauceMock).getName();
+        Assert.assertEquals(expected, burger.ingredients.get(0).getName());
     }
 
     @Test
@@ -47,6 +53,7 @@ public class BurgerTest {
         burger.moveIngredient(0,1);
         burger.ingredients.get(0).getName();
         Mockito.verify(sauceMock).getName();
+        Assert.assertEquals(expected, burger.ingredients.get(0).getName());
     }
 
     @Test
@@ -69,5 +76,9 @@ public class BurgerTest {
         Mockito.verify(ingredientMock).getType();
         Mockito.verify(sauceMock).getName();
         Mockito.verify(sauceMock).getType();
+        Assert.assertEquals("test", ingredientMock.getName());
+        Assert.assertEquals(IngredientType.FILLING, ingredientMock.getType());
+        Assert.assertEquals("chili", sauceMock.getName());
+        Assert.assertEquals(IngredientType.SAUCE, sauceMock.getType());
     }
 }

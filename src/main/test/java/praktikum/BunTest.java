@@ -3,36 +3,22 @@ package praktikum;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import java.lang.Exception;
 
 
 @RunWith(MockitoJUnitRunner.class)
 public class BunTest {
-    @Mock
-    Bun bunMock;
+    static float delta = 0.0f;
 
     @Test
-    public void getNameBun() throws Exception {
-        Mockito.when(bunMock.getName()).thenReturn("Hamburger");// создай стаб
-        String nameBun = bunMock.getName();
-        Assert.assertEquals("Hamburger", nameBun);
+    public void getNameTest() {
+        Bun bun = new Bun("test", 2.5f);
+        Assert.assertEquals("test", bun.getName());
     }
 
     @Test
-    public void getPriceBun() throws Exception{
-        Mockito.when(bunMock.getPrice()).thenReturn(0.23F);// создай стаб
-        float priceBun = bunMock.getPrice();
-        Assert.assertEquals(0.23F,priceBun,0.1F);
-    }
-
-    @Test
-    public void testClassBun(){
-        bunMock = new Bun("Hamburger",0.23F);
-        String expectedName = "Hamburger";
-        String actualName = bunMock.getName();
-        Assert.assertEquals(expectedName, actualName);
+    public void getPriceTest() {
+        Bun bun = new Bun("test", 0.23f);
+        Assert.assertEquals(0.23f, bun.getPrice(), delta);
     }
 }

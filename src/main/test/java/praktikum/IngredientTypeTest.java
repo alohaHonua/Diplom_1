@@ -5,7 +5,7 @@ import org.junit.Assert;
 import java.util.List;
 import java.util.ArrayList;
 
-public class IngredientTypeTest{
+public class IngredientTypeTest {
 
     @Test
     public void checkIngredientType() {
