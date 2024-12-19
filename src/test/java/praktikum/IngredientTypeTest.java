@@ -8,8 +8,8 @@ public class IngredientTypeTest {
 
     @Test
     public void testIngredientTypeValues() {
-        Assert.assertEquals("First type should be SAUCE", IngredientType.SAUCE, IngredientType.valueOf("SAUCE"));
-        Assert.assertEquals("Second type should be FILLING", IngredientType.FILLING, IngredientType.valueOf("FILLING"));
+        Assert.assertEquals(IngredientType.SAUCE, IngredientType.valueOf("SAUCE"));
+        Assert.assertEquals(IngredientType.FILLING, IngredientType.valueOf("FILLING"));
     }
 
 
