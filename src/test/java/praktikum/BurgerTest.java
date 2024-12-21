@@ -1,15 +1,13 @@
+package praktikum;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import praktikum.Bun;
-import praktikum.Burger;
-import praktikum.Ingredient;
-import praktikum.IngredientType;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
@@ -24,20 +22,15 @@ public class BurgerTest {
     private Burger burger;
 
     @Test
-    public void setBuns() {
-        burger.setBuns(bunMock);
+    public void setBun() {
+        burger.setBun(bunMock);
         Assert.assertEquals(bunMock, burger.bun);
     }
 
     @Test
-    public void addIngredientBurgerTest() {
+    public void ingredientListBurgerTest() {
         burger.addIngredient(ingredientMock);
         Assert.assertTrue(burger.ingredients.contains(ingredientMock));
-    }
-
-    @Test
-    public void removeIngredientBurgerTest() {
-        burger.addIngredient(ingredientMock);
         burger.removeIngredient(0);
         Assert.assertFalse(burger.ingredients.contains(ingredientMock));
     }
@@ -56,7 +49,7 @@ public class BurgerTest {
         when(bunMock.getPrice()).thenReturn(price);
         when(ingredientMock.getPrice()).thenReturn(price);
 
-        burger.setBuns(bunMock);
+        burger.setBun(bunMock);
         burger.addIngredient(ingredientMock);
 
         // Проверяем - цена соответствует ожиданиям (булочка * 2 + ингредиент)
@@ -65,7 +58,7 @@ public class BurgerTest {
 
     @Test
     public void getReceiptBurgerTest() {
-        burger.setBuns(bunMock);
+        burger.setBun(bunMock);
         burger.addIngredient(new Ingredient(IngredientType.FILLING, "Мини-салат Экзо-Плантаго", 4400));
         burger.addIngredient(new Ingredient(IngredientType.SAUCE, "Соус Spicy-X", 90));
 

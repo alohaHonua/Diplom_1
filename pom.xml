@@ -14,31 +14,31 @@
 
     </properties>
 
-            <dependencies>
-                <!-- JUnit 4 Dependency for unit tests -->
-                <dependency>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                    <version>4.13.2</version>
-                    <scope>test</scope>
-                </dependency>
+    <dependencies>
+        <!-- JUnit 4 Dependency for unit tests -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
 
-                <!-- Mockito Dependency for mocking dependencies -->
-                <dependency>
-                    <groupId>org.mockito</groupId>
-                    <artifactId>mockito-core</artifactId>
-                    <version>3.12.4</version>
-                    <scope>test</scope>
-                </dependency>
+        <!-- Mockito Dependency for mocking dependencies -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.12.4</version>
+            <scope>test</scope>
+        </dependency>
 
-                <!-- Jacoco for test coverage -->
-                <dependency>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>org.jacoco.agent</artifactId>
-                    <version>0.8.7</version>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
+        <!-- Jacoco for test coverage -->
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>org.jacoco.agent</artifactId>
+            <version>0.8.7</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
@@ -75,4 +75,4 @@
             </plugin>
         </plugins>
     </build>
-        </project>
+</project>

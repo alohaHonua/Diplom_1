@@ -1,19 +1,19 @@
+package praktikum;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import praktikum.Ingredient;
-import praktikum.IngredientType;
 
 @RunWith(Parameterized.class)
-public class IngredientParameterizedTests {
+public class IngredientParameterizedTest {
 
     private final String name;    // Имя ингредиента
     private final float price;    // Цена ингредиента
     private final IngredientType type;  // Тип ингредиента (начинка или соус)
 
     // Конструктор для параметризированного теста
-    public IngredientParameterizedTests(String name, float price, IngredientType type) {
+    public IngredientParameterizedTest(String name, float price, IngredientType type) {
         this.name = name;
         this.price = price;
         this.type = type;

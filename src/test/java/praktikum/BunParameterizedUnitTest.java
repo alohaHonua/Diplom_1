@@ -1,17 +1,17 @@
+package praktikum;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import praktikum.Bun;
 
 @RunWith(Parameterized.class)
-public class BunParameterizedUnitTests {
+public class BunParameterizedUnitTest {
 
     private final String name;   // Имя булочки
     private final float price;   // Цена булочки
 
-    // Конструктор с параметрами
-    public BunParameterizedUnitTests(String name, float price) {
+    public BunParameterizedUnitTest(String name, float price) {
         this.name = name;
         this.price = price;
     }
@@ -36,6 +36,7 @@ public class BunParameterizedUnitTests {
         // Проверяем цену булочки
         Assert.assertEquals("Неверная цена булочки", price, bun.getPrice(), 0.001);
     }
+
     @Test
     public void testOnlyOneBunIsCreated() {
         // Проверяем, что булочка создается только один раз
