@@ -8,7 +8,7 @@ import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class DatabaseBunTest extends TestCase {
-    private static Database database = new Database();
+    private static final Database database = new Database();
 
     private final String name;   // Имя булочки
     private final float price;   // Цена булочки
