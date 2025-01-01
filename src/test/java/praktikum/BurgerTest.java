@@ -37,7 +37,7 @@ public class BurgerTest {
         burger.addIngredient(ingredient2);
         assertEquals("Количество ингредиентов не соответствует ожидаемому", 2, burger.ingredients.size());
         assertEquals("Ingredient1 не соответствует ожидаемому", ingredient1.getName(), burger.ingredients.get(0).getName());
-        assertEquals("Ingredient2 не соответствует ожидаемому", ingredient2.getName(), burger.ingredients.get(1).getName());;
+        assertEquals("Ingredient2 не соответствует ожидаемому", ingredient2.getName(), burger.ingredients.get(1).getName());
     }
 
     @Test
