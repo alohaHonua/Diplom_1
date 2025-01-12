@@ -3,7 +3,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import praktikum.IngredientType;
-
 import static praktikum.IngredientType.FILLING;
 import static praktikum.IngredientType.SAUCE;
 
@@ -19,7 +18,7 @@ public class IngredientTypeTest {
         this.result = result;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters (name = "Тестовые данные: {0}, Pезультат: {1}")
     public static Object[][] type() {
         return new Object[][]{
                 {SAUCE, "SAUCE"},
@@ -28,8 +27,8 @@ public class IngredientTypeTest {
     }
 
     @Test
-    public void valueOfType(){
-        Assert.assertEquals(ingredient,IngredientType.valueOf(result));
+    public void valueOfTypeTest() {
+        Assert.assertEquals(ingredient, IngredientType.valueOf(result));
     }
 }
 

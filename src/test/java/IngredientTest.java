@@ -11,26 +11,22 @@ public class IngredientTest {
 
     Ingredient ingredient = new Ingredient(type, name, price);
 
-
     @Test
-
-    public void checkGetPrice() {
+    public void getPriceTest() {
         float priceIngredient = ingredient.getPrice();
-        Assert.assertEquals(price, priceIngredient,0);
+        Assert.assertEquals(price, priceIngredient, 0);
     }
 
     @Test
-
-    public void checkGetName (){
+    public void getNameTest() {
         String nameIngredient = ingredient.getName();
-        Assert.assertEquals(name,nameIngredient);
+        Assert.assertEquals(name, nameIngredient);
     }
 
     @Test
-
-    public void checkGetType (){
+    public void getTypeTest() {
         IngredientType typeIngredient = ingredient.getType();
-        Assert.assertEquals(type,typeIngredient);
+        Assert.assertEquals(type, typeIngredient);
     }
 }
 

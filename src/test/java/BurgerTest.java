@@ -1,53 +1,51 @@
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.*;
-
-import static org.hamcrest.CoreMatchers.*;
-
 
 @RunWith(MockitoJUnitRunner.class)
 
 public class BurgerTest {
 
-    @Before
-    public void init() {
-        MockitoAnnotations.openMocks(this);
-    }
-
     Burger burger = new Burger();
 
-    @Spy
-    Bun bun =new Bun("white bun", 200) ;
-
-    @Spy
-    Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "hot sauce", 100);
+    @Mock
+    Bun bun;
+    @Mock
+    Ingredient ingredient;
 
     @Test
-
-    public void checkGetPrice() {
+    public void getPriceTest() {
+        Mockito.when(bun.getPrice()).thenReturn(200F);
+        Mockito.when(ingredient.getPrice()).thenReturn(100F);
 
         burger.addIngredient(ingredient);
         float actual = bun.getPrice() * 2 + ingredient.getPrice();
         burger.setBuns(bun);
         float priceBurger = burger.getPrice();
-        Assert.assertEquals(priceBurger, actual, 0);
+        Assert.assertEquals("Стоимость расчитана не верно", priceBurger, actual, 0);
     }
 
-
-
     @Test
+    public void getReceiptTest() {
+        Mockito.when(bun.getName()).thenReturn("white bun");
+        Mockito.when(bun.getPrice()).thenReturn(200F);
+        Mockito.when(ingredient.getType()).thenReturn(IngredientType.SAUCE);
+        Mockito.when(ingredient.getName()).thenReturn("hot sauce");
+        Mockito.when(ingredient.getPrice()).thenReturn(100F);
 
-    public void checkGetReceipt (){
         burger.setBuns(bun);
         burger.addIngredient(ingredient);
-        String receipt = burger.getReceipt();
-        Assert.assertNotNull(receipt);
-        Assert.assertThat(receipt,allOf(startsWith("(===="),containsString("Price:")));
+        String receiptExpected = "(==== white bun ====)\n" +
+                "= sauce hot sauce =\n" +
+                "(==== white bun ====)\n" +
+                "\n" +
+                "Price: 500,000000\n";
+        String receiptActual = burger.getReceipt();
+        Assert.assertEquals("Чек сформирован не верно", receiptActual, receiptExpected);
     }
 }
 

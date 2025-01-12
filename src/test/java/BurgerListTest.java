@@ -1,43 +1,39 @@
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mock;
 import praktikum.Burger;
 import praktikum.Ingredient;
-import praktikum.IngredientType;
-
 
 public class BurgerListTest {
 
     Burger burger = new Burger();
 
-    Ingredient ingredientInd0 = new Ingredient(IngredientType.SAUCE, "hot sauce", 100);
-    Ingredient ingredientInd1 = new Ingredient(IngredientType.SAUCE, "sour cream", 200);
+    @Mock
+    Ingredient ingredientInd0;
+
+    @Mock
+    Ingredient ingredientInd1;
 
     @Test
-
-    public void checkAddIngredient() {
+    public void addIngredientTest() {
         burger.addIngredient(ingredientInd0);
-        Assert.assertTrue(burger.ingredients.contains(ingredientInd0));
+        Assert.assertTrue("Ингредиент не добавлен", burger.ingredients.contains(ingredientInd0));
     }
 
-
     @Test
-
-    public void checkRemoveIngredient() {
+    public void removeIngredientTest() {
         burger.addIngredient(ingredientInd0);
         burger.removeIngredient(0);
-        Assert.assertFalse(burger.ingredients.contains(ingredientInd0));
+        Assert.assertFalse("Ингредиент не удален", burger.ingredients.contains(ingredientInd0));
     }
 
     @Test
-
-    public void checkMoveIngredient() {
+    public void moveIngredientTest() {
         burger.addIngredient(ingredientInd0);
         burger.addIngredient(ingredientInd1);
         burger.moveIngredient(0, 1);
-        Assert.assertEquals(ingredientInd1, burger.ingredients.get(0));
+        Assert.assertEquals("Ингредиент не перемещен", ingredientInd1, burger.ingredients.get(0));
     }
-
-
 }
 
 
