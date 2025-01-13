@@ -10,6 +10,9 @@ public class Bun {
     public float price;
 
     public Bun(String name, float price) {
+        if (name == null) {
+            throw new NullPointerException("Name cannot be null.");
+        }
         this.name = name;
         this.price = price;
     }
@@ -19,7 +22,7 @@ public class Bun {
     }
 
     public float getPrice() {
-        return price;
+         return price;
     }
 
 }
