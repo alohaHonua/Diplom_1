@@ -2,7 +2,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Mock;
 import praktikum.Bun;
 
 @RunWith(Parameterized.class)
@@ -16,7 +15,7 @@ public class GetBunTest {
         this.name = name;
     }
 
-    @Parameterized.Parameters (name = "Тестовые данные Bun: {0} ")
+    @Parameterized.Parameters(name = "Тестовые данные Bun: {0} ")
     public static Object[][] bunName() {
         return new Object[][]{
                 {"black bun"},
