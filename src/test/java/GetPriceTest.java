@@ -2,7 +2,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Mock;
 import praktikum.Bun;
 
 @RunWith(Parameterized.class)
@@ -10,12 +9,13 @@ import praktikum.Bun;
 public class GetPriceTest {
 
     final private float price;
+    String name;
 
     public GetPriceTest(float price) {
         this.price = price;
     }
 
-    @Parameterized.Parameters(name = "Тестовые данные Price: {0} ")
+    @Parameterized.Parameters (name = "Тестовые данные Price: {0} ")
     public static Object[][] bunPrice() {
         return new Object[][]{
                 {0},
@@ -27,9 +27,6 @@ public class GetPriceTest {
                 {999999999},
         };
     }
-
-    @Mock
-    String name;
 
     @Test
     public void getPriceTest() {

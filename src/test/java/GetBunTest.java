@@ -10,13 +10,11 @@ import praktikum.Bun;
 public class GetBunTest {
 
     private final String name;
+    float price;
 
     public GetBunTest(String name) {
         this.name = name;
     }
-
-    @Mock
-    float price;
 
     @Parameterized.Parameters (name = "Тестовые данные Bun: {0} ")
     public static Object[][] bunName() {
