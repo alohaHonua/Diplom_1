@@ -1,0 +1,9 @@
+
+/.idea
+/target/surefire-reports
+/target/test-classes
+/target/maven-archiver
+/target/classes
+target/praktikum-1.0-SNAPSHOT.jar
+/target/maven-status
+target/jacoco.exec
