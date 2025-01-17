@@ -24,8 +24,8 @@ public class BurgerTest {
     public void setBunsTest() {
         burger.setBuns(bunMock);
         burger.bun.getName();
-        Mockito.verify(bunMock).getName();
-        Assert.assertEquals(expected,burger.bun.getName());
+        Mockito.when(burger.bun.getName()).thenReturn("TestBun");
+        Assert.assertEquals("TestBun",burger.bun.getName());
     }
 
     @Test

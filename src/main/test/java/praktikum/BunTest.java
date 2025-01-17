@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
 
-@RunWith(MockitoJUnitRunner.class)
 public class BunTest {
     static float delta = 0.0f;
 
