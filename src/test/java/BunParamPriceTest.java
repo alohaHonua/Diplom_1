@@ -4,7 +4,6 @@ import org.junit.runners.Parameterized;
 import praktikum.Bun;
 import static org.junit.Assert.assertEquals;
 
-
 @RunWith(Parameterized.class)
 public class BunParamPriceTest {
 

@@ -12,10 +12,9 @@ public class IngredientTypeTest {
         assertEquals("Количество типов ингредиентов должно быть равно 2", 2, actualCount);
     }
 
-
     @Test
     public void ingredientTypeContainsSauceTest() {
-    boolean isSauceInEnum = false;
+        boolean isSauceInEnum = false;
 
         for (IngredientType type : IngredientType.values()) {
             if (type == IngredientType.SAUCE) {

@@ -2,6 +2,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import praktikum.Bun;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -14,7 +15,7 @@ public class BunParamNameTest {
         this.expectedName = expectedName;
         this.name = name;
     }
-    
+
     @Parameterized.Parameters(name = "expectedName = {0}, name = {1}")
     public static Object[][] getData() {
         return new Object[][]{
@@ -27,7 +28,6 @@ public class BunParamNameTest {
                 {"Булка123456", "Булка123456"},
                 {"@#^%()!?", "@#^%()!?"},
                 {"ýąßÝʎր", "ýąßÝʎր"}
-
         };
     }
 

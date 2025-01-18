@@ -43,14 +43,14 @@ public class BurgerMockTest {
         burger.addIngredient(ingredientMock);
 
         softAssertions.assertThat(burger.ingredients.size())
-            .as("Ингредиентов в бургере должно быть 1")
-            .isEqualTo(1);
+                .as("Ингредиентов в бургере должно быть 1")
+                .isEqualTo(1);
 
         softAssertions.assertAll();
     }
 
     @Test
-    public  void removeIngredientCorrectRemoveTest(){
+    public void removeIngredientCorrectRemoveTest() {
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(burger.ingredients.size())
                 .as("Ингредиентов в бургере должно быть 0")
@@ -157,6 +157,4 @@ public class BurgerMockTest {
 
         softAssertions.assertAll();
     }
-
-
 }

@@ -19,7 +19,6 @@ public class IngredientTest {
 
     @Test
     public void getPriceForIngredientReturnCorrectPriceTest() {
-
         float expectedPrice = 3000f;
         float actualPrice = ingredient.getPrice();
         assertEquals("Ожидаемый результат = " + expectedPrice + ", а должен быть = " + actualPrice, expectedPrice, actualPrice, 0.0001f);
@@ -38,5 +37,4 @@ public class IngredientTest {
         IngredientType actualType = ingredient.getType();
         assertEquals("Ожидаемый результат = " + expectedType + ", а должен быть = " + actualType, expectedType, actualType);
     }
-
 }
