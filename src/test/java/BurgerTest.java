@@ -1,4 +1,3 @@
-import io.qameta.allure.Step;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -33,7 +32,6 @@ public class BurgerTest {
     }
 
     @Test
-    @Step("Тестирование установки булочки")
     public void testSetBuns() {
         mockBun = database.availableBuns().get(1); // Используем белую булочку из базы данных
 
@@ -48,7 +46,6 @@ public class BurgerTest {
     }
 
     @Test
-    @Step("Тестирование добавления ингредиента")
     public void testAddIngredient() {
         mockSauce = database.availableIngredients().get(1); // Используем "sour cream" из базы данных
 
@@ -64,7 +61,6 @@ public class BurgerTest {
     }
 
     @Test
-    @Step("Тестирование удаления ингредиента")
     public void testRemoveIngredient() {
         burger.setBuns(database.availableBuns().get(1)); // Устанавливаем белую булочку
         mockSauce = database.availableIngredients().get(1); // Используем "sour cream"
@@ -81,7 +77,6 @@ public class BurgerTest {
     }
 
     @Test
-    @Step("Тестирование перемещения ингредиента")
     public void testMoveIngredient() {
         mockIngredient1 = database.availableIngredients().get(1); // "sour cream"
         mockIngredient2 = database.availableIngredients().get(0); // "hot sauce"
@@ -101,7 +96,6 @@ public class BurgerTest {
     }
 
     @Test
-    @Step("Тестирование получения цены бургера")
     public void testGetPrice() {
         burger.setBuns(database.availableBuns().get(1)); // Устанавливаем белую булочку
         mockSauce = database.availableIngredients().get(1); // "sour cream"
@@ -118,7 +112,6 @@ public class BurgerTest {
     }
 
     @Test
-    @Step("Тестирование получения чека.")
     public void testGetReceipt() {
         // Устанавливаем булочку
         Bun mockBun = database.availableBuns().get(1); // "white bun" с ценой 200
