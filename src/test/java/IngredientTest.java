@@ -1,4 +1,3 @@
-import io.qameta.allure.Step;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -29,7 +28,6 @@ public class IngredientTest {
     }
 
     @Test
-    @Step("Тестирование ингредиента типа: {0}, с именем: {1} и ценой: {2}")
     public void testIngredient() {
         Ingredient ingredient = new Ingredient(ingredientType, expectedName, expectedPrice);
 
