@@ -3,50 +3,64 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mockito;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
-@RunWith(Parameterized.class)
+
 
 public class BurgerParametrizedTest {
-    private final float priceBun;
     private Ingredient filling;
     private Ingredient sauce;
     private Burger burger;
-    private final String nameBun;
-
-    public BurgerParametrizedTest(float price, String name) {
-        this.priceBun = price;
-        this.nameBun = name;
-    }
 
     @Before
     public void setUp() {
-        filling = new Ingredient(IngredientType.FILLING, "sausage", 300);
-        sauce = new Ingredient(IngredientType.SAUCE, "cream", 200);
+        filling = Mockito.mock(Ingredient.class);
+        sauce = Mockito.mock(Ingredient.class);
+        Mockito.when(filling.getPrice()).thenReturn(300f);
+        Mockito.when(sauce.getPrice()).thenReturn(200f);
+
         burger = new Burger();
     }
 
-    @Parameterized.Parameters
-    public static Object [] [] getBunInfo() {
-        return new Object[][] {
-                {100, "toastedBun"},
-                {0, "giftBun"}  //бесплатная булочка
-        };
-
-    }
-
     @Test
-    public void getPrice() {
-        Bun bun = new Bun(nameBun, priceBun);
+    public void testGetPriceWithToastedBun() {
+        float priceBun = 100f;
+        String nameBun = "toastedBun";
+        Bun bun = Mockito.mock(Bun.class);
+
+        Mockito.when(bun.getName()).thenReturn(nameBun);
+        Mockito.when(bun.getPrice()).thenReturn(priceBun);
         burger.setBuns(bun);
+
         burger.addIngredient(sauce);
         burger.addIngredient(filling);
-        float expectedPrice = bun.price * 2 + filling.price + sauce.price;
+
+        float expectedPrice = priceBun * 2 + filling.getPrice() + sauce.getPrice();
         float actualPrice = burger.getPrice();
+
         Assert.assertEquals(expectedPrice, actualPrice, 0);
     }
 
+    @Test
+    public void testGetPriceWithGiftBun() {
+        float priceBun = 0f;
+        String nameBun = "giftBun";
+        Bun bun = Mockito.mock(Bun.class);
+
+        Mockito.when(bun.getName()).thenReturn(nameBun);
+        Mockito.when(bun.getPrice()).thenReturn(priceBun);
+        burger.setBuns(bun);
+
+        burger.addIngredient(sauce);
+        burger.addIngredient(filling);
+
+        float expectedPrice = priceBun * 2 + filling.getPrice() + sauce.getPrice();
+        float actualPrice = burger.getPrice();
+
+        Assert.assertEquals(expectedPrice, actualPrice, 0);
+    }
 }
