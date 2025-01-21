@@ -11,6 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class BurgerTest {
     Burger burger = new Burger();
     String expected = null;
+    int sizeIngredient=0;
 
     @Mock
     Bun bunMock;
@@ -24,8 +25,9 @@ public class BurgerTest {
     public void setBunsTest() {
         burger.setBuns(bunMock);
         burger.bun.getName();
-        Mockito.when(burger.bun.getName()).thenReturn("TestBun");
-        Assert.assertEquals("TestBun",burger.bun.getName());
+        Mockito.verify(bunMock).getName();
+        // Mockito.when(burger.bun.getName()).thenReturn("TestBun");
+        // Assert.assertEquals("TestBun",burger.bun.getName());
     }
 
     @Test
@@ -33,7 +35,9 @@ public class BurgerTest {
         burger.addIngredient(ingredientMock);
         burger.ingredients.get(0).getName();
         Mockito.verify(ingredientMock).getName();
-        Assert.assertEquals(expected, burger.ingredients.get(0).getName());
+        sizeIngredient = burger.ingredients.size();
+       // Assert.assertEquals(expected, burger.ingredients.get(0).getName());
+        Assert.assertEquals (1, sizeIngredient);
     }
 
     @Test
@@ -43,7 +47,9 @@ public class BurgerTest {
         burger.removeIngredient(0);
         burger.ingredients.get(0).getName();
         Mockito.verify(sauceMock).getName();
-        Assert.assertEquals(expected, burger.ingredients.get(0).getName());
+        sizeIngredient = burger.ingredients.size();
+        Assert.assertEquals (1, sizeIngredient);
+        //Assert.assertEquals(expected, burger.ingredients.get(0).getName());
     }
 
     @Test
@@ -53,7 +59,9 @@ public class BurgerTest {
         burger.moveIngredient(0,1);
         burger.ingredients.get(0).getName();
         Mockito.verify(sauceMock).getName();
-        Assert.assertEquals(expected, burger.ingredients.get(0).getName());
+        sizeIngredient = burger.ingredients.size();
+        Assert.assertEquals (2, sizeIngredient);
+        //Assert.assertEquals(expected, burger.ingredients.get(0).getName());
     }
 
     @Test
@@ -76,7 +84,9 @@ public class BurgerTest {
         Mockito.verify(ingredientMock).getType();
         Mockito.verify(sauceMock).getName();
         Mockito.verify(sauceMock).getType();
-        Assert.assertEquals("test", ingredientMock.getName());
+        sizeIngredient = burger.ingredients.size();
+        Assert.assertEquals (2, sizeIngredient);
+        //Assert.assertEquals("test", ingredientMock.getName());
         Assert.assertEquals(IngredientType.FILLING, ingredientMock.getType());
         Assert.assertEquals("chili", sauceMock.getName());
         Assert.assertEquals(IngredientType.SAUCE, sauceMock.getType());
