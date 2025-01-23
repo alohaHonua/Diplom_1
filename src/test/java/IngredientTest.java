@@ -32,13 +32,27 @@ public class IngredientTest {
         });
     }
 
-    // Тест для проверки создания ингредиента
     @Test
-    public void testIngredientCreation() {
+    public void testIngredientNotNull() {
         Ingredient ingredient = new Ingredient(type, name, price);
-        assertNotNull("Ингредиент не null", ingredient);
-        assertEquals("Название ингредиента верное", name, ingredient.getName());
-        assertEquals("Цена ингредиента верна", price, ingredient.getPrice(), 0);
-        assertEquals("Тип ингредиента верный", type, ingredient.getType());
+        assertNotNull("Ингредиент не должен быть null", ingredient);
+    }
+
+    @Test
+    public void testIngredientName() {
+        Ingredient ingredient = new Ingredient(type, name, price);
+        assertEquals("Название ингредиента должно совпадать", name, ingredient.getName());
+    }
+
+    @Test
+    public void testIngredientPrice() {
+        Ingredient ingredient = new Ingredient(type, name, price);
+        assertEquals("Цена ингредиента должна совпадать", price, ingredient.getPrice(), 0);
+    }
+
+    @Test
+    public void testIngredientType() {
+        Ingredient ingredient = new Ingredient(type, name, price);
+        assertEquals("Тип ингредиента должен совпадать", type, ingredient.getType());
     }
 }
