@@ -1,20 +1,21 @@
 import org.junit.Test;
 import praktikum.Bun;
 
+import static Constants.Constants.*;
 import static org.junit.Assert.assertEquals;
 
 public class BunTest {
 
-    private final Bun bun = new Bun("black bun", 100);
+    private final Bun bun = new Bun(NAME_BUN, PRICE_BUN);
 
     @Test
     public void getNameTest() {
-         assertEquals("black bun", bun.getName());
+         assertEquals(NAME_BUN, bun.getName());
     }
 
     @Test
     public void getPriceTest() {
-        assertEquals(100, bun.getPrice(), 0);
+        assertEquals(PRICE_BUN, bun.getPrice(), 0);
     }
 
 }
