@@ -6,7 +6,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
-import praktikum.IngredientType;
 
 import static Constants.Constants.*;
 import static org.junit.Assert.assertEquals;
@@ -78,6 +77,5 @@ public class BurgerTest {
                 String.format("%nPrice: %f%n", burger.getPrice());
         System.out.println(expectedReceipt);
         assertEquals(expectedReceipt, actualReceipt);
-
     }
 }
