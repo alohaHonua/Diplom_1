@@ -10,7 +10,7 @@ public class IngredientTest {
 
     @Test
     public void getPriceTest() {
-        assertEquals(100, ingredient.getPrice(), 0.01);
+        assertEquals(100, ingredient.getPrice(), 0);
     }
 
     @Test
