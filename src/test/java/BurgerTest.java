@@ -70,12 +70,14 @@ public class BurgerTest {
         Mockito.when(ingredientMock.getPrice()).thenReturn(PRICE_INGREDIENT);
         burger.setBuns(bunMock);
         burger.addIngredient(ingredientMock);
+        String priceBurger = String.format("%f",burger.getPrice());
         String actualReceipt = burger.getReceipt();
-        String expectedReceipt = String.format("(==== %s ====)%n", NAME_BUN) +
-                String.format("= %s %s =%n", FILLING.toString().toLowerCase(), NAME_INGREDIENT) +
-                String.format("(==== %s ====)%n", NAME_BUN) +
-                String.format("%nPrice: %f%n", burger.getPrice());
-        System.out.println(expectedReceipt);
+        String expectedReceipt = "(==== " + NAME_BUN + " ====)\r\n" +
+                "= " + FILLING.toString().toLowerCase() + " " + NAME_INGREDIENT + " =\r\n" +
+                                 "(==== " + NAME_BUN + " ====)\r\n" +
+                                "\r\nPrice: " + priceBurger + "\r\n";
+        System.out.println("Ожидаемый результат: \n" + expectedReceipt);
+        System.out.println("Фактический результат: \n" + actualReceipt);
         assertEquals(expectedReceipt, actualReceipt);
     }
 }
