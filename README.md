@@ -31,8 +31,9 @@
 
 
 **Использование:**
-Для запуска тестов выполните команду "mvn clean test"
-Для проверки покрытия тестами команда "mvn jacoco:report"
+ - Для запуска тестов выполните команду "mvn clean test"
+   
+ - Для проверки покрытия тестами команда "mvn jacoco:report"
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
