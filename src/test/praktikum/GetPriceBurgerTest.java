@@ -1,5 +1,6 @@
 package praktikum;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -48,6 +49,6 @@ public class GetPriceBurgerTest {
     @Test
     public void getPrice() {
         cookBurger();
-        assertEquals(expectedSumPrice, burger.getPrice(),0);
+        Assert.assertEquals(expectedSumPrice, burger.getPrice(),0);
     }
 }

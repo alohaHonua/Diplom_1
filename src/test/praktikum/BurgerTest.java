@@ -69,16 +69,16 @@ public class BurgerTest {
         burger.setBuns(bunMock);
         burger.addIngredient(ingredientMock);
         burger.addIngredient(sauceMock);
-        Mockito.when(bunMock.getName()).thenReturn("test");
+        Mockito.when(bunMock.getName()).thenReturn("bun");
         Mockito.when(bunMock.getPrice()).thenReturn(0.23F);
-        Mockito.when(ingredientMock.getName()).thenReturn("test");
+        Mockito.when(ingredientMock.getName()).thenReturn("Cheese");
         Mockito.when(ingredientMock.getPrice()).thenReturn(0.1F);
         Mockito.when(ingredientMock.getType()).thenReturn(IngredientType.FILLING);
         Mockito.when(sauceMock.getName()).thenReturn("chili");
         Mockito.when(sauceMock.getPrice()).thenReturn(0.02F);
         Mockito.when(sauceMock.getType()).thenReturn(IngredientType.SAUCE);
 
-        burger.getReceipt();
+        String actual = burger.getReceipt();
         Mockito.verify(bunMock, Mockito.times(2)).getName();
         Mockito.verify(ingredientMock).getName();
         Mockito.verify(ingredientMock).getType();
@@ -86,9 +86,16 @@ public class BurgerTest {
         Mockito.verify(sauceMock).getType();
         sizeIngredient = burger.ingredients.size();
         Assert.assertEquals (2, sizeIngredient);
-        //Assert.assertEquals("test", ingredientMock.getName());
         Assert.assertEquals(IngredientType.FILLING, ingredientMock.getType());
         Assert.assertEquals("chili", sauceMock.getName());
         Assert.assertEquals(IngredientType.SAUCE, sauceMock.getType());
+        String expected = String.format("(==== bun ====)%n" +
+                "= filling Cheese =%n" +
+                "= sauce chili =%n" +
+                "(==== bun ====)%n" +
+                "%n" +
+                "Price: 0,580000%n");
+        Assert.assertEquals(expected, actual);
     }
+
 }
