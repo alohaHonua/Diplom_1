@@ -59,4 +59,19 @@ public class BurgerTest {
         burger.moveIngredient(0, 1);
         assertEquals("Не совпадает первый ингредиет", sauce, burger.ingredients.get(0));
     }
+
+    @Test
+    public void getPriceReturnSix() {
+        Mockito.when(bun.getPrice()).thenReturn(1.0f);
+        burger.setBuns(bun);
+
+        Mockito.when(sauce.getPrice()).thenReturn(2.7f);
+        Mockito.when(filling.getPrice()).thenReturn(1.3f);
+        burger.addIngredient(sauce);
+        burger.addIngredient(filling);
+
+        float expectedPrice = 1.0f * 2 + 2.7f + 1.3f;
+        assertEquals("Цена бургера не равна 6,0", expectedPrice, burger.getPrice(), 0);
+
+    }
 }
