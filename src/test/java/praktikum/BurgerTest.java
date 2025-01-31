@@ -1,5 +1,6 @@
 package praktikum;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,8 +9,10 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
+import java.util.regex.Matcher;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.containsString;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
@@ -72,6 +75,32 @@ public class BurgerTest {
 
         float expectedPrice = 1.0f * 2 + 2.7f + 1.3f;
         assertEquals("Цена бургера не равна 6,0", expectedPrice, burger.getPrice(), 0);
+
+    }
+
+    @Test
+    public void getReceipt() {
+        Mockito.when(bun.getName()).thenReturn("rye");
+        Mockito.when(bun.getPrice()).thenReturn(2.0f);
+        burger.setBuns(bun);
+
+        Mockito.when(sauce.getType()).thenReturn(IngredientType.SAUCE);
+        Mockito.when(sauce.getName()).thenReturn("pesto");
+        Mockito.when(sauce.getPrice()).thenReturn(1.0f);
+        burger.addIngredient(sauce);
+
+        Mockito.when(filling.getType()).thenReturn(IngredientType.FILLING);
+        Mockito.when(filling.getName()).thenReturn("pickls");
+        Mockito.when(filling.getPrice()).thenReturn(2.0f);
+        burger.addIngredient(filling);
+
+        String expectedReceipt = String.format("(==== rye ====)%n")
+                + String.format("= sauce pesto =%n")
+                + String.format("= filling pickls =%n")
+                + String.format("(==== rye ====)%n")
+                + (String.format("%nPrice: 7,000000%n"));
+
+        assertEquals(expectedReceipt, burger.getReceipt());
 
     }
 }
