@@ -1,4 +1,5 @@
 import praktikum.Bun;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,9 +17,9 @@ public class BunTest {
     @Parameterized.Parameters(name = "Булочка {0} по цене {1}" )
     public static Object[][] setData() {
         return new Object[][]{
-                {"Флюоресцентная", 80.0f},
-                {"Краторная", 60.0f},
-                {"Spaceman", 70.0f},
+                {"Флюоресцентная", 80f},
+                {"Краторная", 60f},
+                {"Spaceman", 70f},
         };
     }
 
@@ -32,6 +33,6 @@ public class BunTest {
     public void checkGetPrice() {
         Bun bun = new Bun(name, price);
         float actualPrice = bun.getPrice();
-        Assert.assertEquals("Цена не соответствует \""+price+"\":", price, actualPrice, 0.0);
+        Assert.assertEquals("Цена не соответствует \""+price+"\":", price, actualPrice, 0);
     }
 }
