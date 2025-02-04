@@ -24,20 +24,18 @@ public class IngredientTest {
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {
-                { IngredientType.FILLING, "Lettuce", 0.50f },
-                { IngredientType.FILLING, "Tomato", 0.75f },
-                { IngredientType.SAUCE, "Ketchup", 0.25f },
-                { IngredientType.SAUCE, "Mustard", 0.30f }
+        return Arrays.asList(new Object[][]{
+                {IngredientType.FILLING, "Lettuce", 0.50f},
+                {IngredientType.FILLING, "Tomato", 0.75f},
+                {IngredientType.SAUCE, "Ketchup", 0.25f},
+                {IngredientType.SAUCE, "Mustard", 0.30f}
         });
     }
 
     @Test
     public void testIngredient() {
-        // Arrange
         Ingredient ingredient = new Ingredient(type, name, price);
 
-        // Act & Assert
         assertEquals(type, ingredient.getType());
         assertEquals(name, ingredient.getName());
         assertEquals(price, ingredient.getPrice(), 0.001);
