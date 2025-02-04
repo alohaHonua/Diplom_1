@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class BurgerTest {
+public class TestBurger {
 
     private Burger burger;
     private Bun mockBun;
