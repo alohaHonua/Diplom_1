@@ -20,7 +20,9 @@ public class BurgerTest {
 
     @Mock
     Bun bun;
+    @Mock
     Ingredient ingredientSauce;
+    @Mock
     Ingredient ingredientFilling;
 
     @Before
