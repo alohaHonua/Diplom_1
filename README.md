@@ -5,7 +5,7 @@
 Покрытие тестами классов Bun, Burger, Ingredient, IngredientType.
 
 При написании тестов использовалось:
-    Java 11.0.24
-    Maven 3.9.9
-    Junit 4.13.2
-    Jacoco
+   - Java 11.0.24
+   - Maven 3.9.9
+   - Junit 4.13.2
+   - Jacoco
