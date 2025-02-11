@@ -6,12 +6,12 @@ import praktikum.Bun;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class BunTest {
+public class BunParamTest {
 
 private final String name;
 private final float price;
 
-    public BunTest(String name, float price) {
+    public BunParamTest(String name, float price) {
         this.name = name;
         this.price = price;
     }
@@ -30,7 +30,6 @@ public void checkName() {
     Bun bun = new Bun(name, price);
     String getName = bun.getName();
     assertEquals(name, getName);
-    System.out.println(name + " - " + getName);
 }
 
 @Test
@@ -39,6 +38,5 @@ public void checkPrice() {
     float delta = 0.1F;
     float getPrice = bun.getPrice();
     assertEquals(price, getPrice, delta);
-    System.out.println(price + " - " + getPrice);
 }
 }
