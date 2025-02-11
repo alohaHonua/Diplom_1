@@ -77,7 +77,7 @@ public class BurgerTest {
     @Test
     public void testGetReceipt() {
 
-        // Мокируем данные
+        // моки
         when(bun.getName()).thenReturn("black bun");
         when(ingredient1.getType()).thenReturn(IngredientType.SAUCE);
         when(ingredient1.getName()).thenReturn("hot sauce");
@@ -87,12 +87,12 @@ public class BurgerTest {
         when(ingredient1.getPrice()).thenReturn(50f);
         when(ingredient2.getPrice()).thenReturn(30f);
 
-        // Устанавливаем данные в бургер
+        // собираем бургер
         burger.setBuns(bun);
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
 
-        // Формируем ожидаемый результат с помощью String.format
+        // выводим рецепт через String.format
         String expectedReceipt = String.format(
                         "(==== %s ====)%n" +
                         "= %s %s =%n" +
@@ -106,7 +106,6 @@ public class BurgerTest {
                 burger.getPrice()
         );
 
-        // Проверяем, что результат совпадает с ожидаемым
         assertEquals(expectedReceipt, burger.getReceipt());
     }
 }
