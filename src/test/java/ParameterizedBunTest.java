@@ -6,12 +6,12 @@ import praktikum.Bun;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-public class ParametrizedBunTest {
+public class ParameterizedBunTest {
 
     private final String name;
     private final float price;
 
-    public ParametrizedBunTest(String name, float price) {
+    public ParameterizedBunTest(String name, float price) {
         this.name = name;
         this.price = price;
     }
