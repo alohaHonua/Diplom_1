@@ -17,7 +17,7 @@ private final float price;
     }
 
     @Parameterized.Parameters()
-public static Object[][] getNameBun(){
+    public static Object[][] getNameAndPriceBun(){
     return new Object[][] {
             {"Батон", 1.5F},
             {"Broun", 3}
@@ -28,15 +28,15 @@ public static Object[][] getNameBun(){
 @Test
 public void checkName() {
     Bun bun = new Bun(name, price);
-    String getName = bun.getName();
-    assertEquals(name, getName);
+    String actualName = bun.getName();
+    assertEquals(name, actualName);
 }
 
 @Test
 public void checkPrice() {
     Bun bun = new Bun(name, price);
     float delta = 0.1F;
-    float getPrice = bun.getPrice();
-    assertEquals(price, getPrice, delta);
+    float actualPrice = bun.getPrice();
+    assertEquals(price, actualPrice, delta);
 }
 }
