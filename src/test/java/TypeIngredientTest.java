@@ -31,6 +31,5 @@ public class TypeIngredientTest {
         Assert.assertEquals("IngredientType не совпадает"
                 , IngredientTypeExpected.values()[ordinal].name()
                 , ingredientType.name());
-
     }
 }
