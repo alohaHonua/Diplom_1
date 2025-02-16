@@ -7,7 +7,13 @@ import praktikum.IngredientType;
 
 @RunWith(Parameterized.class)
 public class IngredientTest {
-    private IngredientType ingredientType;
+    private static final String SAUSE_NAME = "Соус Spicy-X";
+    private static final float SAUSE_PRICE = 80;
+    private static final String FILLING_NAME = "Мясо бессмертных моллюсков Protostomia";
+    private static final float FILLING_PRICE = 1300;
+
+    private int ordinal;
+    private praktikum.IngredientType ingredientType;
     private String name;
     private float price;
 
@@ -17,19 +23,33 @@ public class IngredientTest {
         this.price = price;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = " IngredientType ({0}) , name ({1}) , price ({2})")
     public static Object[][] setParams() {
-        return new Object[][] {
-                {IngredientType.SAUCE, "Соус Spicy-X", 90},
-                {IngredientType.FILLING, "Говяжий метеорит (отбивная)", 3000 },
+        return new Object[][]{
+                {IngredientType.SAUCE, SAUSE_NAME, SAUSE_PRICE},
+                {IngredientType.FILLING, FILLING_NAME, FILLING_PRICE},
         };
     }
 
     @Test
-    public void getIngredientTest() {
+    public void nameIngredientTest() {
         Ingredient ingredient = new Ingredient(ingredientType, name, price);
-        Assert.assertEquals(name, ingredient.getName());
-        Assert.assertEquals(Float.valueOf(price), ingredient.getPrice(),0);
-        Assert.assertEquals(ingredientType, ingredient.getType());
+        Assert.assertEquals("Наименование инградиента возвращается не верно"
+                , name, ingredient.getName());
     }
+
+    @Test
+    public void priceIngredientTest() {
+        Ingredient ingredient = new Ingredient(ingredientType, name, price);
+        Assert.assertEquals("Цена инградиента возвращается не верно"
+                , Float.valueOf(price), ingredient.getPrice(),0);
+    }
+
+    @Test
+    public void typeIngredientTest() {
+        Ingredient ingredient = new Ingredient(ingredientType, name, price);
+        Assert.assertEquals("Тип инградиента возвращается не верно"
+                , ingredientType, ingredient.getType());
+    }
+
 }

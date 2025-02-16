@@ -5,23 +5,26 @@ import org.junit.Test;
 import praktikum.Bun;
 
 public class BunTest {
-    private String name;
-    private float price;
+    private static final String BUN_NAME = "Флюоресцентная булка R2-D3";
+    private static final float BUN_PRICE = 988;
+
     private Bun bun;
 
     @Before
     public void init() {
-        bun = new Bun("Флюоресцентная булка R2-D3", Float.valueOf(998));
+        bun = new Bun(BUN_NAME, Float.valueOf(BUN_PRICE));
     }
 
     @Test
     public void getNameBunTest() {
-        Assert.assertEquals("Флюоресцентная булка R2-D3", bun.getName());
+        Assert.assertEquals("Наименование булки возвращается не верно"
+                , BUN_NAME, bun.getName());
     }
 
     @Test
     public void getPriceBunTest() {
-        Assert.assertEquals(Float.valueOf(998), bun.getPrice(),0);
+        Assert.assertEquals("Цена булки возвращается не верно"
+                , Float.valueOf(BUN_PRICE), bun.getPrice(),0);
     }
 }
 
