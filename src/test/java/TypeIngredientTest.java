@@ -28,9 +28,6 @@ public class TypeIngredientTest {
 
     @Test
     public void test(){
-        System.out.println(ingredientType.name());
-        System.out.println(IngredientTypeExpected.values()[ordinal].name());
-
         Assert.assertEquals("IngredientType не совпадает"
                 , IngredientTypeExpected.values()[ordinal].name()
                 , ingredientType.name());
