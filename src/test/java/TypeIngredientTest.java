@@ -27,7 +27,7 @@ public class TypeIngredientTest {
     }
 
     @Test
-    public void test(){
+    public void enumTypeIngredientTest(){
         Assert.assertEquals("IngredientType не совпадает"
                 , IngredientTypeExpected.values()[ordinal].name()
                 , ingredientType.name());

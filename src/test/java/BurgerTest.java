@@ -1,4 +1,5 @@
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -24,7 +25,6 @@ public class BurgerTest {
     private IngredientType ingredientTypeSauce;
     private IngredientType ingredientTypeFilling;
     private float price;
-    private String receipt;
 
     @Mock
     private Bun bun;
@@ -33,9 +33,58 @@ public class BurgerTest {
     @Mock
     private Ingredient ingredientFilling;
 
+    @Before
+    public void init()  throws Exception {
+        burger = new Burger();
+    }
+
+    @Test
+    public void burgerCreateEmptyBunTest() {
+        // Проверим, что бургер создается без булки
+        Assert.assertEquals("burger создается с булкой", null, burger.bun);
+    }
+
+    @Test
+    public void burgerSetBunsTest() {
+        burger.setBuns(bun);
+        //Проверим добавление булки
+        Assert.assertEquals("Булка не добавляется", bun, burger.bun);
+    }
+
+    @Test
+    public void burgerCreateEmptyIngredientsTest() {
+        // Проверим, что бургер создается без ингредиентов
+        Assert.assertEquals("burger создается с инградиентами", true, burger.ingredients.isEmpty());
+    }
+
+    @Test
+    public void burgerAddIngredientTest() {
+        burger.addIngredient(ingredientSauce);
+        // Проверим добавление ингредиента
+        Assert.assertEquals("Инградиент не добавляется", 1, burger.ingredients.size());
+    }
+
+    @Test
+    public void burgerRemoveIngredientTest() {
+        burger.addIngredient(ingredientSauce);
+        burger.removeIngredient(0);
+        // Проверим удаление ингредиента
+        Assert.assertEquals("Инградиент не удаляется", true, burger.ingredients.isEmpty());
+    }
+
+    @Test
+    public void burgerMoveIngredientTest() {
+        // Добавляем первый ингредиент ingredientSauce
+        burger.addIngredient(ingredientSauce);
+        // Добавляем второй ингредиент ingredientFilling
+        burger.addIngredient(ingredientFilling);
+        // Проверим перемещение ингредиентов, первым должен быть ingredientFilling
+        burger.moveIngredient(0, 1);
+        Assert.assertEquals("Инградиент не перемещается", ingredientFilling, burger.ingredients.get(0));
+    }
+
     @Test
     public void burgerPriceTest() {
-        burger = new Burger();
         // Собираем бургер
         // Добавляем булку
         burger.setBuns(bun);
@@ -59,9 +108,9 @@ public class BurgerTest {
         Mockito.verify(ingredientFilling,Mockito.times(2)).getPrice();
     }
 
-    @Test
+
+        @Test
     public void burgerReceiptTest() {
-        burger = new Burger();
         // Собираем бургер
         // Добавляем булку
         burger.setBuns(bun);
