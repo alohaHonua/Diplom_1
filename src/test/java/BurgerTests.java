@@ -1,6 +1,8 @@
 package praktikum;
 
+import org.assertj.core.api.SoftAssertions;
 import org.hamcrest.MatcherAssert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -14,24 +16,28 @@ import static org.junit.Assert.*;
 
 public class BurgerTests {
 
-    //  !--- создаем МОК на булку ---!
     @Mock
     private Bun bun;
-
-    //  !--- создаем МОК на первый ингредиент ---!
     @Mock
     private Ingredient ingredientOne;
-
-    //  !--- создаем МОК на второй ингредиент ---!
     @Mock
     private Ingredient ingredientTwo;
+
+    @Before
+    public void begin() {
+        Mockito.when(bun.getName()).thenReturn("Космическая булка");
+        Mockito.when(ingredientOne.getName()).thenReturn("Начинка 1");
+        Mockito.when(ingredientTwo.getName()).thenReturn("Начинка 2");
+        Mockito.when(ingredientOne.getPrice()).thenReturn(200f);
+        Mockito.when(bun.getPrice()).thenReturn(100f);
+        Mockito.when(ingredientOne.getType()).thenReturn(IngredientType.FILLING);
+    }
 
 
     //  !--- Проверяем метод на добавление булки ---!
     @Test
     public void setBunsIsSuccessTest() {
         Burger burger = new Burger();
-        Mockito.when(bun.getName()).thenReturn("Космическая булка");
         burger.setBuns(bun);
         MatcherAssert.assertThat("Не удалось добавить новую булку", bun.getName(), equalTo(burger.bun.getName()));
     }
@@ -59,20 +65,30 @@ public class BurgerTests {
     @Test
     public void moveIngredientIsSuccessTest() {
         Burger burger = new Burger();
-        Mockito.when(ingredientOne.getName()).thenReturn("Начинка 1");
-        Mockito.when(ingredientTwo.getName()).thenReturn("Начинка 2");
         burger.addIngredient(ingredientOne);
         burger.addIngredient(ingredientTwo);
         burger.moveIngredient(0, 1);
-        MatcherAssert.assertThat("Не удалось переместить ингредиент 1", burger.ingredients.get(1).getName(), equalTo("Начинка 1"));
-        MatcherAssert.assertThat("Не удалось переместить ингредиент 2", burger.ingredients.get(0).getName(), equalTo("Начинка 2"));
+        MatcherAssert.assertThat("Не удалось переместить ингредиент", burger.ingredients.get(1).getName(), equalTo("Начинка 1"));
+
+    }
+
+    //  !--- Проверяем сохранность обоих ингредиентов при перемещении (Доп тест) ---!
+    @Test
+    public void moveIngredientsIsSuccessTest() {
+        Burger burger = new Burger();
+        burger.addIngredient(ingredientOne);
+        burger.addIngredient(ingredientTwo);
+        burger.moveIngredient(0, 1);
+
+        SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(burger.ingredients.get(1).getName()).isEqualTo("Начинка 1");
+        softAssertions.assertThat(burger.ingredients.get(0).getName()).isEqualTo("Начинка 2");
+
     }
 
     //  !--- Проверяем метод на формирование цены ---!
     @Test
     public void getPriceIsSuccessTest() {
-        Mockito.when(bun.getPrice()).thenReturn(100f);
-        Mockito.when(ingredientOne.getPrice()).thenReturn(200f);
         float totalPrice = bun.getPrice() * 2 + ingredientOne.getPrice();
         Burger burger = new Burger();
         burger.setBuns(bun);
@@ -83,11 +99,6 @@ public class BurgerTests {
     //  !--- Проверяем метод на формирование чека ---!
     @Test
     public void getReceiptIsSuccessTest() {
-        Mockito.when(bun.getName()).thenReturn("Космическая булка");
-        Mockito.when(bun.getPrice()).thenReturn(100f);
-        Mockito.when(ingredientOne.getName()).thenReturn("Начинка 1");
-        Mockito.when(ingredientOne.getPrice()).thenReturn(200F);
-        Mockito.when(ingredientOne.getType()).thenReturn(IngredientType.FILLING);
         String bunName = bun.getName();
         String ingredientType = ingredientOne.getType().name().toLowerCase();
         String ingredientName = ingredientOne.getName();

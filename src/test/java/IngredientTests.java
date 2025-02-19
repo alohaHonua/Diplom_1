@@ -17,17 +17,10 @@ public class IngredientTests {
 
     //  !--- Создаем новый ингредиент типа соус---!
     @Before
-    public void createIngredientSauce() {
+    public void createIngredients() {
         this.ingredientSauce = new Ingredient(ingredientTypeOne, ingredientNameSauce, ingredientPrice);
-    }
-
-
-    //  !--- Создаем новый ингредиент типа начинка---!
-    @Before
-    public void createIngredientFilling() {
         this.ingredientFilling = new Ingredient(ingredientTypeTwo, ingredientNameFilling, ingredientPrice);
     }
-
 
     //  !--- Проверяем тип ингредиента (Соус) ---!
     @Test
@@ -41,7 +34,6 @@ public class IngredientTests {
         MatcherAssert.assertThat("Неверный тип ингредиента", ingredientFilling.getType(), equalTo(ingredientTypeTwo));
     }
 
-
     //  !--- Проверяем имя ингредиента (Соус)---!
     @Test
     public void getNameSauceIsSuccessTest() {
@@ -54,13 +46,11 @@ public class IngredientTests {
         MatcherAssert.assertThat("Неверное имя ингредиента", ingredientFilling.getName(), equalTo(ingredientNameFilling));
     }
 
-
     //  !--- Проверяем цену ингредиента (Соус)---!
     @Test
     public void getPriceSauceIsSuccessTest() {
         MatcherAssert.assertThat("Неверная цена ингредиента", ingredientSauce.getPrice(), equalTo(ingredientPrice));
     }
-
 
     //  !--- Проверяем цену ингредиента (Начинка)---!
     @Test
