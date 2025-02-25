@@ -6,6 +6,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
+import praktikum.IngredientType;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -19,6 +20,8 @@ public class BurgerTest {
 
     private Ingredient cheeseSauce = new Ingredient(SAUCE, "cheesy", 2.5F);
     private Ingredient cucumberFilling = new Ingredient(FILLING, "cucumber", 1.5F);
+    private String witeBun = "White bun";
+    private String sumIngredient = String.format("%f", cheeseSauce.getPrice() + cucumberFilling.getPrice());
 
 
     @Test
@@ -68,12 +71,13 @@ public class BurgerTest {
         burger.addIngredient(cucumberFilling);
         burger.addIngredient(cheeseSauce);
         String actualReceipt = burger.getReceipt();
-        String exeptionReceipt = String.format("(==== White bun ====)%n" +
-                "= filling cucumber =%n" +
-                "= sauce cheesy =%n" +
-                "(==== White bun ====)%n" +
+        String exeptionReceipt = String.format("(==== %s ====)%n" +
+                "= %s %s =%n" +
+                "= %s %s =%n" +
+                "(==== %s ====)%n" +
                 "%n" +
-                "Price: 4,000000%n");
+                "Price: %s%n", witeBun, cucumberFilling.getType().toString().toLowerCase(),
+                cucumberFilling.getName(), cheeseSauce.getType().toString().toLowerCase(), cheeseSauce.getName(), witeBun, sumIngredient);
         System.out.println(actualReceipt);
         assertEquals(exeptionReceipt, actualReceipt);
     }
