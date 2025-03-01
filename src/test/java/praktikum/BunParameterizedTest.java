@@ -19,9 +19,9 @@ public class BunParameterizedTest {
     @Parameterized.Parameters(name = "Тестовые данные: название = {0}, цена = {1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-                {"black Bun", 100.0f},
-                {"white Bun", 200.0f},
-                {"red Bun", 300.0f}
+                {"black bun", 100.0f},
+                {"white bun", 200.0f},
+                {"red bun", 300.0f}
         });
     }
 
