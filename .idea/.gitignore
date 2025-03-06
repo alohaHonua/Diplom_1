@@ -1,17 +1,18 @@
 # Default ignored files
 /shelf/
-/workspace.xml
+workspace.xml
 
+# Игнорируем всю папку target
 target/
 
-# Разрешить отслеживание отчетов JaCoCo
-!target/jacoco/
-!target/jacoco/**
+# Разрешаем отслеживание отчетов JaCoCo в target/site/jacoco/
+!target/site/jacoco/
+!target/site/jacoco/**
 
+# Разрешаем отслеживание некоторых других файлов и папок, которые могут быть полезны
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
 
 ### IntelliJ IDEA ###
 .idea/
@@ -23,7 +24,6 @@ target/
 *.iml
 *.ipr
 
-
 ### Eclipse ###
 .apt_generated
 .classpath
@@ -33,21 +33,18 @@ target/
 .springBeans
 .sts4-cache
 
-
 ### NetBeans ###
 /nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-
 ### VS Code ###
 .vscode/
-
 
 ### Mac OS ###
 .DS_Store
