@@ -18,7 +18,7 @@ public class BunTest {
         this.shouldThrowException = shouldThrowException;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: имя = {0}, цена = {1}, должно бросать исключение = {2}")
     public static Object[][] data() {
         return new Object[][]{
 
@@ -40,13 +40,25 @@ public class BunTest {
     }
 
     @Test
-    public void BunCreationTest() {
+    public void testBunCreationThrowsException() {
         if (shouldThrowException) {
-            assertThrows(IllegalArgumentException.class, () -> new Bun(name, price));
-        } else {
+            Exception exception = assertThrows(IllegalArgumentException.class, () -> new Bun(name, price));
+            String expectedMessage = null;
+            if (name == null || name.isEmpty() || name.length() > 50) {
+                expectedMessage = "Invalid bun name";
+            } else if (price < 0) {
+                expectedMessage = "Price cannot be negative";
+            }
+            assertEquals("Сообщение об ошибке не соответствует ожидаемому", expectedMessage, exception.getMessage());
+        }
+    }
+
+    @Test
+    public void testBunCreationSuccessful() {
+        if (!shouldThrowException) {
             Bun bun = new Bun(name, price);
-            assertEquals(name, bun.getName());
-            assertEquals(price, bun.getPrice(), 0.001);
+            assertEquals("Имя булочки должно совпадать", name, bun.getName());
+            assertEquals("Цена булочки должна совпадать", price, bun.getPrice(), 0.001);
         }
     }
 }

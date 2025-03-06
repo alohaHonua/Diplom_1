@@ -14,6 +14,10 @@ public class Burger {
     public Bun bun;
     public List<Ingredient> ingredients = new ArrayList<>();
 
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
     public void setBuns(Bun bun) {
         this.bun = bun;
     }
