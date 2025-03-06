@@ -14,20 +14,18 @@ import static org.junit.Assert.assertTrue;
 import static praktikum.IngredientType.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BurgerTest {
+public class NewBurgerTest {
 
     @Mock
     Bun bun;
 
     @Mock
-    Ingredient ingredient;
+    Ingredient sauce;
+
+    @Mock
+    Ingredient filling;
 
     private Burger burger;
-    private Ingredient cheeseSauce = new Ingredient(SAUCE, "cheesy", 2.5F);
-    private Ingredient cucumberFilling = new Ingredient(FILLING, "cucumber", 1.5F);
-    private String witeBun = "White bun";
-    private String sumIngredient = String.format("%f", cheeseSauce.getPrice() + cucumberFilling.getPrice());
-
 
     @Before
     public void createBurger() {
@@ -36,14 +34,14 @@ public class BurgerTest {
 
     @Test
     public void checkAddIngridient() {
-        burger.addIngredient(cheeseSauce);
-        boolean result = burger.ingredients.contains(cheeseSauce);
+        burger.addIngredient(sauce);
+        boolean result = burger.ingredients.contains(sauce);
         assertTrue(result);
     }
 
     @Test
     public void checkRemoveIngredient() {
-        burger.addIngredient(cucumberFilling);
+        burger.addIngredient(filling);
         burger.removeIngredient(0);
         int actualSize = burger.ingredients.size();
         assertEquals(0, actualSize);
@@ -51,8 +49,8 @@ public class BurgerTest {
 
     @Test
     public void checkMoveIngredient() {
-        burger.addIngredient(cheeseSauce);
-        burger.addIngredient(cucumberFilling);
+        burger.addIngredient(sauce);
+        burger.addIngredient(filling);
         Ingredient firstIngredient = burger.ingredients.get(0);
         burger.moveIngredient(0, 1);
         assertEquals(firstIngredient, burger.ingredients.get(1));
@@ -62,8 +60,10 @@ public class BurgerTest {
     public void checkGetPrice() {
         burger.setBuns(bun);
         Mockito.when(burger.bun.getPrice()).thenReturn(50F);
-        burger.addIngredient(cucumberFilling);
-        burger.addIngredient(cheeseSauce);
+        Mockito.when(sauce.getPrice()).thenReturn(2.5F);
+        Mockito.when(filling.getPrice()).thenReturn(1.5F);
+        burger.addIngredient(filling);
+        burger.addIngredient(sauce);
         float actualsPrice = burger.getPrice();
         float delta = 0.1F;
         assertEquals(104, actualsPrice, delta);
@@ -73,17 +73,24 @@ public class BurgerTest {
     public void checkGetReceipt() {
         burger.setBuns(bun);
         Mockito.when(burger.bun.getName()).thenReturn("White bun");
-        burger.addIngredient(cucumberFilling);
-        burger.addIngredient(cheeseSauce);
+        Mockito.when(sauce.getType()).thenReturn(SAUCE);
+        Mockito.when(filling.getType()).thenReturn(FILLING);
+        Mockito.when(sauce.getName()).thenReturn("cheesy");
+        Mockito.when(filling.getName()).thenReturn("cucumber");
+        Mockito.when(sauce.getPrice()).thenReturn(2.5F);
+        Mockito.when(filling.getPrice()).thenReturn(1.5F);
+        burger.addIngredient(filling);
+        burger.addIngredient(sauce);
+        String sumIngredient = String.format("%f", sauce.getPrice() + filling.getPrice());
         String actualReceipt = burger.getReceipt();
         String exeptionReceipt = String.format("(==== %s ====)%n" +
-                "= %s %s =%n" +
-                "= %s %s =%n" +
-                "(==== %s ====)%n" +
-                "%n" +
-                "Price: %s%n", witeBun, cucumberFilling.getType().toString().toLowerCase(),
-                cucumberFilling.getName(), cheeseSauce.getType().toString().toLowerCase(), cheeseSauce.getName(), witeBun, sumIngredient);
-        System.out.println(actualReceipt);
+                        "= %s %s =%n" +
+                        "= %s %s =%n" +
+                        "(==== %s ====)%n" +
+                        "%n" +
+                        "Price: %s%n", burger.bun.getName(), filling.getType().toString().toLowerCase(),
+                filling.getName(), sauce.getType().toString().toLowerCase(), sauce.getName(), burger.bun.getName(), sumIngredient);
+//        System.out.println(actualReceipt);
         assertEquals(exeptionReceipt, actualReceipt);
     }
 }
