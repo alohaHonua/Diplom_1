@@ -11,7 +11,7 @@ public class BunTest {
         String expectedName = "Булочка для бургера";
         Bun bun = new Bun(expectedName, 100.0f);
         String actualName = bun.getName();
-        assertEquals("Метод getName() должен возвращать правильное имя булочки", 
+        assertEquals("Метод getName() должен возвращать правильное имя для булочки",
                     expectedName, actualName);
     }
 
