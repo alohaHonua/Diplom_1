@@ -33,6 +33,7 @@ public class Praktikum {
 
         // Распечатаем рецепт бургера
         System.out.println(burger.getReceipt());
+        System.out.println(ingredients);
     }
 
 }
