@@ -42,7 +42,7 @@ public class IngredientParameterizedTests {
     @Test
     public void getTypeTest(){
         Ingredient ingredient = createIngredient();
-        Assert.assertEquals(type, ingredient.getType());
+        Assert.assertSame(type, ingredient.getType());
     }
 
     private Ingredient createIngredient(){
