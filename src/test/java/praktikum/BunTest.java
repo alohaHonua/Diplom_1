@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BunTest {
-    private final String NAME_BUN = "blackBun";
+    private static final String NAME_BUN = "blackBun";
     private final float PRICE_BUN = 1.16f;
     private Bun bun;
 

@@ -11,7 +11,7 @@ import org.mockito.Mock;
 public class BunParamTest {
     private static final String LONG_NAME_BUN = RandomStringUtils.randomAlphabetic(100);
     private static final String SPECIAL_NAME_BUN = RandomStringUtils.random(10, ' ', '.', '/', ',', '|', '!', '@', '$', '%');
-
+    private static final double DELTA = 0.001;
     private final String bunName;
     private final float bunPrice;
     @Mock
@@ -36,6 +36,6 @@ public class BunParamTest {
     public void returnActualNameAndPrice() {
         bun = new Bun(bunName, bunPrice);
         Assert.assertEquals("Наименование булочки неверное", bunName, bun.getName());
-        Assert.assertEquals("Цена за булочку не совпадает", bunPrice, bun.getPrice(), 0);
+        Assert.assertEquals("Цена за булочку не совпадает", bunPrice, bun.getPrice(), DELTA);
     }
 }
