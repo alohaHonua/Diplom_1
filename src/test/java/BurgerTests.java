@@ -1,13 +1,13 @@
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -20,8 +20,11 @@ public class BurgerTests {
     @Mock
     private Ingredient ingredient;
 
-    @Mock
-    private Database database;
+    @Spy
+    private Ingredient ingredientSpyA = new Ingredient(IngredientType.SAUCE, "AA", 11f);
+
+    @Spy
+    private Ingredient ingredientSpyB = new Ingredient(IngredientType.SAUCE, "BB", 22f);
 
     @Test
     public void setBunTestReturnName() {
@@ -47,11 +50,42 @@ public class BurgerTests {
 
     @Test
     public void addIngredientTest(){
+        //Этим тестом проверяем корректную работу метода addIngredient, если список не пустой метод работает, если список пуст метод не добавляет ингредиент
         Burger burger = new Burger();
-        Ingredient ingredient1 = new Ingredient(IngredientType.SAUCE, "соусхуёус", 1.333f);
-        Ingredient ingredient2 = new Ingredient(IngredientType.FILLING, "соусхуёcxcxус", 1.333f);
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
-        System.out.println(burger.ingredients.size());
+        burger.addIngredient(ingredient);
+        boolean expected = false;
+        assertEquals(expected, burger.ingredients.isEmpty());
     }
+
+    @Test
+    public void addIngredientQuantityTest(){
+        //Этим тестом проверяем корректную работу метода addIngredient, в данном случае, что метод добавляет именно один ингредиент
+        int expectedQuantity = 1;
+        Burger burger = new Burger();
+        burger.addIngredient(ingredient);
+        assertTrue(expectedQuantity == burger.ingredients.size());
+    }
+
+    @Test
+    public void removeIngredientTest(){
+        //Этим тестом проверяем работу метода removeIngredient, добавляем два ингредиента, удаляем один, сравниваем количество ингредиентов списка с ожидаемым результатом
+        int expectedQuantity = 1;
+        Burger burger = new Burger();
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient);
+        burger.removeIngredient(1);
+        assertTrue(expectedQuantity == burger.ingredients.size());
+    }
+///----------------------------------------------------------------------------------------
+    @Test
+    public void moveIngredientTest(){
+        //Этим тестом проверяем работу метода moveIngredient, не знаю как убрать зависимость от класса Ingredient, потому что если передавать два замокированных ингредиента не получится вычислить меняет ли индекс метод moveIngredient
+        Burger burger = new Burger();
+        burger.addIngredient(ingredientSpyA);
+        burger.addIngredient(ingredientSpyB);
+        burger.moveIngredient(1, 0);
+        String expectedName = "BB";
+        assertEquals(expectedName, burger.ingredients.get(0).name);
+    }
+///---------------------------------------------------------------------------------------
 }
