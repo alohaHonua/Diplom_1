@@ -2,8 +2,7 @@ package praktikum;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-
+import org.assertj.core.api.SoftAssertions;
 import java.util.List;
 
 public class BunTest {
@@ -19,17 +18,27 @@ public class BunTest {
 
     @Test
     public void testGetName() {
+        SoftAssertions softAssertions = new SoftAssertions();
+
         // Проверяем название каждой булочки
-        assertEquals("black bun", buns.get(0).getName());
-        assertEquals("white bun", buns.get(1).getName());
-        assertEquals("red bun", buns.get(2).getName());
+        softAssertions.assertThat(buns.get(0).getName()).isEqualTo("black bun");
+        softAssertions.assertThat(buns.get(1).getName()).isEqualTo("white bun");
+        softAssertions.assertThat(buns.get(2).getName()).isEqualTo("red bun");
+
+        // Проверяем все ассерты
+        softAssertions.assertAll();
     }
 
     @Test
     public void testGetPrice() {
+        SoftAssertions softAssertions = new SoftAssertions();
+
         // Проверяем цену каждой булочки
-        assertEquals(100.0, buns.get(0).getPrice(), 0.01);
-        assertEquals(200.0, buns.get(1).getPrice(), 0.01);
-        assertEquals(300.0, buns.get(2).getPrice(), 0.01);
+        softAssertions.assertThat(buns.get(0).getPrice()).isEqualTo(100.0f);
+        softAssertions.assertThat(buns.get(1).getPrice()).isEqualTo(200.0f);
+        softAssertions.assertThat(buns.get(2).getPrice()).isEqualTo(300.0f);
+
+        // Проверяем все ассерты
+        softAssertions.assertAll();
     }
 }
