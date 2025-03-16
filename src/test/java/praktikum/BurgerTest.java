@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
+import org.assertj.core.api.SoftAssertions;
 
 public class BurgerTest {
 
@@ -12,6 +13,7 @@ public class BurgerTest {
     private Ingredient ingredient1;
     private Ingredient ingredient2;
     private Ingredient ingredient3;
+    private SoftAssertions softly;
 
     @Before
     public void setup() {
@@ -41,6 +43,8 @@ public class BurgerTest {
         burger.setBuns(bun);
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
+
+        softly = new SoftAssertions();
     }
 
     @Test
@@ -53,16 +57,26 @@ public class BurgerTest {
     public void testAddIngredient() {
         burger.addIngredient(ingredient3);
 
-        assertEquals("Размер списка ингредиентов после добавления не увеличился",3, burger.ingredients.size());
-        assertEquals("Добавленный ингредиент находится не в конце списка", ingredient3, burger.ingredients.get(2));
+        softly.assertThat(burger.ingredients.size())
+                .as("Размер списка ингредиентов после добавления не увеличился")
+                .isEqualTo(3);
+        softly.assertThat(burger.ingredients.get(2))
+                .as("Добавленный ингредиент находится не в конце списка")
+                .isEqualTo(ingredient3);
+        softly.assertAll();
     }
 
     @Test
     public void testRemoveIngredient() {
         burger.removeIngredient(0);
 
-        assertEquals("Размер списка ингредиентов после удаления не уменьшился",1, burger.ingredients.size());
-        assertEquals("Ингредиенты после удаления не на своем месте", ingredient2, burger.ingredients.get(0));
+        softly.assertThat(burger.ingredients.size())
+                .as("Размер списка ингредиентов после удаления не уменьшился")
+                .isEqualTo(1);
+        softly.assertThat(burger.ingredients.get(0))
+                .as("Ингредиенты после удаления не на своем месте")
+                .isEqualTo(ingredient2);
+        softly.assertAll();
     }
 
     @Test
@@ -70,9 +84,16 @@ public class BurgerTest {
         burger.addIngredient(ingredient3); // Добавляем третий ингредиент
         burger.moveIngredient(2, 0); // Перемещаем его на первую позицию
 
-        assertEquals("Ингредиенты после перемещения не на своем месте в списке", ingredient3, burger.ingredients.get(0));
-        assertEquals("Ингредиенты после перемещения не на своем месте в списке", ingredient1, burger.ingredients.get(1));
-        assertEquals("Ингредиенты после перемещения не на своем месте в списке", ingredient2, burger.ingredients.get(2));
+        softly.assertThat(burger.ingredients.get(0))
+                .as("Ингредиенты после перемещения не на своем месте в списке")
+                .isEqualTo(ingredient3);
+        softly.assertThat(burger.ingredients.get(1))
+                .as("Ингредиенты после перемещения не на своем месте в списке")
+                .isEqualTo(ingredient1);
+        softly.assertThat(burger.ingredients.get(2))
+                .as("Ингредиенты после перемещения не на своем месте в списке")
+                .isEqualTo(ingredient2);
+        softly.assertAll();
     }
 
     @Test

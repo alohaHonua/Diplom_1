@@ -32,16 +32,23 @@ public class IngredientParameterizedTest {
     }
 
     @Test
-    public void testIngredient() {
-
+    public void testIngredientGetPrice() {
         Ingredient ingredient = new Ingredient(expectedType, expectedName, expectedPrice);
-
         float actualPrice = ingredient.getPrice();
-        String actualName = ingredient.getName();
-        IngredientType actualType = ingredient.getType();
+        assertEquals("Цена ингредиента не соответствует ожидаемой", expectedPrice, actualPrice, 0.01f);
+    }
 
-        assertEquals("Цена бургера не соответсвует ожидаемой", expectedPrice, actualPrice, 0.01f);
-        assertEquals("Название бургера не соответсвует ожидаемому", expectedName, actualName);
-        assertEquals("Тип ингредиента в бургере не соответсвует ожидаемому", expectedType, actualType);
+    @Test
+    public void testIngredientGetName() {
+        Ingredient ingredient = new Ingredient(expectedType, expectedName, expectedPrice);
+        String actualName = ingredient.getName();
+        assertEquals("Название ингредиента не соответствует ожидаемому", expectedName, actualName);
+    }
+
+    @Test
+    public void testIngredientGetType() {
+        Ingredient ingredient = new Ingredient(expectedType, expectedName, expectedPrice);
+        IngredientType actualType = ingredient.getType();
+        assertEquals("Тип ингредиента не соответствует ожидаемому", expectedType, actualType);
     }
 }

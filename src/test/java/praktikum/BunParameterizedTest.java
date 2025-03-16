@@ -26,14 +26,17 @@ public class BunParameterizedTest {
     }
 
     @Test
-    public void testBun() {
-
+    public void testBunGetName() {
         Bun bun = new Bun(expectedName, expectedPrice);
-
         String actualName = bun.getName();
-        float actualPrice = bun.getPrice();
-
         assertEquals("Название булочки не соответствует ожидаемому", expectedName, actualName);
+    }
+
+    @Test
+    public void testBunGetPrice() {
+        Bun bun = new Bun(expectedName, expectedPrice);
+        float actualPrice = bun.getPrice();
         assertEquals("Цена булочки не соответствует ожидаемой", expectedPrice, actualPrice, 0.01f);
     }
+
 }
