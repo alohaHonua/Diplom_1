@@ -1,13 +1,11 @@
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -20,11 +18,8 @@ public class BurgerTests {
     @Mock
     private Ingredient ingredient;
 
-    @Spy
-    private Ingredient ingredientSpyA = new Ingredient(IngredientType.SAUCE, "AA", 11f);
-
-    @Spy
-    private Ingredient ingredientSpyB = new Ingredient(IngredientType.SAUCE, "BB", 22f);
+    @Mock
+    private Ingredient ingredient2;
 
     @Test
     public void setBunTestReturnName() {
@@ -76,16 +71,67 @@ public class BurgerTests {
         burger.removeIngredient(1);
         assertTrue(expectedQuantity == burger.ingredients.size());
     }
-///----------------------------------------------------------------------------------------
+
     @Test
     public void moveIngredientTest(){
-        //Этим тестом проверяем работу метода moveIngredient, не знаю как убрать зависимость от класса Ingredient, потому что если передавать два замокированных ингредиента не получится вычислить меняет ли индекс метод moveIngredient
+        //Этим тестом проверяем работу метода moveIngredient, добавляем два ингредиента в список, меняем их индексы, проверяем переместился ли ingredient2 на индекс 0
         Burger burger = new Burger();
-        burger.addIngredient(ingredientSpyA);
-        burger.addIngredient(ingredientSpyB);
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient2);
         burger.moveIngredient(1, 0);
-        String expectedName = "BB";
-        assertEquals(expectedName, burger.ingredients.get(0).name);
+        assertEquals(ingredient2, burger.ingredients.get(0));
     }
-///---------------------------------------------------------------------------------------
+
+    @Test
+    public void getPriceTest(){
+        //Этим тестом проверяем работу метода getPrice, устанавливаем возвращаемые значения наших моков, передаём моки в класс бургер, сравниваем возвращаемое значение метода getPrice с ожидаемым результатом
+        float bunPrice = 10.5f;
+        float ingredientPrice = 5.5f;
+        float expected = bunPrice * 2 + ingredientPrice;
+        Burger burger = new Burger();
+        Mockito.when(bun.getPrice()).thenReturn(bunPrice);
+        Mockito.when(ingredient.getPrice()).thenReturn(ingredientPrice);
+        burger.setBuns(bun);
+        burger.addIngredient(ingredient);
+        assertEquals(expected, burger.getPrice(), 0);
+    }
+
+    @Test
+    public void getReceiptTest(){
+        //Этим тестом проверяем работу метода getReceipt
+        Mockito.when(bun.getName()).thenReturn("Булка для бургера из котов");
+        Mockito.when(bun.getPrice()).thenReturn(10f);
+        Mockito.when(ingredient.getName()).thenReturn("Котлета из каса");
+        Mockito.when(ingredient.getPrice()).thenReturn(5f);
+        Mockito.when(ingredient.getType()).thenReturn(IngredientType.FILLING);
+        Mockito.when(ingredient2.getName()).thenReturn("Котлета из маси");
+        Mockito.when(ingredient.getPrice()).thenReturn(15f);
+        Mockito.when(ingredient2.getType()).thenReturn(IngredientType.FILLING);
+        Burger burger = new Burger();
+        burger.setBuns(bun);
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient2);
+        Assert.assertEquals(exceptionReceipt(), burger.getReceipt());
+    }
+
+    public String exceptionReceipt(){
+        //Метод для получения ожидаемого рецепта
+        Mockito.when(bun.getName()).thenReturn("Булка для бургера из котов");
+        Mockito.when(bun.getPrice()).thenReturn(10f);
+        Mockito.when(ingredient.getName()).thenReturn("Котлета из каса");
+        Mockito.when(ingredient.getPrice()).thenReturn(5f);
+        Mockito.when(ingredient.getType()).thenReturn(IngredientType.FILLING);
+        Mockito.when(ingredient2.getName()).thenReturn("Котлета из маси");
+        Mockito.when(ingredient.getPrice()).thenReturn(15f);
+        Mockito.when(ingredient2.getType()).thenReturn(IngredientType.FILLING);
+
+        StringBuilder receipt = new StringBuilder(String.format("(==== %s ====)%n", bun.getName()));
+        receipt.append(String.format("= %s %s =%n", ingredient.getType().toString().toLowerCase(), ingredient.getName()));
+        receipt.append(String.format("= %s %s =%n", ingredient2.getType().toString().toLowerCase(), ingredient2.getName()));
+        receipt.append(String.format("(==== %s ====)%n", bun.getName()));
+        receipt.append(String.format("%nPrice: %f%n", 35.000000f));
+
+        return receipt.toString();
+    }
+
 }

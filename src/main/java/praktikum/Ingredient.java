@@ -31,10 +31,4 @@ public class Ingredient {
         return type;
     }
 
-    public static void main(String[] args) {
-        IngredientType ret = IngredientType.SAUCE;
-        System.out.println(ret);
-
-    }
-
 }
