@@ -32,7 +32,7 @@ public class BunParameterizedTests {
     @Test
     public void bunPriceTest(){
         Bun bun = createBun();
-        Assert.assertEquals(price, bun.price, 0);
+        Assert.assertEquals(price, bun.getPrice(), 0);
     }
 
     private Bun createBun(){
