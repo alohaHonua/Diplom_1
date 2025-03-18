@@ -3,6 +3,9 @@ import org.junit.Test;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
+import praktikum.IngredientType;
+
+import java.util.Locale;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -25,8 +28,13 @@ public class BurgerTest {
 
         // Задаем поведение для моков
         when(bun.getPrice()).thenReturn(100f);
+        when(bun.getName()).thenReturn("Sesame Bun");
         when(ingredient1.getPrice()).thenReturn(50f);
+        when(ingredient1.getName()).thenReturn("Lettuce");
+        when(ingredient1.getType()).thenReturn(IngredientType.FILLING);
         when(ingredient2.getPrice()).thenReturn(70f);
+        when(ingredient2.getName()).thenReturn("Sauce BBQ");
+        when(ingredient2.getType()).thenReturn(IngredientType.SAUCE);
     }
 
     @Test
@@ -81,5 +89,27 @@ public class BurgerTest {
         burger.setBuns(bun);
         burger.addIngredient(ingredient1);
         assertEquals("Проверка включения цены ингредиента", 50f, burger.getPrice() - 100f * 2, 0.01);
+    }
+
+    @Test
+    public void testGetReceipt_ReturnsCorrectFormat() {
+        burger.setBuns(bun);
+        burger.addIngredient(ingredient1);
+        burger.addIngredient(ingredient2);
+
+        String expectedReceipt = String.format(
+                "(==== %s ====)%n" +
+                        "= %s %s =%n" +
+                        "= %s %s =%n" +
+                        "(==== %s ====)%n" +
+                        "%nPrice: %f%n",
+                "Sesame Bun",
+                "filling", "Lettuce",
+                "sauce", "Sauce BBQ",
+                "Sesame Bun",
+                burger.getPrice()
+        );
+
+        assertEquals("Проверка формата чека", expectedReceipt, burger.getReceipt());
     }
 }
