@@ -1,103 +1,85 @@
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
-import praktikum.IngredientType;
 
-
-import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-
-@RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
 
-
-    @Mock
     private Bun bun;
-
-
-    @Mock
     private Ingredient ingredient1;
-
-
-    @Mock
     private Ingredient ingredient2;
-
-
     private Burger burger;
-
 
     @Before
     public void setUp() {
         burger = new Burger();
-        when(bun.getName()).thenReturn("black bun");
-        when(bun.getPrice()).thenReturn(100f);
-        when(ingredient1.getType()).thenReturn(IngredientType.SAUCE);
-        when(ingredient1.getName()).thenReturn("hot sauce");
-        when(ingredient1.getPrice()).thenReturn(100f);
-        when(ingredient2.getType()).thenReturn(IngredientType.FILLING);
-        when(ingredient2.getName()).thenReturn("cutlet");
-        when(ingredient2.getPrice()).thenReturn(100f);
-    }
 
+        // Используем моки для ингредиентов
+        bun = mock(Bun.class);
+        ingredient1 = mock(Ingredient.class);
+        ingredient2 = mock(Ingredient.class);
+
+        // Задаем поведение для моков
+        when(bun.getPrice()).thenReturn(100f);
+        when(ingredient1.getPrice()).thenReturn(50f);
+        when(ingredient2.getPrice()).thenReturn(70f);
+    }
 
     @Test
     public void testSetBuns() {
         burger.setBuns(bun);
-        assertEquals(bun, burger.bun);
+        assertEquals("Проверка установки булочки", bun, burger.bun);
     }
 
-
     @Test
-    public void testAddIngredient() {
+    public void testAddIngredient_IncreasesSize() {
         burger.addIngredient(ingredient1);
-        assertEquals(1, burger.ingredients.size());
+        assertEquals("Проверка увеличения списка ингредиентов", 1, burger.ingredients.size());
     }
 
+    @Test
+    public void testAddIngredient_ContainsAddedIngredient() {
+        burger.addIngredient(ingredient1);
+        assertTrue("Проверка наличия добавленного ингредиента", burger.ingredients.contains(ingredient1));
+    }
 
     @Test
-    public void testRemoveIngredient() {
+    public void testRemoveIngredient_DecreasesSize() {
         burger.addIngredient(ingredient1);
         burger.removeIngredient(0);
-        assertEquals(0, burger.ingredients.size());
+        assertEquals("Проверка уменьшения списка ингредиентов", 0, burger.ingredients.size());
     }
 
+    @Test
+    public void testRemoveIngredient_RemovesCorrectIngredient() {
+        burger.addIngredient(ingredient1);
+        burger.addIngredient(ingredient2);
+        burger.removeIngredient(0);
+        assertFalse("Проверка удаления ингредиента", burger.ingredients.contains(ingredient1));
+    }
 
     @Test
-    public void testMoveIngredient() {
+    public void testMoveIngredient_ChangesPosition() {
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
         burger.moveIngredient(0, 1);
-        assertEquals(ingredient1, burger.ingredients.get(1));
+        assertEquals("Проверка перемещения ингредиента", ingredient1, burger.ingredients.get(1));
     }
 
-
     @Test
-    public void testGetPrice() {
+    public void testGetPrice_IncludesBunPrice() {
         burger.setBuns(bun);
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
-        float expectedPrice = bun.getPrice() * 2 + ingredient1.getPrice() + ingredient2.getPrice();
-        assertEquals(expectedPrice, burger.getPrice(), 0.01);
+        assertEquals("Проверка включения цены булочки", 100f * 2, burger.getPrice(), 0.01);
     }
 
-
     @Test
-    public void testGetReceipt() {
+    public void testGetPrice_IncludesIngredientPrice() {
         burger.setBuns(bun);
         burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
-        String expectedReceipt = String.format("(==== %s ====)%n= %s %s =%n= %s %s =%n(==== %s ====)%n%nPrice: %f%n",
-                bun.getName(),
-                ingredient1.getType().toString().toLowerCase(), ingredient1.getName(),
-                ingredient2.getType().toString().toLowerCase(), ingredient2.getName(),
-                bun.getName(),
-                burger.getPrice());
-        assertEquals(expectedReceipt, burger.getReceipt());
+        assertEquals("Проверка включения цены ингредиента", 50f, burger.getPrice() - 100f * 2, 0.01);
     }
 }

@@ -1,0 +1,53 @@
+# Default ignored files
+/shelf/
+workspace.xml
+
+# Игнорируем всю папку target
+QA-java-diplom-1/target/classes/
+QA-java-diplom-1/target/test-classes/
+QA-java-diplom-1/.idea/
+
+# Разрешаем отслеживание отчетов JaCoCo в target/site/jacoco/
+QA-java-diplom-1/target/*
+!QA-java-diplom-1/target/site/jacoco
+
+# Разрешаем отслеживание некоторых других файлов и папок, которые могут быть полезны
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
+QA-java-diplom-1/.idea
+.idea/
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
