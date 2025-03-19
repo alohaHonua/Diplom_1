@@ -11,10 +11,6 @@ jacoco- 0.8.7
 mockito- 3.12.4
 maven-4.0.0
 
-## Документация к тестируемому API
-
-https://qa-scooter.praktikum-services.ru/docs/#api-Courier-Login
-
 ## Команды
 
 ### Запуск всех тестов
