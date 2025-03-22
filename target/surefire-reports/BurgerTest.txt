@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: BurgerTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.459 s -- in BurgerTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.303 s -- in BurgerTest
