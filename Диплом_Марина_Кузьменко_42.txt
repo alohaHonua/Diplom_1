@@ -1,0 +1,4 @@
+Ссылки на GitHub
+
+https://github.com/yandex-praktikum/QA-java-diplom-1/compare/main...marinamiyako:QA-java-diplom-1:develop
+https://github.com/yandex-praktikum/QA-java-diplom-1/pull/967
