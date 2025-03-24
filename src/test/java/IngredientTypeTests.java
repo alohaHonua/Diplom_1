@@ -12,9 +12,14 @@ public class IngredientTypeTests {
     }
 
     @Test
-    public void testEnumValues() {
+    public void testEnumValuesSauce() {
         // Проверяем, что все ожидаемые значения перечисления существуют
         Assert.assertTrue(IngredientType.SAUCE instanceof IngredientType);
+    }
+
+    @Test
+    public void testEnumValuesFilling() {
+        // Проверяем, что все ожидаемые значения перечисления существуют
         Assert.assertTrue(IngredientType.FILLING instanceof IngredientType);
     }
 
