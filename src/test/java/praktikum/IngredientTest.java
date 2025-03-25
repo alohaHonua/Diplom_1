@@ -8,7 +8,7 @@ public class IngredientTest {
 
     @Test
     public void testGetPrice() {
-        // Создаем объект ингредиента с заданными параметрами
+        // Создаем объект ингредиента
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "Кетчуп", 10f);
 
         // Проверяем, что метод getPrice возвращает правильное значение

@@ -37,19 +37,19 @@ public class ParameterizedIngredientTest {
 
     @Test
     public void testGetPrice() {
-        // Проверяем, что цена соответствует ожидаемому значению
+        // Проверяем, что Цена соответствует ожидаемому значению
         assertEquals(price, ingredient.getPrice(), 0.00001f);
     }
 
     @Test
     public void testGetName() {
-        // Проверяем, что имя совпадает с ожидаемым
+        // Проверяем, что Имя совпадает с ожидаемым
         assertEquals(name, ingredient.getName());
     }
 
     @Test
     public void testGetType() {
-        // Проверяем, что тип совпадает с ожидаемым
+        // Проверяем, что Тип совпадает с ожидаемым
         assertEquals(type, ingredient.getType());
     }
 }
