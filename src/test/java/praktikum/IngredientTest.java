@@ -2,7 +2,7 @@ package praktikum;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
+
 
 public class IngredientTest {
 
