@@ -24,16 +24,26 @@ public class IngredientTypeTests {
     }
 
     @Test
-    public void testEnumNames() {
+    public void testEnumNamesSauce() {
         // Проверяем правильность строковых представлений
         Assert.assertEquals("SAUCE", IngredientType.SAUCE.name());
+    }
+
+    @Test
+    public void testEnumNamesFilling() {
+        // Проверяем правильность строковых представлений
         Assert.assertEquals("FILLING", IngredientType.FILLING.name());
     }
 
     @Test
-    public void testValueOf() {
+    public void testValueOfSauce() {
         // Проверяем, что метод valueOf возвращает правильное значение
         Assert.assertEquals(IngredientType.SAUCE, IngredientType.valueOf("SAUCE"));
+    }
+
+    @Test
+    public void testValueOfFilling() {
+        // Проверяем, что метод valueOf возвращает правильное значение
         Assert.assertEquals(IngredientType.FILLING, IngredientType.valueOf("FILLING"));
     }
 
