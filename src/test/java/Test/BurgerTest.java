@@ -6,6 +6,7 @@ import org.mockito.Mockito;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
+import praktikum.IngredientType;
 
 import java.util.List;
 import static org.junit.Assert.*;
@@ -72,9 +73,18 @@ public class BurgerTest {
     public void testGetReceipt() {
         burger.setBuns(mockBun);
         burger.addIngredient(mockIngredient);
+
+        when(mockIngredient.getType()).thenReturn(IngredientType.SAUCE);
+
+
         String receipt = burger.getReceipt();
-        assertTrue(receipt.contains("Sesame Bun"));
-        assertTrue(receipt.contains("Lettuce"));
-        assertTrue(receipt.contains("Price: 6.500000"));
+
+
+        assertTrue("Чек должен содержать название булки",
+                receipt.contains("(==== Sesame Bun ====)"));
+        assertTrue("Чек должен содержать ингредиент",
+                receipt.contains("= sauce Lettuce ="));
+        assertTrue("Чек должен содержать общую цену",
+                receipt.contains(String.format("Price: %f", 6.5f)));
     }
 }
