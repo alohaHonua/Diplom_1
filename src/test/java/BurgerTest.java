@@ -92,18 +92,28 @@ public class BurgerTest {
 
     @Test
     public void getReceiptTest() {
-        Mockito.when(bunMock.getName()).thenReturn("BunName");
-        Mockito.when(ingredientMock.getType()).thenReturn(IngredientType.SAUCE);
+        Mockito.when(bunMock.getName()).thenReturn("Test bun");
+        Mockito.when(bunMock.getPrice()).thenReturn(2f);
         Mockito.when(ingredientMock.getName()).thenReturn("HotSauce");
+        Mockito.when(ingredientMock.getPrice()).thenReturn(3f);
+        Mockito.when(ingredientMock.getType()).thenReturn(IngredientType.SAUCE);
 
         burger.setBuns(bunMock);
         burger.addIngredient(ingredientMock);
 
-        String receipt = burger.getReceipt();
+        String actualReceipt = burger.getReceipt();
+        float expectedPrice = bunMock.getPrice() + ingredientMock.getPrice() + bunMock.getPrice();
 
-        Assert.assertTrue("Должен содержать верхнюю булочку", receipt.contains("(==== BunName ====)"));
-        Assert.assertTrue("Должен содержать соус HotSauce", receipt.contains("= sauce HotSauce ="));
-        Assert.assertTrue("Должен содержать нижнюю булочку", receipt.contains("(==== BunName ====)"));
-        Assert.assertTrue("Должен содержать Price", receipt.contains("Price: "));
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("(==== %s ====)\n", bunMock.getName()));
+        sb.append(String.format("= %s %s =\n",ingredientMock.getType().toString().toLowerCase(),ingredientMock.getName()));
+        sb.append(String.format("(==== %s ====)\n", bunMock.getName()));
+        sb.append(String.format("\nPrice: %f\n", expectedPrice));
+
+        String expectedReceipt = sb.toString();
+        String normalizedActual = actualReceipt.replace("\r\n", "\n");
+        String normalizedExpected = expectedReceipt.replace("\r\n", "\n");
+
+        Assert.assertEquals("Чек сформирован некорректно", normalizedExpected, normalizedActual);
     }
 }
