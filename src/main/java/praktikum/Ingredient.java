@@ -1,5 +1,7 @@
 package praktikum;
 
+import java.util.List;
+
 /**
  * Модель ингредиента.
  * Ингредиент: начинка или соус.
