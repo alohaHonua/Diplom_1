@@ -11,6 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
@@ -45,14 +46,13 @@ public class BurgerTest {
     @Test
     public void setBunsTest() {
         burger.setBuns(bun);
-        Mockito.verify(burger).setBuns(bun);
-        assertNotNull(burger.bun);
+        assertEquals(bun, burger.bun);
     }
 
     @Test
     public void addIngredientTest() {
         burger.addIngredient(ingredient);
-        assertNotNull(burger.ingredients.get(0));
+        assertTrue(burger.ingredients.contains(ingredient));
     }
 
     @Test

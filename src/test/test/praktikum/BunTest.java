@@ -8,16 +8,16 @@ import static org.junit.Assert.assertEquals;
 public class BunTest {
 
     @Test
-    public void getBunName(){
+    public void getBunNameTest(){
         String actualName = "Булка";
         Bun bun = new Bun(actualName, 12);
-        assertEquals(actualName, bun.getName());
+        assertEquals("несоответствие названия булочки", actualName, bun.getName());
     }
 
     @Test
-    public void getBunPrice(){
+    public void getBunPriceTest(){
         float actualPrice = 50;
         Bun bun = new Bun("Булка", actualPrice);
-        assertEquals(actualPrice, bun.getPrice(),0.1);
+        assertEquals("несоответствие цены булочки", actualPrice, bun.getPrice(),0.1);
     }
 }

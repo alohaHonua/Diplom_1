@@ -12,18 +12,18 @@ public class IngredientTest {
     @Test
     public void getPriceTest(){
         Ingredient ingredient = new Ingredient(SAUCE, "Майонез", 50);
-        assertEquals(50, ingredient.getPrice(), 0.1);
+        assertEquals("цена не правильная",50, ingredient.getPrice(), 0.1);
     }
 
     @Test
     public void getNameTest(){
         Ingredient ingredient = new Ingredient(SAUCE, "Майонез", 50);
-        assertEquals("Майонез", ingredient.getName());
+        assertEquals("Неправильное название ингредиента", "Майонез", ingredient.getName());
     }
 
     @Test
     public void getTypeTest(){
         Ingredient ingredient = new Ingredient(SAUCE, "Майонез", 50);
-        assertEquals(SAUCE, ingredient.getType());
+        assertEquals("Неправильный тип ингредиента",SAUCE, ingredient.getType());
     }
 }
