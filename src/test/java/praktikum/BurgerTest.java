@@ -1,5 +1,7 @@
 package praktikum;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -81,6 +83,8 @@ public class BurgerTest {
     }
 
     @Test
+    @DisplayName("Добавить ингредиент")
+    @Description("Тест добавления ингредиента")
     public void addIngredient() {
         burger.addIngredient(mockIngredient);
 
@@ -88,6 +92,8 @@ public class BurgerTest {
     }
 
     @Test
+    @DisplayName("Удалить ингредиент")
+    @Description("Тест удаления ингредиента")
     public void removeIngredient() {
 
         Ingredient ingredient = burger.ingredients.get(0);
@@ -98,6 +104,8 @@ public class BurgerTest {
     }
 
     @Test
+    @DisplayName("Переместить ингредиент")
+    @Description("Тест смещения/перемещения ингредиента")
     public void moveIngredient() {
 
         Ingredient ingredient = burger.ingredients.get(0);
@@ -108,12 +116,16 @@ public class BurgerTest {
     }
 
     @Test
+    @DisplayName("Подсчет цены")
+    @Description("Тест подсчета цены получившегося бургера")
     public void getPrice() {
         float expectedPrice = bun.getPrice() * 2 + sauce.getPrice() + filling.getPrice();
         Assert.assertEquals(expectedPrice, burger.getPrice(), 0.001f);
     }
 
     @Test
+    @DisplayName("Формирование чека")
+    @Description("Тест формирования чека")
     public void getReceipt() {
         StringBuilder expectedReceipt = new StringBuilder(String.format("(==== %s ====)%n", bun.getName()));
 
