@@ -6,13 +6,13 @@ import praktikum.Ingredient;
 import praktikum.IngredientType;
 
 @RunWith(Parameterized.class)
-public class IngredientTest {
+public class IngredientParamTest {
 
     private final IngredientType ingredientType;
     private final String name;
     private final float price;
 
-    public IngredientTest(IngredientType ingredientType, String name, float price) {
+    public IngredientParamTest(IngredientType ingredientType, String name, float price) {
         this.ingredientType = ingredientType;
         this.name = name;
         this.price = price;
@@ -25,7 +25,6 @@ public class IngredientTest {
                 {IngredientType.FILLING, "Мясо бессмертных моллюсков Protostomia", 1337.0F},
         };
     }
-
 
     @Test
     public void getNameSuccess() throws Exception {
