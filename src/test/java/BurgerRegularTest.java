@@ -1,6 +1,5 @@
 import org.junit.Test;
-import org.mockito.Mockito;
-import java.util.Arrays;
+
 import java.util.List;
 import static org.junit.Assert.*;
 import praktikum.Ingredient;
