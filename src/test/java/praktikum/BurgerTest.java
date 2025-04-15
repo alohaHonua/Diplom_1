@@ -8,7 +8,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
