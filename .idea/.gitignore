@@ -1,0 +1,18 @@
+# Игнорирование директорий и файлов, связанных с IDE
+.idea/
+.build/
+.target/
+
+# Игнорирование локальных файлов
+/shelf/
+/workspace.xml
+
+# Игнорирование HTTP Client запросов
+/httpRequests/
+
+# Игнорирование локальных файлов хранилища источников данных
+/dataSources/
+/dataSources.local.xml
+
+# Игнорирование папки target
+/target/
