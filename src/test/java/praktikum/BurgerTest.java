@@ -101,16 +101,18 @@ public class BurgerTest {
         Bun bun = new Bun("black bun", 100);
         Burger burger = new Burger();
         Ingredient ingredient = database.availableIngredients().get(0);
+
         burger.setBuns(bun);
         burger.addIngredient(ingredient);
+
         StringBuilder expectedReceipt = new StringBuilder(String.format("(==== %s ====)%n", bun.getName()));
+
         expectedReceipt.append(String.format("= %s %s =%n", ingredient.getType().toString().toLowerCase(),
                 ingredient.getName()));
         expectedReceipt.append(String.format("(==== %s ====)%n", bun.getName()));
         expectedReceipt.append(String.format("%nPrice: %f%n", burger.getPrice()));
+
         Assert.assertEquals(expectedReceipt.toString(), burger.getReceipt());
-        System.out.println(expectedReceipt);
-        System.out.println(burger.getReceipt());
     }
 
 

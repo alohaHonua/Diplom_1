@@ -5,8 +5,14 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class IngredientTypeTest {
+
     @Test
-    public void valueOf() {
+    public void valueOfSauce() {
         assertEquals(IngredientType.SAUCE, IngredientType.valueOf("SAUCE"));
+    }
+
+    @Test
+    public void valueOfFilling() {
+        assertEquals(IngredientType.FILLING, IngredientType.valueOf("FILLING"));
     }
 }
