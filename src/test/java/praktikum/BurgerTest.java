@@ -68,14 +68,29 @@ public class BurgerTest {
     }
 
     @Test
-    public void testGetReceipt() {
+    public void testReceiptContainsBunName() {
         burger.setBuns(mockBun);
         burger.addIngredient(mockIngredient1);
         String receipt = burger.getReceipt();
+
         Assert.assertTrue("Чек не содержит имя булки", receipt.contains("Mock Bun"));
-        Assert.assertTrue("Чек не содержит ингредиент", receipt.contains("Mock Sauce"));
-        Assert.assertTrue("Чек не содержит цену", receipt.contains("Price:"));
     }
 
+    @Test
+    public void testReceiptContainsIngredient() {
+        burger.setBuns(mockBun);
+        burger.addIngredient(mockIngredient1);
+        String receipt = burger.getReceipt();
 
+        Assert.assertTrue("Чек не содержит ингредиент", receipt.contains("Mock Sauce"));
+    }
+
+    @Test
+    public void testReceiptContainsPrice() {
+        burger.setBuns(mockBun);
+        burger.addIngredient(mockIngredient1);
+        String receipt = burger.getReceipt();
+
+        Assert.assertTrue("Чек не содержит цену", receipt.contains("Price:"));
+    }
 }
