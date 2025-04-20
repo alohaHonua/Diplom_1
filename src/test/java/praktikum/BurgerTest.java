@@ -86,8 +86,11 @@ public class BurgerTest {
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "hot sauce", 100);
         burger.setBuns(bun);
         burger.addIngredient(ingredient);
+
         String actual = burger.getReceipt();
-        String expected = "(==== black bun ====)\r\n= sauce hot sauce =\r\n(==== black bun ====)\r\n\r\nPrice: 300,000000\r\n";
+        String expected = String.format("(==== %s ====)\r\n= sauce %s =\r\n(==== %s ====)\r\n\r\nPrice: %.6f\r\n",
+                bun.getName(), ingredient.getName(), bun.getName(), burger.getPrice());
+
         assertThat(actual, equalTo(expected));
     }
 }
