@@ -88,7 +88,10 @@ public class BurgerTest {
     public void addIngredient() {
         burger.addIngredient(mockIngredient);
 
-        Assert.assertTrue(burger.ingredients.contains(mockIngredient));
+        Assert.assertTrue(String.format(
+                        "Ингредиент '%s' отсутствует в списке ингредиентов. Ожидалось: true, получено: false",
+                        mockIngredient),
+                burger.ingredients.contains(mockIngredient));
     }
 
     @Test
@@ -100,7 +103,10 @@ public class BurgerTest {
 
         burger.removeIngredient(0);
 
-        Assert.assertFalse(burger.ingredients.contains(ingredient));
+        Assert.assertFalse(String.format(
+                        "Ингредиент '%s' всё ещё присутствует в списке ингредиентов после удаления. Ожидалось: false, получено: true",
+                        ingredient),
+                burger.ingredients.contains(ingredient));
     }
 
     @Test
@@ -112,7 +118,10 @@ public class BurgerTest {
 
         burger.moveIngredient(0, 1);
 
-        Assert.assertTrue(burger.ingredients.get(1).equals(ingredient));
+        Assert.assertTrue(String.format(
+                        "Ингредиент '%s' не был перемещён на новую позицию. Ожидалось, что в позиции 1 будет: '%s', получено: '%s'",
+                        ingredient, ingredient, burger.ingredients.get(1)),
+                burger.ingredients.get(1).equals(ingredient));
     }
 
     @Test
@@ -120,7 +129,10 @@ public class BurgerTest {
     @Description("Тест подсчета цены получившегося бургера")
     public void getPrice() {
         float expectedPrice = bun.getPrice() * 2 + sauce.getPrice() + filling.getPrice();
-        Assert.assertEquals(expectedPrice, burger.getPrice(), 0.001f);
+        Assert.assertEquals(String.format(
+                        "Цена бургера рассчитана неверно. Ожидалось: %.3f, получено: %.3f",
+                        expectedPrice, burger.getPrice()),
+                expectedPrice, burger.getPrice(), 0.001f);
     }
 
     @Test
@@ -138,6 +150,9 @@ public class BurgerTest {
         expectedReceipt.append(String.format("(==== %s ====)%n", bun.getName()));
         expectedReceipt.append(String.format("%nPrice: %f%n", bun.getPrice() * 2 + sauce.getPrice() + filling.getPrice()));
 
-        Assert.assertEquals(expectedReceipt.toString(), burger.getReceipt());
+        Assert.assertEquals(String.format(
+                        "Чек бургера сформирован неверно. Ожидаемый результат:%n%s%nПолученный результат:%n%s",
+                        expectedReceipt.toString(), burger.getReceipt()),
+                expectedReceipt.toString(), burger.getReceipt());
     }
 }

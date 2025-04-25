@@ -16,18 +16,21 @@ public class IngredientTest {
     @Test
     @DisplayName("тест геттера для атрибута \"цена\"")
     public void testGetPrice() {
-        assertEquals(PRICE, INGREDIENT.getPrice(), 0.001f);
+        assertEquals(String.format("Ожидаемая цена: %.2f, но была: %.2f", PRICE, INGREDIENT.getPrice()),
+                PRICE, INGREDIENT.getPrice(), 0.001f);
     }
 
     @Test
     @DisplayName("тест геттера для атрибута \"имя\"")
     public void testGetName() {
-        assertEquals(NAME, INGREDIENT.getName());
+        assertEquals(String.format("Ожидаемое имя: %s, но было: %s", NAME, INGREDIENT.getName()),
+                NAME, INGREDIENT.getName());
     }
 
     @Test
     @DisplayName("тест геттера для атрибута \"тип\"")
     public void testGetType() {
-        assertEquals(TYPE, INGREDIENT.getType());
+        assertEquals(String.format("Ожидаемый тип: %s, но был: %s", TYPE, INGREDIENT.getType()),
+                TYPE, INGREDIENT.getType());
     }
 }

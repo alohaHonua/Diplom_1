@@ -8,16 +8,22 @@ import static org.junit.Assert.assertEquals;
 
 public class IngredientTypeTest {
 
+
+
     @Test
     @DisplayName("тест IngredientType valueOf(\"SAUCE\")")
     public void testValueOfShouldReturnSauce() {
-        assertEquals(IngredientType.SAUCE, IngredientType.valueOf("SAUCE"));
+        assertEquals(String.format("Ожидался: %s, но получили: %s", IngredientType.SAUCE, IngredientType.valueOf("SAUCE")),
+                IngredientType.SAUCE,
+                IngredientType.valueOf("SAUCE"));
     }
 
     @Test
     @DisplayName("тест IngredientType valueOf(\"FILLING\")")
     public void testValueOfShouldReturnFilling() {
-        assertEquals(IngredientType.FILLING, IngredientType.valueOf("FILLING"));
+        assertEquals(String.format("Ожидался: %s, но получили: %s", IngredientType.FILLING, IngredientType.valueOf("FILLING")),
+                IngredientType.FILLING,
+                IngredientType.valueOf("FILLING"));
     }
 
     @Test(expected = IllegalArgumentException.class)

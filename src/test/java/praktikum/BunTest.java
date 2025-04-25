@@ -13,12 +13,12 @@ public class BunTest extends TestCase {
     @Test
     @DisplayName("тест геттера для атрибута \"имя\"")
     public void testGetName() {
-        assertEquals(NAME, BUN.getName());
+        assertEquals(String.format("Ожидаемое имя: \"%s\", а получилось: \"%s\"", NAME, BUN.getName()), NAME, BUN.getName());
     }
 
     @Test
     @DisplayName("тест геттера для атрибута \"цена\"")
     public void testGetPrice() {
-        assertEquals(PRICE, BUN.getPrice());
+        assertEquals(String.format("Ожидаемая цена: %.2f, а получилась: %.2f", PRICE, BUN.getPrice()), PRICE, BUN.getPrice());
     }
 }
