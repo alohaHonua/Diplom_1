@@ -5,7 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="412dc0e5-eeb1-428f-a138-b69686ff45b2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BurgerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BurgerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/praktikum/Bun.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/praktikum/Bun.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/praktikum/Burger.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/praktikum/Burger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/praktikum/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/praktikum/Database.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/praktikum/Ingredient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/praktikum/Ingredient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/praktikum/IngredientType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/praktikum/IngredientType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/praktikum/Praktikum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/praktikum/Praktikum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/Bun.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/Bun.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/Bun.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/Bun.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/Burger.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/Burger.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/Burger.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/Burger.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/Database.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/Database.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/Database.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/Database.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/Ingredient.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/Ingredient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/Ingredient.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/Ingredient.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/IngredientType.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/IngredientType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/IngredientType.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/IngredientType.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/Praktikum.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/Praktikum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/Praktikum.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/Praktikum.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/praktikum/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/praktikum/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/BunTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/BunTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/BurgerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/IngredientTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/IngredientTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/IngredientTypeTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/IngredientTypeTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-BunTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-BunTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-BurgerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-IngredientTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-IngredientTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-IngredientTypeTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-IngredientTypeTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/BunTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/BunTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/BurgerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/BurgerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/IngredientTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/IngredientTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/IngredientTypeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/IngredientTypeTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/untitled-1.0-SNAPSHOT.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +65,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2w8BJEWfkB59z21sn0gbqdmE5iQ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -49,7 +92,7 @@
       <command value="mvn verify" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.java in praktikum">
+  <component name="RunManager" selected="JUnit.BurgerTest">
     <configuration name="BunTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="praktikum" />
       <option name="PACKAGE_NAME" value="" />
@@ -59,19 +102,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BurgerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BurgerTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="praktikum" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="BurgerTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="praktikum.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="praktikum" />
+      <option name="MAIN_CLASS_NAME" value="praktikum.BurgerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IngredientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BurgerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="praktikum" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IngredientTest" />
+      <option name="MAIN_CLASS_NAME" value="BurgerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -96,11 +145,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.java in praktikum" />
         <item itemvalue="JUnit.BurgerTest" />
+        <item itemvalue="JUnit.BurgerTest (1)" />
+        <item itemvalue="JUnit.java in praktikum" />
         <item itemvalue="JUnit.BunTest" />
         <item itemvalue="JUnit.IngredientTypeTest" />
-        <item itemvalue="JUnit.IngredientTest" />
       </list>
     </recent_temporary>
   </component>
@@ -114,5 +163,8 @@
       <updated>1745413246132</updated>
     </task>
     <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Diplom_1$BurgerTest.ic" NAME="BurgerTest Coverage Results" MODIFIED="1746124621818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
