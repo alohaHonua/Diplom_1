@@ -58,7 +58,6 @@ public class BurgerTest {
         assertTrue(burger.ingredients.contains(ingredientMock));
 
         int ingredientIndex = burger.ingredients.indexOf(ingredientMock);
-        System.out.println(ingredientIndex);
         burger.removeIngredient(ingredientIndex);
         assertFalse(burger.ingredients.contains(ingredientMock));
     }
