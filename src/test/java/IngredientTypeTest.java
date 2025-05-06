@@ -1,0 +1,12 @@
+import org.junit.Test;
+import praktikum.IngredientType;
+
+import static org.junit.Assert.*;
+
+public class IngredientTypeTest {
+    @Test
+    public void ingredientTypeContainsExpectedValues() {
+        assertNotNull(IngredientType.SAUCE);
+        assertNotNull(IngredientType.FILLING);
+    }
+}
