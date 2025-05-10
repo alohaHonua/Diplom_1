@@ -1,20 +1,31 @@
 package praktikum;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class BunTest {
-    Bun bun = new Bun("Black", 7.99F);
+    private static final String nameBun = "Black";
+    private static final float priceBun = 7.99F;
+    private Bun bun;
 
-    @Test
-    public void checkGetName() {
-        assertEquals("Black", bun.getName());
+    @Before
+    //создаем булочку
+    public void createNewBun(){
+        bun = new Bun(nameBun, priceBun);
     }
 
     @Test
+    //проверяем метод getName
+    public void checkGetName() {
+        assertEquals(nameBun, bun.getName());
+    }
+
+    @Test
+    //проверяем метод getPrice
     public void checkGetPrice(){
-        assertEquals(7.99, bun.getPrice(), 0.1);
+        assertEquals(priceBun, bun.getPrice(), 0);
     }
 
 
