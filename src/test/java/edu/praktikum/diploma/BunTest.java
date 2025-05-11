@@ -3,30 +3,36 @@ package edu.praktikum.diploma;
 import com.github.javafaker.Faker;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import praktikum.Bun;
+import praktikum.Database;
+
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
 public class BunTest {
 
-    private Bun bun;
-    private String bunName;
-    private float bunPrice;
+    @Mock
+    private Database database;
 
     @Before
     public void setUp() {
-        Faker faker = new Faker();
-        bunName = faker.funnyName().name();
-        double bunPriceSample = faker.number().randomDouble(2, 100,501);
-        bunPrice = (float) (bunPriceSample);
-        bun = new Bun(bunName, bunPrice);
+        MockitoAnnotations.openMocks(this);
+
+        Bun bun = new Bun("black bun", 100f);
+        Mockito.when(database.availableBuns()).thenReturn(Arrays.asList(bun));
     }
     @Test
     public void testGetName() {
-        assertEquals("Название не совпадает", bunName, bun.getName());
+        Bun bun = database.availableBuns().get(0);
+        assertEquals("Название не совпадает", "black bun", bun.getName());
     }
     @Test
     public void testGetPrice() {
-        assertEquals(bunPrice, bun.getPrice(), 0);
+        Bun bun = database.availableBuns().get(0);
+        assertEquals(100f, bun.getPrice(), 0);
     }
 }
