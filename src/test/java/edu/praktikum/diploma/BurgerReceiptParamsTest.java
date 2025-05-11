@@ -56,7 +56,8 @@ public class BurgerReceiptParamsTest {
         return new Object[][] {
                 {bun1, Arrays.asList(sauce), "(==== black bun ====)\n= sauce sour cream =\n(==== black bun ====)\n\nPrice: 400,000000\n"},
                 {bun1, Arrays.asList(filling), "(==== black bun ====)\n= filling cutlet =\n(==== black bun ====)\n\nPrice: 300,000000\n"},
-                {bun1, Arrays.asList(filling, sauce), "(==== black bun ====)\n= filling cutlet =\n= sauce sour cream =\n(==== black bun ====)\n\nPrice: 500,000000\n"}
+                {bun1, Arrays.asList(filling, sauce), "(==== black bun ====)\n= filling cutlet =\n= sauce sour cream =\n(==== black bun ====)\n\nPrice: 500,000000\n"},
+                {bun1, Arrays.asList(), "(==== black bun ====)\n(==== black bun ====)\n\nPrice: 200,000000\n"}
         };
     }
 
