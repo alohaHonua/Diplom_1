@@ -1,7 +1,8 @@
-import org.junit.Before;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
@@ -9,85 +10,84 @@ import praktikum.Ingredient;
 import praktikum.IngredientType;
 
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
-
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
 
-    @Mock
-    private Bun mockBun;
+    Burger burger = new Burger();
 
     @Mock
-    private Ingredient mockIngredient;
+    private Bun bun;
+    @Mock
+    private Ingredient FirstIngredient;
+    @Mock
+    private Ingredient SecondIngredient;
 
-    private Burger burger;
-
-    @Before
-    public void setUp() {
-        burger = new Burger();
+    // Тестирование добавления булочек
+    @Test
+    public void setBunsTest() {
+        burger.setBuns(bun);
+        Assert.assertEquals("Метод выбора булочек сработал неправильно", bun, burger.bun);
     }
 
+    // Тестирование добавления ингредиента
     @Test
-    public void testSetBuns() {
-        burger.setBuns(mockBun);
-        assertEquals(mockBun, burger.bun);
+    public void checkAddIngredientTest() {
+        burger.addIngredient(FirstIngredient);
+
+        Assert.assertTrue("Метод не добавил новый ингредиент", burger.ingredients.contains(FirstIngredient));
     }
 
+    // Тестирование удаления ингредиента
     @Test
-    public void testAddIngredient() {
-        burger.addIngredient(mockIngredient);
-        assertTrue(burger.ingredients.contains(mockIngredient));
-    }
-
-    @Test
-    public void testRemoveIngredient() {
-        burger.addIngredient(mockIngredient);
+    public void checkRemoveIngredientTest() {
+        burger.addIngredient(FirstIngredient);
         burger.removeIngredient(0);
-        assertFalse(burger.ingredients.contains(mockIngredient));
+
+        int expectedSize = 0;
+        Assert.assertEquals("Метод удаления ингредиента отработал неправильно", expectedSize, burger.ingredients.size());
     }
 
+    // Тестирование изменения порядка ингредиентов
     @Test
-    public void testMoveIngredient() {
-        Ingredient firstIngredient = new Ingredient(IngredientType.FILLING, "Bacon", 100);
-        Ingredient secondIngredient = new Ingredient(IngredientType.SAUCE, "Mayo", 50);
-        burger.addIngredient(firstIngredient);
-        burger.addIngredient(secondIngredient);
+    public void checkMoveIngredientTest() {
+        burger.addIngredient(FirstIngredient);
+        burger.addIngredient(SecondIngredient);
+        burger.moveIngredient(1, 0);
 
-        burger.moveIngredient(0, 1);
-
-        assertEquals(secondIngredient, burger.ingredients.get(0));
-        assertEquals(firstIngredient, burger.ingredients.get(1));
+        int expectedIndex = 0;
+        int actualIndex = burger.ingredients.indexOf(SecondIngredient);
+        Assert.assertEquals("Метод вернул неправильную позицию ингредиента", expectedIndex, actualIndex);
     }
 
+    // Тестирование подсчета цены бургера
     @Test
-    public void testGetPrice() {
-        when(mockBun.getPrice()).thenReturn(100f);
-        when(mockIngredient.getPrice()).thenReturn(50f);
+    public void checkGetPriceTest() {
+        Mockito.when(bun.getPrice()).thenReturn(100F);
+        Mockito.when(FirstIngredient.getPrice()).thenReturn(100F);
+        Mockito.when(SecondIngredient.getPrice()).thenReturn(150F);
+        burger.setBuns(bun);
+        burger.addIngredient(FirstIngredient);
+        burger.addIngredient(SecondIngredient);
 
-        burger.setBuns(mockBun);
-        burger.addIngredient(mockIngredient);
-
-        float expectedPrice = 100 * 2 + 50;
-        assertEquals(expectedPrice, burger.getPrice(), 0.01);
+        float expectedPrice = 450F;
+        Assert.assertEquals("Метод вернул неправильную цену", expectedPrice, burger.getPrice(), 0F);
     }
 
+    // Тестирование вывода рецепта бургера
     @Test
-    public void testGetReceipt() {
-        when(mockBun.getName()).thenReturn("Sesame Bun");
-        when(mockBun.getPrice()).thenReturn(100f);
-        when(mockIngredient.getName()).thenReturn("Lettuce");
-        when(mockIngredient.getType()).thenReturn(IngredientType.FILLING);
-        when(mockIngredient.getPrice()).thenReturn(50f);
+    public void checkGetReceipt() {
+        Mockito.when(bun.getName()).thenReturn("black bun");
+        Mockito.when(FirstIngredient.getType()).thenReturn(IngredientType.SAUCE);
+        Mockito.when(FirstIngredient.getName()).thenReturn("chili sauce");
+        Mockito.when(FirstIngredient.getPrice()).thenReturn(300F);
+        burger.setBuns(bun);
+        burger.addIngredient(FirstIngredient);
 
-        burger.setBuns(mockBun);
-        burger.addIngredient(mockIngredient);
-
-        String expectedReceipt = String.format("(==== %s ====)%n", "Sesame Bun") +
-                String.format("= %s %s =%n", "filling", "Lettuce") +
-                String.format("(==== %s ====)%n", "Sesame Bun") +
-                String.format("%nPrice: %f%n", burger.getPrice());
-
-        assertEquals(expectedReceipt, burger.getReceipt());
+        String expectedReceipt = "(==== black bun ====)\r\n" +
+                "= sauce chili sauce =\r\n" +
+                "(==== black bun ====)\r\n" +
+                "\r\n" +
+                "Price: 300,000000\r\n";
+        Assert.assertEquals("Метод вернул неправильный рецепт", expectedReceipt, burger.getReceipt());
     }
 }
