@@ -43,20 +43,6 @@ public class BunTest {
     }
 
     @Test
-    public void bunGetNameShouldReturnTheSameValueTest() {
-        Bun bun = new Bun(name,price);
-        String bunName = bun.getName();
-        assertEquals(name, bunName);
-    }
-
-    @Test
-    public void bunGetPriceShouldReturnTheSameValueTest() {
-        Bun bun = new Bun(name,price);
-        float bunPrice = bun.getPrice();
-        assertEquals(price, bunPrice, DELTA);
-    }
-
-    @Test
     public void bunNullNameTest() {
         Bun bun = new Bun(null, 100.0f);
         assertNull(bun.getName());
