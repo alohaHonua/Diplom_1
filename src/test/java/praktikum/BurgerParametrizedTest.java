@@ -24,17 +24,13 @@ public class BurgerParametrizedTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                // Простой бургер только с булочкой
                 {new Bun("white bun", 100), Arrays.asList(), 200},
-                // Бургер с одной начинкой
                 {new Bun("black bun", 150), Arrays.asList(new Ingredient(IngredientType.FILLING, "cheese", 50)), 350},
-                // Бургер с несколькими ингредиентами
                 {new Bun("red bun", 200), Arrays.asList(
                         new Ingredient(IngredientType.FILLING, "cutlet", 100),
                         new Ingredient(IngredientType.SAUCE, "mayo", 30),
                         new Ingredient(IngredientType.FILLING, "onion", 20)
                 ), 550},
-                // Бургер с дорогими ингредиентами
                 {new Bun("premium bun", 500), Arrays.asList(
                         new Ingredient(IngredientType.SAUCE, "truffle", 300),
                         new Ingredient(IngredientType.FILLING, "wagyu", 1000)
