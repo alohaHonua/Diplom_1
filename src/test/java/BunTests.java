@@ -22,9 +22,9 @@ public class BunTests {
     @Parameterized.Parameters()
     public static Object[][] bunParameters(){
         return new Object[][]{
-                {"Кунжутная", 100},
-                {"Ржаная", 200},
-                {"Пшеничная", 300}
+                {"black bun", 100},
+                {"white bun", 200},
+                {"red bun", 300}
         };
     }
 
