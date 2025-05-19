@@ -2,13 +2,8 @@ package praktikum;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-/**
- * Модель бургера.
- * Бургер состоит из булочек и ингредиентов (начинка или соус).
- * Ингредиенты можно перемещать и удалять.
- * Можно распечать чек с информацией о бургере.
- */
 public class Burger {
 
     public Bun bun;
@@ -44,14 +39,14 @@ public class Burger {
         StringBuilder receipt = new StringBuilder(String.format("(==== %s ====)%n", bun.getName()));
 
         for (Ingredient ingredient : ingredients) {
-            receipt.append(String.format("= %s %s =%n", ingredient.getType().toString().toLowerCase(),
+            receipt.append(String.format("= %s %s =%n",
+                    ingredient.getType().toString().toLowerCase(),
                     ingredient.getName()));
         }
 
         receipt.append(String.format("(==== %s ====)%n", bun.getName()));
-        receipt.append(String.format("%nPrice: %f%n", getPrice()));
+        receipt.append(String.format(Locale.US, "%nPrice: %f%n", getPrice())); // <-- ключевая строка
 
         return receipt.toString();
     }
-
 }
