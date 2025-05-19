@@ -19,7 +19,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void checkAddIngredient(){
+    public void checkAddIngredientTest(){
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
         List<Ingredient> expectedIngredients = List.of(ingredient1, ingredient2);
@@ -28,7 +28,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void checkRemoveIngredient(){
+    public void checkRemoveIngredientTest(){
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
         burger.removeIngredient(0);
@@ -38,7 +38,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void checkMoveIngredient(){
+    public void checkMoveIngredientTest(){
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
         burger.moveIngredient(0, 1);
@@ -46,8 +46,5 @@ public class BurgerTest {
         List<Ingredient> actualIngredients =  burger.ingredients;
         assertEquals("Ожидаемые и фактические ингредиенты не совпадают",expectedIngredients, actualIngredients);
     }
-
-
-
 
 }

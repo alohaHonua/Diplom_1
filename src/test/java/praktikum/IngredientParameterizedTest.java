@@ -37,17 +37,17 @@ public class IngredientParameterizedTest {
     }
 
     @Test
-    public void checkGetType(){
-        assertEquals(type, ingredient.getType());
+    public void checkGetTypeTest(){
+        assertEquals("Ожидаемый тип ингредиента не совпадает с фактическим", type, ingredient.getType());
     }
 
     @Test
-    public void checkGetName(){
-        assertEquals(name, ingredient.getName());
+    public void checkGetNameTest(){
+        assertEquals("Ожидаемое имя ингредиента не совпадает с фактическим", name, ingredient.getName());
     }
 
     @Test
-    public void checkGetPrice(){
-        assertEquals(price, ingredient.getPrice(), 0);
+    public void checkGetPriceTest(){
+        assertEquals("Ожидаемая цена ингредиента не совпадает с фактической", price, ingredient.getPrice(), 0);
     }
 }

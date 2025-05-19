@@ -6,12 +6,12 @@ import static org.junit.Assert.*;
 public class IngredientTypeTest {
 
     @Test
-    public void valueOfSauce(){
-        assertEquals(IngredientType.SAUCE, IngredientType.valueOf("SAUCE"));
+    public void valueOfSauceTest(){
+        assertEquals("Значения не совпадают", IngredientType.SAUCE, IngredientType.valueOf("SAUCE"));
     }
 
     @Test
-    public void valueOfFilling(){
-        assertEquals(IngredientType.FILLING, IngredientType.valueOf("FILLING"));
+    public void valueOfFillingTest(){
+        assertEquals("Значения не совпадают", IngredientType.FILLING, IngredientType.valueOf("FILLING"));
     }
 }

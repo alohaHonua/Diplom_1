@@ -34,7 +34,7 @@ public class BurgerParametrizedTest {
     }
 
     @Test
-    public void checkGetReceipt() {
+    public void checkGetReceiptTest() {
         Burger burger = new Burger();//создаем бургер
         Bun bun = new Bun(nameBun, priceBun);//создаем булочку
         Ingredient ingredient = new Ingredient(typeIngr, nameIngr, priceIngr);//создаем ингредиент
@@ -47,6 +47,7 @@ public class BurgerParametrizedTest {
                 String.format("%nPrice: %f%n", burger.getPrice());
         String actualReceipt = burger.getReceipt();
         assertEquals("Ожидаемый чек не совпадает с фактическим", expectedReceipt, actualReceipt);
+        System.out.println(expectedReceipt);
 
     }
 }

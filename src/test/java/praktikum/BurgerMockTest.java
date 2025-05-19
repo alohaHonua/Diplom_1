@@ -1,9 +1,9 @@
 package praktikum;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import static org.junit.Assert.*;
 
@@ -11,23 +11,17 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerMockTest {
-    private Burger burger;
-
     @Mock
     Bun bun;
     @Mock
     Ingredient ingredient;
     @Mock
     Ingredient ingredient1;
-
-    @Before
-    //создаем бургер
-    public void createNewBurger(){
-        burger = new Burger();
-    }
+    @Spy
+    Burger burger = new Burger();
 
     @Test
-    public void checkGetPrice(){
+    public void checkGetPriceTest(){
         burger.setBuns(bun);//добавляем булки в бургер
         when(bun.getPrice()).thenReturn(100F);//присваиваем через мок цену булке
         when(ingredient.getPrice()).thenReturn(20F);//присваиваем через мок цену первому ингредиенту

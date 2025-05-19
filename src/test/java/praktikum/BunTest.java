@@ -1,33 +1,27 @@
 package praktikum;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Spy;
 
 import static org.junit.Assert.*;
 
 public class BunTest {
     private static final String nameBun = "Black";
     private static final float priceBun = 7.99F;
-    private Bun bun;
 
-    @Before
-    //создаем булочку
-    public void createNewBun(){
-        bun = new Bun(nameBun, priceBun);
-    }
+    @Spy
+    Bun bun = new Bun(nameBun, priceBun);
 
     @Test
     //проверяем метод getName
-    public void checkGetName() {
-        assertEquals(nameBun, bun.getName());
+    public void checkGetNameTest() {
+        assertEquals("Ожидаемое имя булки не совпадает с фактическим",nameBun, bun.getName());
     }
 
     @Test
     //проверяем метод getPrice
-    public void checkGetPrice(){
-        assertEquals(priceBun, bun.getPrice(), 0);
+    public void checkGetPriceTest(){
+        assertEquals("Ожидаемая цена булки не совпадает с фактической", priceBun, bun.getPrice(), 0);
     }
-
-
 
 }
