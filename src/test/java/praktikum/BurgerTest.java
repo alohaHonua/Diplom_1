@@ -69,9 +69,10 @@ public class BurgerTest {
     }
 
     @Test
-    public void receiptShouldContainBunName() {
+    public void getReceiptShouldReturnFullCorrectText() {
         when(mockBun.getName()).thenReturn("White Bun");
         when(mockBun.getPrice()).thenReturn(100f);
+
         when(mockIngredient1.getType()).thenReturn(IngredientType.SAUCE);
         when(mockIngredient1.getName()).thenReturn("Ketchup");
         when(mockIngredient1.getPrice()).thenReturn(30f);
@@ -79,37 +80,12 @@ public class BurgerTest {
         burger.setBuns(mockBun);
         burger.addIngredient(mockIngredient1);
 
-        String receipt = burger.getReceipt();
-        assertTrue(receipt.contains("White Bun"));
-    }
+        String expectedReceipt = "(==== White Bun ====)\n" +
+                "= sauce Ketchup =\n" +
+                "(==== White Bun ====)\n\n" +
+                "Price: 230.000000\n";
 
-    @Test
-    public void receiptShouldContainIngredientName() {
-        when(mockBun.getName()).thenReturn("White Bun");
-        when(mockBun.getPrice()).thenReturn(100f);
-        when(mockIngredient1.getType()).thenReturn(IngredientType.SAUCE);
-        when(mockIngredient1.getName()).thenReturn("Ketchup");
-        when(mockIngredient1.getPrice()).thenReturn(30f);
-
-        burger.setBuns(mockBun);
-        burger.addIngredient(mockIngredient1);
-
-        String receipt = burger.getReceipt();
-        assertTrue(receipt.toLowerCase().contains("ketchup"));
-    }
-
-    @Test
-    public void receiptShouldContainPrice() {
-        when(mockBun.getName()).thenReturn("White Bun");
-        when(mockBun.getPrice()).thenReturn(100f);
-        when(mockIngredient1.getType()).thenReturn(IngredientType.SAUCE);
-        when(mockIngredient1.getName()).thenReturn("Ketchup");
-        when(mockIngredient1.getPrice()).thenReturn(30f);
-
-        burger.setBuns(mockBun);
-        burger.addIngredient(mockIngredient1);
-
-        String receipt = burger.getReceipt();
-        assertTrue(receipt.contains("Price:"));
+        String actualReceipt = burger.getReceipt();
+        assertEquals(expectedReceipt, actualReceipt);
     }
 }
