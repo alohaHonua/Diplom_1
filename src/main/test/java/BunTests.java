@@ -10,6 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class BunTests {
     private String name;
     private float price;
+    private Bun bun;
 
     public BunTests(String name, float price) {
         this.name = name;
@@ -23,15 +24,19 @@ public class BunTests {
                 {"red bun", 300.0F}
         };
     }
+
+    @Before
+    public void createBun() {
+        this.bun = new Bun(name, price);
+    }
+
     @Test
     public void getNameTest() {
-        Bun bun = new Bun(name, price);
         String actualName = bun.getName();
         assertEquals("Bun name expected: " + name + ", actual name: " + actualName, name, actualName);
     }
     @Test
     public void getPriceTest() {
-        Bun bun = new Bun(name, price);
         float actualPrice = bun.getPrice();
         assertEquals("Bun price expected: " + price + ", actual price: " + actualPrice, price, actualPrice, 0);
     }

@@ -36,7 +36,7 @@ public class BurgerTests {
     }
 
     @Test
-    public void setBuns() {
+    public void setBunsTest() {
         burger.setBuns(bun);
         Bun actual = burger.bun;
 
@@ -44,7 +44,7 @@ public class BurgerTests {
     }
 
     @Test
-    public void addIngredient() {
+    public void addIngredientTest() {
         burger.addIngredient(ingredient);
         List<Ingredient> expected = List.of(ingredient);
         List<Ingredient> actual = burger.ingredients;
@@ -53,7 +53,7 @@ public class BurgerTests {
     }
 
     @Test
-    public void removeIngredient() {
+    public void removeIngredientTest() {
         burger.addIngredient(ingredient);
         burger.removeIngredient(0);
         List<Ingredient> actual = burger.ingredients;
@@ -62,7 +62,7 @@ public class BurgerTests {
     }
 
     @Test
-    public void moveIngredient() {
+    public void moveIngredientTest() {
         burger.addIngredient(filling);
         burger.addIngredient(sauce);
         burger.moveIngredient(0, 1);
@@ -72,7 +72,7 @@ public class BurgerTests {
     }
 
     @Test
-    public void getReceipt() {
+    public void getReceiptTesst() {
         Mockito.when(bun.getName()).thenReturn("original");
         Mockito.when(bun.getPrice()).thenReturn(200.0f);
         burger.setBuns(bun);
