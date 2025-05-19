@@ -26,14 +26,4 @@ public class BunTest {
         assertEquals("Цена булочки, переданная в конструктор, не совпадает",
                 TEST_BUN_PRICE, bun.getPrice(), DELTA);
     }
-
-    @Test // проверяет, что конструктор корректно инициализирует объект и устанавливает все необходимые поля
-    public void testConstructor() {
-        Bun bun = new Bun(TEST_BUN_NAME, TEST_BUN_PRICE);
-        assertNotNull("Конструктор не создал объект", bun);
-        assertEquals("Название булочки, переданное в конструктор, не сохранено",
-                TEST_BUN_NAME, bun.getName());
-        assertEquals("Цена булочки, переданная в конструктор, не сохранена",
-                TEST_BUN_PRICE, bun.getPrice(), DELTA);
-    }
 }

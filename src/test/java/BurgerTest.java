@@ -1,6 +1,6 @@
 import org.junit.*;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
+import org.junit.runner.*;
+import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -119,7 +119,7 @@ public class BurgerTest {
 
     // проверка метода getReceipt
     @Test
-    public void testGetReceipt() {
+    public void testGetReceiptContainsBunName() {
         burger.setBuns(mockBun1);
         burger.addIngredient(mockSauce);
         burger.addIngredient(mockFilling);
@@ -128,12 +128,41 @@ public class BurgerTest {
 
         assertTrue("В чеке нет названия булочки",
                 receipt.contains("(==== " + TEST_BUN_NAME_1 + " ====)"));
+    }
+    @Test
+    public void testGetReceiptContainsSauceInfo() {
+        burger.setBuns(mockBun1);
+        burger.addIngredient(mockSauce);
+
+        String receipt = burger.getReceipt();
+
         assertTrue("В чеке нет информации о соусе",
                 receipt.contains("= sauce " + TEST_SAUCE_NAME + " ="));
+    }
+    @Test
+    public void testGetReceiptContainsFillingInfo() {
+        burger.setBuns(mockBun1);
+        burger.addIngredient(mockFilling);
+
+        String receipt = burger.getReceipt();
+
         assertTrue("В чеке нет информации о начинке",
                 receipt.contains("= filling " + TEST_FILLING_NAME + " ="));
-        assertTrue("Цена в чеке рассчитана неверно",
-                receipt.contains(String.format("Price: %f",
-                        TEST_BUN_PRICE_1 * 2 + TEST_SAUCE_PRICE + TEST_FILLING_PRICE)));
+    }
+    @Test
+    public void testGetReceiptPriceCalculation() {
+        burger.setBuns(mockBun1);
+        burger.addIngredient(mockSauce);
+        burger.addIngredient(mockFilling);
+
+        String receipt = burger.getReceipt();
+
+        String priceStr = receipt.replaceAll("(?s).*Price: (\\d+\\.?\\d*).*", "$1");
+
+        double expectedPrice = TEST_BUN_PRICE_1 * 2 + TEST_SAUCE_PRICE + TEST_FILLING_PRICE;
+        assertEquals("Цена в чеке рассчитана неверно",
+                expectedPrice,
+                Double.parseDouble(priceStr),
+                0.001);
     }
 }
