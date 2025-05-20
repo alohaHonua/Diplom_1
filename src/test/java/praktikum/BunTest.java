@@ -1,7 +1,6 @@
 package praktikum;
 
 import org.junit.Test;
-import org.mockito.Spy;
 
 import static org.junit.Assert.*;
 
@@ -9,7 +8,6 @@ public class BunTest {
     private static final String nameBun = "Black";
     private static final float priceBun = 7.99F;
 
-    @Spy
     Bun bun = new Bun(nameBun, priceBun);
 
     @Test
