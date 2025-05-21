@@ -5,8 +5,12 @@ import static org.junit.Assert.*;
 
 public class IngredientTypeTest {
     @Test
-    public void ingredientTypeContainsExpectedValues() {
+    public void ingredientTypeContainsSauceTest() {
         assertNotNull(IngredientType.SAUCE);
+    }
+
+    @Test
+    public void ingredientTypeContainsFillingTest() {
         assertNotNull(IngredientType.FILLING);
     }
 }

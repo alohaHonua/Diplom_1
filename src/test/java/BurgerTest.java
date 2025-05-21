@@ -55,12 +55,11 @@ public class BurgerTest {
     @Test (expected = IndexOutOfBoundsException.class)
     public void removeIngredientWithInvalidIndexTest() {
         burger.removeIngredient(0);
-
     }
 
 
     @Test
-    public void moveIngredientTest() {
+    public void moveFirstIngredientTest() {
 
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
@@ -69,6 +68,16 @@ public class BurgerTest {
 
         assertSame("Первый элемент должен измениться",
                 ingredient2, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void moveSecondIngredientTest() {
+
+        burger.addIngredient(ingredient1);
+        burger.addIngredient(ingredient2);
+
+        burger.moveIngredient(0, 1);
+
         assertSame("Второй элемент должен измениться",
                 ingredient1, burger.ingredients.get(1));
     }
