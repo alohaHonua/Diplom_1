@@ -26,7 +26,7 @@ public class IngredientTest {
         assertEquals("Тип ингредиента должен быть SAUCE", TEST_SAUCE_TYPE, ingredient.getType());
     }
     @Test
-    public void testGetTypeFilling() { // проверяет, что метод getType() возвращает тип Соус, переданный в конструктор
+    public void testGetTypeFilling() { // проверяет, что метод getType() возвращает тип Начинка, переданный в конструктор
         Ingredient filling = createTestFillingIngredient();
         assertEquals("Тип ингредиента должен быть FILLING", TEST_FILLING_TYPE, filling.getType());
     }

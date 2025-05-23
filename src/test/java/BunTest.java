@@ -21,7 +21,7 @@ public class BunTest {
                 TEST_BUN_NAME, bun.getName());
     }
 
-    @Test // проверяет, что метод getPrice() возвращает корректное название булки, переданное в конструктор
+    @Test // проверяет, что метод getPrice() возвращает корректную цену булки, переданную в конструктор
     public void testGetPrice() {
         assertEquals("Цена булочки, переданная в конструктор, не совпадает",
                 TEST_BUN_PRICE, bun.getPrice(), DELTA);
