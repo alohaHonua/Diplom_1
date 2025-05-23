@@ -1,6 +1,5 @@
 package edu.praktikum.diploma;
 
-import com.github.javafaker.Faker;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
