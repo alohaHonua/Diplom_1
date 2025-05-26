@@ -15,8 +15,8 @@ import static org.mockito.Mockito.when;
 public class BurgerTests {
     private final  String expectedReceipt =
             "(==== Test burgerVinegrette ====)\r\n" +
-            "= sauce mazik =\r\n" +
-            "= filling patat =\r\n" +
+            "= sauce krujki =\r\n" +
+            "= filling romano =\r\n" +
             "(==== Test burgerVinegrette ====)\r\n" +
             "\r\n" +
             "Price: 60,000000\r\n";
@@ -26,7 +26,7 @@ public class BurgerTests {
     private Bun bun;
 
     @Mock
-    private Ingredient ingredient, ingredient2, ingredient3;
+    private Ingredient ogurchik, salatik, bulochka ,kotletka;
 
     @Before
     public void setUp() {
@@ -42,55 +42,57 @@ public class BurgerTests {
 
     @Test
     public void testAddIngredientIncreasesListSize() {
-        burger.addIngredient(ingredient);
+        burger.addIngredient(ogurchik);
         assertEquals(1, burger.ingredients.size());
     }
 
     @Test
     public void testRemoveIngredientDecreasesListSize() {
-        burger.addIngredient(ingredient);
-        burger.addIngredient(ingredient2);
-        burger.addIngredient(ingredient3);
-        assertEquals(3, burger.ingredients.size());
+        burger.addIngredient(ogurchik);
+        burger.addIngredient(salatik);
+        burger.addIngredient(bulochka);
+        burger.addIngredient(kotletka);
+        assertEquals(4, burger.ingredients.size());
         burger.removeIngredient(2);
-        assertEquals(2, burger.ingredients.size());
+        assertEquals(3, burger.ingredients.size());
     }
 
     @Test
     public void testMoveIngredientSwapsCorrectly() {
-        burger.addIngredient(ingredient);
-        burger.addIngredient(ingredient2);
-        burger.addIngredient(ingredient3);
+        burger.addIngredient(ogurchik);
+        burger.addIngredient(salatik);
+        burger.addIngredient(bulochka);
+        burger.addIngredient(kotletka);
         burger.moveIngredient(1, 2);
-        assertEquals(ingredient2, burger.ingredients.get(2));
-        assertEquals(ingredient3, burger.ingredients.get(1));
+        assertEquals(salatik, burger.ingredients.get(2));
+        assertEquals(bulochka, burger.ingredients.get(1));
     }
 
     @Test
     public void testGetPriceReturnsCorrectSum() {
         burger.setBuns(bun);
-        burger.addIngredient(ingredient);
-        burger.addIngredient(ingredient2);
-        when(bun.getPrice()).thenReturn(20F);
-        when(ingredient.getPrice()).thenReturn(10F);
-        when(ingredient2.getPrice()).thenReturn(2F);
-        float expectedPrice = 20F * 2 + 10F + 2F;
+        burger.addIngredient(ogurchik);
+        burger.addIngredient(salatik);
+        when(bun.getPrice()).thenReturn(30F);
+        when(ogurchik.getPrice()).thenReturn(30F);
+        when(salatik.getPrice()).thenReturn(2F);
+        float expectedPrice = 30F * 2 + 30F + 2F;
         assertEquals(expectedPrice, burger.getPrice(), 0);
     }
 
     @Test
     public void testGetReceiptReturnsFormattedReceipt() {
         burger.setBuns(bun);
-        burger.addIngredient(ingredient);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(ogurchik);
+        burger.addIngredient(salatik);
         when(bun.getName()).thenReturn("Test burgerVinegrette");
         when(bun.getPrice()).thenReturn(20F);
-        when(ingredient.getName()).thenReturn("mazik");
-        when(ingredient.getType()).thenReturn(IngredientType.SAUCE);
-        when(ingredient.getPrice()).thenReturn(10F);
-        when(ingredient2.getName()).thenReturn("patat");
-        when(ingredient2.getType()).thenReturn(IngredientType.FILLING);
-        when(ingredient2.getPrice()).thenReturn(10F);
+        when(ogurchik.getName()).thenReturn("krujki");
+        when(ogurchik.getType()).thenReturn(IngredientType.SAUCE);
+        when(ogurchik.getPrice()).thenReturn(10F);
+        when(salatik.getName()).thenReturn("romano");
+        when(salatik.getType()).thenReturn(IngredientType.FILLING);
+        when(salatik.getPrice()).thenReturn(10F);
         assertEquals(expectedReceipt, burger.getReceipt());
     }
 }
