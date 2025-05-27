@@ -1,0 +1,58 @@
+# Gradle
+.gradle/
+build/
+!build/reports/tests/
+!build/reports/jacoco/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+.settings/
+.classpath
+.project
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Keep JaCoCo reports
+!build/reports/jacoco/test/html/
+!build/reports/jacoco/test/jacocoTestReport.xml
+
+# Keep test reports
+!build/reports/tests/test/classes/
+!build/reports/tests/test/packages/
+!build/reports/tests/test/index.html
+
+# Exclude build directories except reports
+build/*
+!build/reports/ 
