@@ -23,7 +23,7 @@ public class BurgerTests {
     private Burger burger;
 
     @Mock
-    private Bun bun;
+    private Bun burgerVinegrette;
 
     @Mock
     private Ingredient ogurchik, salatik, bulochka ,kotletka;
@@ -35,8 +35,8 @@ public class BurgerTests {
 
     @Test
     public void testSetBunSetsCorrectBurgerVinegrette() {
-        when(bun.getName()).thenReturn("Test BurgerVinegrette");
-        burger.setBuns(bun);
+        when(burgerVinegrette.getName()).thenReturn("Test BurgerVinegrette");
+        burger.setBuns(burgerVinegrette);
         assertEquals("Test BurgerVinegrette", burger.bun.getName());
     }
 
@@ -70,10 +70,10 @@ public class BurgerTests {
 
     @Test
     public void testGetPriceReturnsCorrectSum() {
-        burger.setBuns(bun);
+        burger.setBuns(burgerVinegrette);
         burger.addIngredient(ogurchik);
         burger.addIngredient(salatik);
-        when(bun.getPrice()).thenReturn(30F);
+        when(burgerVinegrette.getPrice()).thenReturn(30F);
         when(ogurchik.getPrice()).thenReturn(30F);
         when(salatik.getPrice()).thenReturn(2F);
         float expectedPrice = 30F * 2 + 30F + 2F;
@@ -82,11 +82,11 @@ public class BurgerTests {
 
     @Test
     public void testGetReceiptReturnsFormattedReceipt() {
-        burger.setBuns(bun);
+        burger.setBuns(burgerVinegrette);
         burger.addIngredient(ogurchik);
         burger.addIngredient(salatik);
-        when(bun.getName()).thenReturn("Test burgerVinegrette");
-        when(bun.getPrice()).thenReturn(20F);
+        when(burgerVinegrette.getName()).thenReturn("Test burgerVinegrette");
+        when(burgerVinegrette .getPrice()).thenReturn(20F);
         when(ogurchik.getName()).thenReturn("krujki");
         when(ogurchik.getType()).thenReturn(IngredientType.SAUCE);
         when(ogurchik.getPrice()).thenReturn(10F);

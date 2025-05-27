@@ -4,13 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>praktikum</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>ru.yandex.praktikum</groupId>
+    <artifactId>Diplom1_junitTests_Vladimir_Safonov</artifactId>
+    <version>9.9-final</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -56,6 +57,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
