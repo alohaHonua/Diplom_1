@@ -1,7 +1,6 @@
 # Gradle
 .gradle/
 build/
-!build/reports/tests/
 !build/reports/jacoco/
 
 # IntelliJ IDEA
@@ -48,11 +47,6 @@ Desktop.ini
 !build/reports/jacoco/test/html/
 !build/reports/jacoco/test/jacocoTestReport.xml
 
-# Keep test reports
-!build/reports/tests/test/classes/
-!build/reports/tests/test/packages/
-!build/reports/tests/test/index.html
-
-# Exclude build directories except reports
+# Exclude build directories except JaCoCo reports
 build/*
-!build/reports/ 
+!build/reports/jacoco/ 
