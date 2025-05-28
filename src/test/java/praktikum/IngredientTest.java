@@ -17,7 +17,7 @@ public class IngredientTest {
         this.price = price;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: type={0}, name={1}, price={2}")
     public static Object[][] data() {
         return new Object[][] {
                 {IngredientType.SAUCE, "Spicy Sauce", 50},
@@ -27,10 +27,20 @@ public class IngredientTest {
     }
 
     @Test
-    public void testIngredientConstructorAndGetters() {
+    public void testGetType() {
         Ingredient ingredient = new Ingredient(type, name, price);
-        assertEquals(type, ingredient.getType());
-        assertEquals(name, ingredient.getName());
-        assertEquals(price, ingredient.getPrice(), 0.001);
+        assertEquals("Тип ингредиента должен совпадать", type, ingredient.getType());
+    }
+
+    @Test
+    public void testGetName() {
+        Ingredient ingredient = new Ingredient(type, name, price);
+        assertEquals("Название ингредиента должно совпадать", name, ingredient.getName());
+    }
+
+    @Test
+    public void testGetPrice() {
+        Ingredient ingredient = new Ingredient(type, name, price);
+        assertEquals("Цена ингредиента должна совпадать", price, ingredient.getPrice(), 0.001);
     }
 }

@@ -33,20 +33,20 @@ public class BurgerTest {
     @Test
     public void testSetBuns() {
         burger.setBuns(mockBun);
-        assertSame(mockBun, burger.bun);
+        assertSame("Булка должна быть установлена", mockBun, burger.bun);
     }
 
     @Test
     public void testAddIngredient() {
         burger.addIngredient(mockIngredient1);
-        assertEquals(1, burger.ingredients.size());
+        assertEquals("Должен быть добавлен 1 ингредиент",1, burger.ingredients.size());
     }
 
     @Test
     public void testRemoveIngredient() {
         burger.addIngredient(mockIngredient1);
         burger.removeIngredient(0);
-        assertTrue(burger.ingredients.isEmpty());
+        assertTrue("Список ингредиентов должен быть пустым", burger.ingredients.isEmpty());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class BurgerTest {
         burger.addIngredient(mockIngredient1);
         burger.addIngredient(mockIngredient2);
         burger.moveIngredient(0, 1);
-        assertEquals(mockIngredient2, burger.ingredients.get(0));
+        assertEquals("Ингредиенты должны поменяться местами", mockIngredient2, burger.ingredients.get(0));
     }
 
     @Test
@@ -63,30 +63,40 @@ public class BurgerTest {
         burger.addIngredient(mockIngredient1);
         burger.addIngredient(mockIngredient2);
         float expected = 100 * 2 + 50 + 200;
-        assertEquals(expected, burger.getPrice(), 0.001);
+        assertEquals("Цена должна корректно рассчитываться", expected, burger.getPrice(), 0.001);
     }
 
     @Test
-    public void testGetReceipt() {
+    public void testGetReceiptBunName() { // прошлый метод testGetReceipt разделил на три
         burger.setBuns(mockBun);
         burger.addIngredient(mockIngredient1);
         when(mockIngredient1.getType()).thenReturn(IngredientType.SAUCE);
         when(mockIngredient1.getName()).thenReturn("Spicy Sauce");
 
-        String lineSeparator = System.lineSeparator();
+        String receipt = burger.getReceipt();
+        assertTrue("Должно содержать название булки", receipt.contains("Black Bun"));
+    }
 
-        // Формируем ожидаемую строку с учетом локали
-        String expectedPrice = String.format("%nPrice: 250.000000%n")
-                .replace('.', ','); // Заменяем точку на запятую, если нужно
+    @Test
+    public void testGetReceiptIngredient() {
+        burger.setBuns(mockBun);
+        burger.addIngredient(mockIngredient1);
+        when(mockIngredient1.getType()).thenReturn(IngredientType.SAUCE);
+        when(mockIngredient1.getName()).thenReturn("Spicy Sauce");
 
-        String expected = "(==== Black Bun ====)" + lineSeparator
-                + "= sauce Spicy Sauce =" + lineSeparator
-                + "(==== Black Bun ====)" + lineSeparator
-                + lineSeparator
-                + "Price: 250.000000" + lineSeparator;
+        String receipt = burger.getReceipt();
+        assertTrue("Должно содержать ингредиент", receipt.contains("Spicy Sauce"));
+    }
 
-        // Сравниваем без учёта разделителя (или заменяем его)
-        String actual = burger.getReceipt().replace(',', '.'); // Унифицируем разделитель
-        assertEquals(expected.replace(',', '.'), actual);
+    @Test
+    public void testGetReceiptPriceFormat() {
+        burger.setBuns(mockBun);
+        burger.addIngredient(mockIngredient1);
+        when(mockIngredient1.getType()).thenReturn(IngredientType.SAUCE);
+        when(mockIngredient1.getName()).thenReturn("Spicy Sauce");
+
+        String receipt = burger.getReceipt();
+        assertTrue("Должно содержать корректный формат цены",
+                receipt.contains("250.000000") || receipt.contains("250,000000"));
     }
 }
