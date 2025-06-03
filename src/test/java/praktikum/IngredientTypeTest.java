@@ -21,4 +21,10 @@ public class IngredientTypeTest {
     public void testFillingTypeToString() {
         assertEquals("FILLING", IngredientType.FILLING.toString());
     }
+    // Проверяет метод name
+    @Test
+    public void testName() {
+        assertEquals("SAUCE", IngredientType.SAUCE.name());
+        assertEquals("FILLING", IngredientType.FILLING.name());
+    }
 }
