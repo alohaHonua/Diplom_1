@@ -70,4 +70,6 @@ public class BunTest {
         assertEquals("Цена булочки должна совпадать с заданной в конструкторе",
                 price, actualPrice, 0.01);
     }
+
+
 }

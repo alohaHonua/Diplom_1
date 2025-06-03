@@ -4,27 +4,38 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Тесты для перечисления IngredientType.
- * Проверяется корректность значений перечисления.
- */
 public class IngredientTypeTest {
 
-    // Проверяет, что значение перечисления SAUCE возвращает правильную строку
+    /**
+     * Проверка, что перечисление SAUCE содержит правильное имя
+     */
     @Test
-    public void testSauceTypeToString() {
+    public void sauceEnumToStringTest() {
         assertEquals("SAUCE", IngredientType.SAUCE.toString());
     }
 
-    // Проверяет, что значение перечисления FILLING возвращает правильную строку
+    /**
+     * Проверка, что перечисление FILLING содержит правильное имя
+     */
     @Test
-    public void testFillingTypeToString() {
+    public void fillingEnumToStringTest() {
         assertEquals("FILLING", IngredientType.FILLING.toString());
     }
-    // Проверяет метод name
+
+    /**
+     * Проверка количества значений в перечислении
+     */
     @Test
-    public void testName() {
-        assertEquals("SAUCE", IngredientType.SAUCE.name());
-        assertEquals("FILLING", IngredientType.FILLING.name());
+    public void enumValuesCountTest() {
+        assertEquals(2, IngredientType.values().length);
+    }
+
+    /**
+     * Проверка доступа к значению по индексу
+     */
+    @Test
+    public void enumAccessByIndexTest() {
+        assertEquals(IngredientType.SAUCE, IngredientType.values()[0]);
+        assertEquals(IngredientType.FILLING, IngredientType.values()[1]);
     }
 }
