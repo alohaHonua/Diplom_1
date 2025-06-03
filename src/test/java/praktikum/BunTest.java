@@ -67,7 +67,6 @@ public class BunTest {
      * что метод getPrice() возвращает ожидаемое значение.
      * Используется delta = 0.01 для сравнения float-значений.
      */
-
     @Test
     public void testGetPrice() {
         // Arrange (подготовка)
