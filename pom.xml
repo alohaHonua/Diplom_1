@@ -8,98 +8,77 @@
     <artifactId>praktikum</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
+        <properties>
             <maven.compiler.source>11</maven.compiler.source>
             <maven.compiler.target>11</maven.compiler.target>
-            <junit.version>5.9.2</junit.version>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <junit.version>4.13.2</junit.version>
             <mockito.version>4.11.0</mockito.version>
-            <jacoco.version>0.8.8</jacoco.version>
-            <surefire.version>3.0.0-M7</surefire.version>
-    </properties>
-
-        <repositories>
-            <repository>
-                <id>central</id>
-                <url>https://repo.maven.apache.org/maven2</url>
-            </repository>
-        </repositories>
-
-        <pluginRepositories>
-            <pluginRepository>
-                <id>central</id>
-                <url>https://repo.maven.apache.org/maven2</url>
-            </pluginRepository>
-        </pluginRepositories>
+            <jacoco.version>0.8.10</jacoco.version>
+        </properties>
 
         <dependencies>
+            <!-- JUnit -->
             <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
-            </dependency>
+
+            <!-- Mockito -->
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-junit-jupiter</artifactId>
-                <version>${mockito.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-params</artifactId>
-                <version>5.0.1</version>
-                <scope>test</scope>
-            </dependency>
         </dependencies>
 
         <build>
-            <sourceDirectory>src/main/java</sourceDirectory>
             <plugins>
+                <!-- Плагин компиляции -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
+                    <version>3.11.0</version>
                     <configuration>
-                        <source>11</source>
-                        <target>11</target>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
                     </configuration>
                 </plugin>
+
+                <!-- Плагин для запуска тестов -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M9</version>
+                </plugin>
+
+                <!-- Jacoco: отчёт при сборке -->
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>${jacoco.version}</version>
                     <executions>
+                        <!-- Подключение агента -->
                         <execution>
+                            <id>prepare-agent</id>
                             <goals>
                                 <goal>prepare-agent</goal>
                             </goals>
                         </execution>
+                        <!-- Генерация отчёта -->
                         <execution>
                             <id>report</id>
-                            <phase>test</phase>
+                            <phase>verify</phase>
                             <goals>
                                 <goal>report</goal>
                             </goals>
                         </execution>
                     </executions>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${surefire.version}</version>
-                </plugin>
             </plugins>
         </build>
-</project>
+
+    </project>
