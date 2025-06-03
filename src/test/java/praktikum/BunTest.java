@@ -7,7 +7,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * Тесты для класса Bun (булочка для бургера).
@@ -50,13 +50,10 @@ public class BunTest {
      */
     @Test
     public void testGetName() {
-        // Arrange (подготовка)
         Bun bun = new Bun(name, price);
 
-        // Act (действие)
         String actualName = bun.getName();
 
-        // Assert (проверка)
         assertEquals("Название булочки должно совпадать с заданным в конструкторе",
                 name, actualName);
     }
@@ -68,13 +65,8 @@ public class BunTest {
      */
     @Test
     public void testGetPrice() {
-        // Arrange (подготовка)
         Bun bun = new Bun(name, price);
-
-        // Act (действие)
         float actualPrice = bun.getPrice();
-
-        // Assert (проверка)
         assertEquals("Цена булочки должна совпадать с заданной в конструкторе",
                 price, actualPrice, 0.01);
     }
