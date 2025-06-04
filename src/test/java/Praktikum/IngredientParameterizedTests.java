@@ -43,6 +43,7 @@ public class IngredientParameterizedTests {
         ingredient = null;
     }
 
+
     @Test
     public void checkGetPrice() {
         assertEquals(ingredientPrice, ingredient.getPrice(), 0.01);
