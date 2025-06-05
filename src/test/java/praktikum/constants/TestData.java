@@ -11,7 +11,6 @@ public class TestData {
     public static final IngredientType CREAM_TYPE = IngredientType.SAUCE;
     public static final float CREAM_PRICE = 200f;
 
-    public static final String BUTTER_NAME = "Сливочное масло";
     public static final float BUTTER_PRICE = 30f;
 
     public static final float DELTA = 0.001f;
