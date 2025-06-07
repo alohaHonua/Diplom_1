@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import praktikum.Bun;
-
 import static org.junit.Assert.assertEquals;
 
 public class BunTests {

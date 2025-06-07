@@ -24,7 +24,7 @@ public class IngredientParameterizedTests {
         this.ingredientPrice = ingredientPrice;
     }
 
-    @Parameterized.Parameters()
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1} с ценой {2}")
     public static Object[][] dataIngredients() {
         return new Object[][]{
                 {IngredientType.SAUCE, "Соус с шипами Антарианского плоскоходца", 88.0f},

@@ -34,7 +34,7 @@ public class BurgerParameterizedTests {
         this.ingredientPrice = ingredientPrice;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1} с ценой {2}")
     public static Object[][] dataIngredients() {
         return new Object[][]{
                 {IngredientType.SAUCE, "Соус с шипами Антарианского плоскоходца", 88.0f},
@@ -65,6 +65,13 @@ public class BurgerParameterizedTests {
         burger.addIngredient(ingredient);
 
         assertEquals(1, burger.ingredients.size());
+    }
+
+    @Test
+    public void testAddIngredientCorrectness() {
+        burger.setBuns(bun);
+        burger.addIngredient(ingredient);
+
         assertEquals(ingredient, burger.ingredients.get(0));
     }
 
@@ -76,6 +83,15 @@ public class BurgerParameterizedTests {
         burger.removeIngredient(1);
 
         assertEquals(1, burger.ingredients.size());
+    }
+
+    @Test
+    public void testRemoveIngredientCorrectness() {
+        burger.setBuns(bun);
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient);
+        burger.removeIngredient(1);
+
         assertEquals(ingredient, burger.ingredients.get(0));
     }
 
@@ -87,6 +103,15 @@ public class BurgerParameterizedTests {
         burger.moveIngredient(0, 1);
 
         assertEquals(ingredient, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void testMoveIngredientCorrectness() {
+        burger.setBuns(bun);
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient);
+        burger.moveIngredient(0, 1);
+
         assertEquals(ingredient, burger.ingredients.get(1));
     }
 
