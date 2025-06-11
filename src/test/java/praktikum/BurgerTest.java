@@ -8,16 +8,20 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
 
     @Mock
-    private Bun bun;
+    private Bun mockBun;
 
-    private Ingredient ingredient1;  // Реальный объект вместо мока
-    private Ingredient ingredient2;
+    @Mock
+    private Ingredient mockSauce;
+
+    @Mock
+    private Ingredient mockFilling;
 
     private Burger burger;
 
@@ -26,71 +30,75 @@ public class BurgerTest {
         burger = new Burger();
 
         // Настройка мока для булки
-        when(bun.getName()).thenReturn("Краторная булка");
-        when(bun.getPrice()).thenReturn(100f);
+        when(mockBun.getName()).thenReturn("Краторная булка");
+        when(mockBun.getPrice()).thenReturn(100f);
 
-        // Создание реальных ингредиентов
-        ingredient1 = new Ingredient(IngredientType.SAUCE, "Соус Spicy", 90f);
-        ingredient2 = new Ingredient(IngredientType.FILLING, "Говядина", 200f);
+        // Настройка моков для ингредиентов
+        when(mockSauce.getType()).thenReturn(IngredientType.SAUCE);
+        when(mockSauce.getName()).thenReturn("Соус Spicy");
+        when(mockSauce.getPrice()).thenReturn(90f);
+
+        // Делаем стабы для mockFilling "ленивыми"
+        lenient().when(mockFilling.getType()).thenReturn(IngredientType.FILLING);
+        lenient().when(mockFilling.getName()).thenReturn("Говядина");
+        lenient().when(mockFilling.getPrice()).thenReturn(200f);
     }
 
-    // Тесты работают с реальными ингредиентами
     @Test
     public void testSetBuns() {
-        burger.setBuns(bun);
-        assertEquals(bun, burger.bun);
+        burger.setBuns(mockBun);
+        assertEquals(mockBun, burger.bun);
     }
 
     @Test
     public void testAddIngredient() {
-        burger.addIngredient(ingredient1);
+        burger.addIngredient(mockSauce);
         assertEquals(1, burger.ingredients.size());
-        assertEquals(ingredient1, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void testAddIngredientContainsAddedIngredient() {
+        burger.addIngredient(mockSauce);
+        assertEquals(mockSauce, burger.ingredients.get(0));
     }
 
     @Test
     public void testRemoveIngredient() {
-        burger.addIngredient(ingredient1);
+        burger.addIngredient(mockSauce);
         burger.removeIngredient(0);
         assertTrue(burger.ingredients.isEmpty());
     }
 
     @Test
-    public void testMoveIngredient() {
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+    public void testMoveIngredientChangesPosition() {
+        burger.addIngredient(mockSauce);
+        burger.addIngredient(mockFilling);
         burger.moveIngredient(0, 1);
-        assertEquals(ingredient1, burger.ingredients.get(1));
+        assertEquals(mockSauce, burger.ingredients.get(1));
     }
 
     @Test
-    public void testGetPrice() {
-        burger.setBuns(bun);
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
-        float expectedPrice = 100f * 2 + 90f + 200f; // Булки x2 + ингредиенты
+    public void testGetPriceCalculatesCorrectPrice() {
+        burger.setBuns(mockBun);
+        burger.addIngredient(mockSauce);
+        burger.addIngredient(mockFilling);
+        float expectedPrice = 100f * 2 + 90f + 200f;
         assertEquals(expectedPrice, burger.getPrice(), 0.01);
     }
 
     @Test
-    public void testGetReceipt() {
-        // Arrange
-        burger.setBuns(bun);
-        burger.addIngredient(ingredient1);
+    public void testGetReceiptReturnsCorrectFormat() {
+        burger.setBuns(mockBun);
+        burger.addIngredient(mockSauce);
 
-        // Act
         String receipt = burger.getReceipt();
 
-        // Assert
-        // Проверяем структуру чека без точного сравнения строки
-        assertThat(receipt, containsString("(==== Краторная булка ====)"));
-        assertThat(receipt, containsString("= sauce Соус Spicy ="));
-        assertThat(receipt, containsString("(==== Краторная булка ====)"));
+        // Нормализуем форматирование (заменяем запятые на точки и убираем лишние пробелы)
+        String normalizedReceipt = receipt.replace(',', '.').replaceAll("\\s+", " ").trim();
 
-        // Проверяем цену через регулярное выражение
-        assertTrue(receipt.matches("(?s).*Price: 290[.,]000000.*"));
+        // Ожидаемый результат с нормализованным форматированием
+        String expected = "(==== Краторная булка ====) = sauce Соус Spicy = (==== Краторная булка ====) Price: 290.000000";
 
-        // Альтернативно: проверяем только числовое значение
-        assertTrue(receipt.matches("(?s).*Price: .*290.*"));
+        assertEquals(expected, normalizedReceipt);
     }
 }
