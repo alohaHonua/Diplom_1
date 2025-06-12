@@ -8,12 +8,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.MainPage;
 import util.BrowserFactory;
 
-import java.util.function.BooleanSupplier;
+import java.time.Duration;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 @Epic("Stellar Burgers - Конструктор")
 @Feature("Навигация по разделам конструктора")
@@ -32,9 +34,9 @@ public class ConstructorTest {
     @Test
     @DisplayName("Проверка перехода в раздел 'Булки'")
     public void shouldSwitchToBunSectionSuccessfully() {
+        mainPage.clickFillingSection();
         switchToSectionAndVerify(
                 () -> mainPage.clickBunSection(),
-                mainPage::isBunSectionActive,
                 "Булки"
         );
     }
@@ -42,9 +44,9 @@ public class ConstructorTest {
     @Test
     @DisplayName("Проверка перехода в раздел 'Соусы'")
     public void shouldSwitchToSauceSectionSuccessfully() {
+        mainPage.clickFillingSection();
         switchToSectionAndVerify(
                 () -> mainPage.clickSauceSection(),
-                mainPage::isSauceSectionActive,
                 "Соусы"
         );
     }
@@ -54,18 +56,18 @@ public class ConstructorTest {
     public void shouldSwitchToFillingSectionSuccessfully() {
         switchToSectionAndVerify(
                 () -> mainPage.clickFillingSection(),
-                mainPage::isFillingSectionActive,
                 "Начинки"
         );
     }
 
-    @Step("Переключение на раздел '{sectionName}' и проверка активности")
-    private void switchToSectionAndVerify(Runnable switchAction,
-                                          BooleanSupplier isActiveChecker,
-                                          String sectionName) {
+    @Step("Переключение на раздел '{expectedText}' и проверка активности")
+    private void switchToSectionAndVerify(Runnable switchAction, String expectedText) {
         switchAction.run();
-        assertTrue(String.format("Раздел '%s' должен быть активным", sectionName),
-                isActiveChecker.getAsBoolean());
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.textToBePresentInElementLocated(mainPage.getActiveTabLocator(), expectedText));
+        String actualText = mainPage.getActiveTabText();
+        assertEquals(String.format("Текст активной вкладки должен быть '%s'", expectedText),
+                expectedText, actualText);
     }
 
     @After

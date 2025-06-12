@@ -9,11 +9,18 @@ import pages.LoginPage;
 import pages.MainPage;
 import pages.RegistrationPage;
 import util.BrowserFactory;
+import util.UserFactory;
 
 import static org.junit.Assert.assertTrue;
 
 public class RegistrationTest {
     private WebDriver driver;
+    private UserFactory userFactory = new UserFactory();
+    private String testUsername = "TestUser";
+    private String testEmail = "testuser@example.com";
+    private String testPassword = "password123";
+    private String testShortPassword = "pass";
+    private boolean userCreated = false;
 
     @Before
     public void setUp() {
@@ -31,9 +38,9 @@ public class RegistrationTest {
         goToRegistrationPageThroughLogin();
 
         RegistrationPage registrationPage = new RegistrationPage(driver);
-        fillRegistrationForm(registrationPage, "TestUser", "testuser@example.com", "password123");
+        fillRegistrationForm(registrationPage, testUsername, testEmail, testPassword);
         submitRegistrationForm(registrationPage);
-
+        userCreated = true;
         verifyLoginFormDisplayedAfterRegistration();
     }
 
@@ -42,7 +49,7 @@ public class RegistrationTest {
         goToRegistrationPageThroughLogin();
 
         RegistrationPage registrationPage = new RegistrationPage(driver);
-        fillRegistrationFormWithShortPassword(registrationPage, "TestUser", "testuser@example.com", "12345");
+        fillRegistrationFormWithShortPassword(registrationPage, testUsername, testEmail, testShortPassword);
 
         verifyPasswordErrorDisplayed(registrationPage);
     }
@@ -99,8 +106,16 @@ public class RegistrationTest {
 
     @After
     public void tearDown() {
-        if (driver != null) {
-            driver.quit();
+        try {
+            if (userCreated) {
+                userFactory.deleteTestUser(testEmail, testPassword);
+            }
+        } catch (Exception e) {
+            System.err.println("Ошибка при удалении тестового пользователя: " + e.getMessage());
+        } finally {
+            if (driver != null) {
+                driver.quit();
+            }
         }
     }
 }
