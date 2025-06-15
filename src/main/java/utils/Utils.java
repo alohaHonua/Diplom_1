@@ -20,4 +20,5 @@ public class Utils {
         float randomPrice = (float)faker.number().numberBetween(min, max) + random.nextFloat();
         return randomPrice;
     }
+
 }
