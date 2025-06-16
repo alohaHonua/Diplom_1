@@ -99,8 +99,6 @@ public class BurgerTests {
         burger.setBuns(bunWithOnion);
         burger.addIngredient(cheese);
         burger.addIngredient(pickles);
-        //burger.addIngredient(onion);
-        //burger.addIngredient(patty);
         when(bunWithOnion.getName()).thenReturn("Test bunWithOnion");
         when(bunWithOnion.getPrice()).thenReturn(25F);
         when(cheese.getName()).thenReturn("cheese");
@@ -109,12 +107,6 @@ public class BurgerTests {
         when(pickles.getName()).thenReturn("pickles");
         when(pickles.getType()).thenReturn(IngredientType.FILLING);
         when(pickles.getPrice()).thenReturn(10F);
-        //when(onion.getName()).thenReturn("onion");
-        //when(onion.getType()).thenReturn(IngredientType.FILLING);
-        //when(onion.getPrice()).thenReturn(5F);
-        //when(patty.getName()).thenReturn("patty");
-        //when(patty.getType()).thenReturn(IngredientType.FILLING);
-        //when(patty.getPrice()).thenReturn(15F);
         assertEquals(expectedReceipt, burger.getReceipt());
     }
 }
